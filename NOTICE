@@ -1,0 +1,12 @@
+GAIA mock game
+==============
+
+This repository is a test fixture for GAIA (Game Anomaly Investigation Agent).
+All builds, crash reports and telemetry under ci/ and telemetry/ are synthetic.
+
+The game code is based on EVADE AND DESTROY by KUSANAGI Mitsuhisa
+https://github.com/mikkun/evade-and-destroy
+Copyright (c) 2017 KUSANAGI Mitsuhisa, released under the MIT License (see LICENSE).
+
+Changes made from September 2026 onwards are by the GAIA mock studio team
+and are released under the same MIT License.

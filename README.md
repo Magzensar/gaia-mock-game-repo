@@ -1,3 +1,16 @@
+GAIA mock game (based on EVADE AND DESTROY)
+===========================================
+
+Internal mock game used to exercise GAIA, the Game Anomaly Investigation Agent.
+Every build, crash report and telemetry file in this repository is synthetic (`"source": "mock"`).
+
+Based on [EVADE AND DESTROY](https://github.com/mikkun/evade-and-destroy) by KUSANAGI Mitsuhisa,
+MIT License. See [NOTICE](./NOTICE) and [LICENSE](./LICENSE).
+
+Run locally: `python3 -m http.server -d docs 8000`, then open <http://localhost:8000/>.
+
+---
+
 EVADE AND DESTROY
 =================
 

@@ -12,6 +12,33 @@
 
 var EAD = {};
 
+// Seeded random numbers so a run can be replayed exactly.
+// Use ?seed=<n> to pin the seed; otherwise a fresh seed is picked.
+EAD.seed = (function () {
+    "use strict";
+
+    var match = /[?&]seed=(\d+)/.exec(window.location.search);
+
+    return match
+        ? parseInt(match[1], 10) >>> 0
+        : Math.floor(Date.now() % 4294967296);
+}());
+
+EAD.rng = (function (state) {
+    "use strict";
+
+    // mulberry32
+    return function () {
+        var t = 0;
+
+        state = (state + 0x6D2B79F5) | 0;
+        t = Math.imul(state ^ (state >>> 15), 1 | state);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+}(EAD.seed));
+
 EAD.VERSION = "v3.0.1";
 EAD.FPS = 30;
 EAD.WIDTH = 320;
@@ -59,7 +86,7 @@ EAD.area_order = (function () {
         index = 0;
 
     while (len) {
-        index = Math.floor(Math.random() * len);
+        index = Math.floor(EAD.rng() * len);
         area_order.push(area_ids.splice(index, 1)[0]);
 
         len -= 1;

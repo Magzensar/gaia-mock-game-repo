@@ -160,8 +160,8 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
 
     if (this.time < EAD.Boss.TIME_LIMIT) {
         if (this.time % 55 === 0) {
-            this.vx = (Math.floor(Math.random() * 3 - 1)) * 2;
-            this.vy = (Math.floor(Math.random() * 3 - 1)) * 3;
+            this.vx = (Math.floor(EAD.rng() * 3 - 1)) * 2;
+            this.vy = (Math.floor(EAD.rng() * 3 - 1)) * 3;
             if (this.vy < 0) {
                 this.vy = -5;
             }

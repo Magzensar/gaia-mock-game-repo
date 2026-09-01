@@ -43,7 +43,7 @@ EAD.PlayerItem.prototype.STATE = {
 EAD.PlayerItem.prototype.drop = function (enemy_x, enemy_y) {
     "use strict";
 
-    var n = Math.random();
+    var n = EAD.rng();
 
     if (this.state !== this.STATE.GARBAGE) {
         return false;

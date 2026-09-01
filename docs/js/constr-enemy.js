@@ -86,7 +86,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
                 : random_range;
             if (
                 !Math.floor(
-                    Math.random() *
+                    EAD.rng() *
                     (2 - EAD.difficulty / EAD.MAX_DIFFICULTY) *
                     (random_range / 2)
                 )
@@ -120,13 +120,13 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
                 : this.name + 10;
         } else if (this.name === this.NAME.RANDOM) {
             this.name = EAD.difficulty > EAD.DIFFICULTY_HARD
-                ? this.name - (Math.floor(Math.random() * 4) + 1) * 10
+                ? this.name - (Math.floor(EAD.rng() * 4) + 1) * 10
                 : 10;
         }
         if (this.name === this.NAME.FIGHTER) {
-            this.name += Math.floor(Math.random() * 2) + 1;
+            this.name += Math.floor(EAD.rng() * 2) + 1;
         } else if (this.name === this.NAME.MISSILE) {
-            this.name += Math.floor(Math.random() * 2) + 1;
+            this.name += Math.floor(EAD.rng() * 2) + 1;
         }
         break;
 
@@ -399,7 +399,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
                 : player_x - this.x < 0
                     ? Math.ceil((player_x - this.x) / EAD.BASE_PX)
                     : 0;
-            this.vy = Math.floor(Math.random() * 3) + 21;
+            this.vy = Math.floor(EAD.rng() * 3) + 21;
             this.has_weapon = true;
             this.on_ground = false;
             this.lives = 1;
@@ -538,7 +538,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
     case this.NAME.METEOR:
         if (this.state === this.STATE.INIT) {
             this.vx = 0;
-            this.vy = Math.floor(Math.random() * 3) + 1;
+            this.vy = Math.floor(EAD.rng() * 3) + 1;
             this.has_weapon = false;
             this.on_ground = false;
             this.lives = 255;
@@ -568,7 +568,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
 
     if (this.state === this.STATE.INIT) {
         if (!this.on_ground) {
-            this.y -= Math.floor(Math.random() * 2) * EAD.BASE_PX / 2;
+            this.y -= Math.floor(EAD.rng() * 2) * EAD.BASE_PX / 2;
         }
         this.state = this.name === this.NAME.EMPTY
             ? this.STATE.INACTIVE

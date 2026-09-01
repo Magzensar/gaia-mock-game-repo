@@ -139,6 +139,9 @@ EAD.EnemyShot.prototype.update = function (player_x, player_y) {
     }
 };
 
+/**
+ * Draw this enemy shot on its canvas layer.
+ */
 EAD.EnemyShot.prototype.draw = function () {
     "use strict";
 

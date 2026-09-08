@@ -53,6 +53,12 @@ EAD.PlayerShot.prototype.fire = function (energy_red) {
     return true;
 };
 
+/**
+ * Advance this player shot by one frame.
+ *
+ * @param {number} player_x
+ * @param {number} player_y
+ */
 EAD.PlayerShot.prototype.update = function (player_x, player_y) {
     "use strict";
 

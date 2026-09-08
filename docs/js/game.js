@@ -76,11 +76,11 @@ EAD.loop = function () {
     var i = 0,
         j = 0,
         button_y = 0,
-        high_score = ("        " + EAD.high_score).slice(-9),
-        score = ("        " + EAD.score).slice(-9),
-        energy_red = ("  " + EAD.player.energy_red).slice(-3),
-        energy_green = ("  " + EAD.player.energy_green).slice(-3),
-        lives = (" " + EAD.player.lives).slice(-2);
+        high_score = EAD.util.padLeft(EAD.high_score, 9),
+        score = EAD.util.padLeft(EAD.score, 9),
+        energy_red = EAD.util.padLeft(EAD.player.energy_red, 3),
+        energy_green = EAD.util.padLeft(EAD.player.energy_green, 3),
+        lives = EAD.util.padLeft(EAD.player.lives, 2);
 
     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);
 

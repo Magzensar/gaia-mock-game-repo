@@ -76,3 +76,22 @@ EAD.util.hasCollision = function (circle1, circle2) {
 
     return true;
 };
+
+/**
+ * Right-align a value in a fixed-width HUD field.
+ *
+ * @param {number|string} value
+ * @param {number} width
+ * @returns {string}
+ */
+EAD.util.padLeft = function (value, width) {
+    "use strict";
+
+    var str = String(value);
+
+    while (str.length < width) {
+        str = " " + str;
+    }
+
+    return str.slice(-width);
+};

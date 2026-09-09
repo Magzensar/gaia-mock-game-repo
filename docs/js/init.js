@@ -39,7 +39,7 @@ EAD.rng = (function (state) {
     };
 }(EAD.seed));
 
-EAD.VERSION = "v3.0.1";
+EAD.VERSION = "v3.1.0";
 EAD.FPS = 30;
 EAD.WIDTH = 320;
 EAD.HEIGHT = 480;

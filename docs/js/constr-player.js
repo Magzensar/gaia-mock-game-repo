@@ -52,6 +52,9 @@ EAD.Player.prototype.STATE = {
     GARBAGE: 10
 };
 
+/**
+ * Advance this player by one frame.
+ */
 EAD.Player.prototype.update = function () {
     "use strict";
 

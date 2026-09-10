@@ -335,12 +335,12 @@ EAD.loop = function () {
             }
             i += 1;
         }
-        EAD.difficulty = EAD.difficulty < EAD.MAX_DIFFICULTY
-            ? EAD.difficulty + 1
-            : EAD.MAX_DIFFICULTY;
-        EAD.score = EAD.score < EAD.MAX_SCORE
-            ? EAD.score + 1
-            : EAD.MAX_SCORE;
+        EAD.difficulty = EAD.util.clamp(
+            EAD.difficulty + 1,
+            0,
+            EAD.MAX_DIFFICULTY
+        );
+        EAD.score = EAD.util.clamp(EAD.score + 1, 0, EAD.MAX_SCORE);
         EAD.high_score = EAD.score < EAD.high_score
             ? EAD.high_score
             : EAD.score;

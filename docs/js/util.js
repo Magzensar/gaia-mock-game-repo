@@ -95,3 +95,21 @@ EAD.util.padLeft = function (value, width) {
 
     return str.slice(-width);
 };
+
+/**
+ * Clamp a number to the range [min, max].
+ *
+ * @param {number} n
+ * @param {number} min
+ * @param {number} max
+ * @returns {number}
+ */
+EAD.util.clamp = function (n, min, max) {
+    "use strict";
+
+    return n < min
+        ? min
+        : n > max
+            ? max
+            : n;
+};

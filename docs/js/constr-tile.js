@@ -10,6 +10,11 @@
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
+/**
+ * Create a new tile.
+ *
+ * @param {Object} layer
+ */
 EAD.Tile = function (layer) {
     "use strict";
 

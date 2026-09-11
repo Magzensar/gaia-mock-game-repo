@@ -45,6 +45,12 @@ EAD.player_shot_manager.fire = function (energy_red) {
     return false;
 };
 
+/**
+ * Advance the player shot manager by one frame.
+ *
+ * @param {number} player_x
+ * @param {number} player_y
+ */
 EAD.player_shot_manager.update = function (player_x, player_y) {
     "use strict";
 

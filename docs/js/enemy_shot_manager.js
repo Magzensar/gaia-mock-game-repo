@@ -57,6 +57,9 @@ EAD.enemy_shot_manager.update = function (player_x, player_y) {
     }
 };
 
+/**
+ * Draw the enemy shot manager on its canvas layer.
+ */
 EAD.enemy_shot_manager.draw = function () {
     "use strict";
 

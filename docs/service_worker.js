@@ -39,6 +39,7 @@ var CACHE_NAME = "EAD-cache-v3.1.0",
         "./js/player_item_manager.js",
         "./js/player_manager.js",
         "./js/player_shot_manager.js",
+        "./js/telemetry.js",
         "./js/util.js"
     ];
 

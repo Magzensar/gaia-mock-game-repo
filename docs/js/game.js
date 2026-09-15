@@ -159,6 +159,7 @@ EAD.loop = function () {
         EAD.boss_manager.setup();
         EAD.player.state = EAD.player.STATE.STANDBY;
         EAD.game.state = EAD.game.STATE.PLAYING;
+        EAD.telemetry.crumb("game_start");
         EAD.ctx.front.fillText(" == STARTING  GAME ==", EAD.WIDTH / 2, 12);
         EAD.ctx.front.fillText(" --- PLEASE  WAIT ---", EAD.WIDTH / 2, 24);
         break;
@@ -318,6 +319,7 @@ EAD.loop = function () {
             if (EAD.util.hasCollision(EAD.player_items[i], EAD.player)) {
                 EAD.player_items[i].state =
                         EAD.player_items[i].STATE.GARBAGE;
+                EAD.telemetry.crumb("item:" + EAD.player_items[i].name);
                 switch (EAD.player_items[i].name) {
                 case EAD.player_items[i].NAME.R_PLASMA:
                     EAD.player.energy_red = EAD.PlayerItem.ENERGY_RED;
@@ -371,6 +373,7 @@ EAD.loop = function () {
         break;
 
     case EAD.game.STATE.SAVING:
+        EAD.telemetry.crumb("game_over");
         EAD.game.storage_error = "";
         try {
             window.localStorage.setItem("high_score", EAD.high_score);

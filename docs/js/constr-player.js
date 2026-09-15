@@ -36,7 +36,7 @@ EAD.Player = function () {
 EAD.Player.INITIAL_ENERGY_GREEN = 200;
 EAD.Player.INITIAL_LIVES = 3;
 EAD.Player.MAX_LIVES = 99;
-EAD.Player.BONUS_EVERY = 100000;
+EAD.Player.BONUS_EVERY = 110000;
 EAD.Player.THRUST = 12;
 
 EAD.Player.prototype.COLLISION_RADIUS = 4;

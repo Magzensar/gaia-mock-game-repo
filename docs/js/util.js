@@ -12,6 +12,11 @@
 
 EAD.util = {};
 
+/**
+ * Branch-free absolute value for 32-bit integers.
+ *
+ * @param {number} n
+ */
 EAD.util.abs = function (n) {
     "use strict";
 

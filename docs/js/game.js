@@ -71,6 +71,9 @@ EAD.setup = function () {
     EAD.player_shot_manager.setup();
 };
 
+/**
+ * Run one frame of the game state machine.
+ */
 EAD.loop = function () {
     "use strict";
 

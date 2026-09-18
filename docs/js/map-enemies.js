@@ -519,4 +519,17 @@ EAD.enemies_map = EAD.enemies_maps[EAD.area_order[0]].concat(
     EAD.enemies_maps[EAD.area_order[7]]
 );
 
+EAD.AREA_LEN = EAD.enemies_maps[0].length;
+
+EAD.area_info = [
+    {name: "OUTER RIM"},
+    {name: "ASTEROID BELT"},
+    {name: "ICE FIELDS"},
+    {name: "NEBULA"},
+    {name: "SCRAPYARD"},
+    {name: "RELAY STATION"},
+    {name: "BLOCKADE"},
+    {name: "MOTHERSHIP"}
+];
+
 EAD.enemies_maps.length = 0;

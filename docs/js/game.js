@@ -23,6 +23,7 @@ EAD.game.STATE = {
 
 EAD.game.state = EAD.game.STATE.LOADING;
 EAD.game.storage_error = "";
+EAD.game.area_index = 0;
 
 EAD.setup = function () {
     "use strict";
@@ -80,7 +81,8 @@ EAD.loop = function () {
         score = EAD.util.padLeft(EAD.score, 9),
         energy_red = EAD.util.padLeft(EAD.player.energy_red, 3),
         energy_green = EAD.util.padLeft(EAD.player.energy_green, 3),
-        lives = EAD.util.padLeft(EAD.player.lives, 2);
+        lives = EAD.util.padLeft(EAD.player.lives, 2),
+        area_index = 0;
 
     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);
 
@@ -155,6 +157,7 @@ EAD.loop = function () {
         EAD.bg02.tile_id = 0;
         EAD.bg02.setup();
         EAD.enemy_id = 0;
+        EAD.game.area_index = -1;
         EAD.enemy_manager.setup();
         EAD.boss_manager.setup();
         EAD.player.state = EAD.player.STATE.STANDBY;
@@ -178,6 +181,11 @@ EAD.loop = function () {
             EAD.enemy_manager.hideEnemyShips();
         }
         EAD.enemy_manager.update(EAD.player.x, EAD.player.y);
+        area_index = Math.floor(EAD.enemy_id / EAD.AREA_LEN) % EAD.area_order.length;
+        if (area_index !== EAD.game.area_index) {
+            EAD.game.area_index = area_index;
+            EAD.telemetry.crumb("area_enter:" + EAD.area_order[area_index]);
+        }
         while (i < EAD.enemy_manager.MAX_ENEMIES) {
             if (
                 EAD.enemies[i].state === EAD.enemies[i].STATE.ACTIVE ||

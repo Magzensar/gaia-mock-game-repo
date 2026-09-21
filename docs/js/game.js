@@ -25,6 +25,9 @@ EAD.game.state = EAD.game.STATE.LOADING;
 EAD.game.storage_error = "";
 EAD.game.area_index = 0;
 
+/**
+ * Reset the game to its initial state.
+ */
 EAD.setup = function () {
     "use strict";
 

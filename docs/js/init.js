@@ -151,6 +151,27 @@ window.onload = function () {
         }
     };
 
+    // Pre-render background tiles so the first scroll does not stutter.
+    EAD.tile_cache = [];
+    i = 0;
+    while (i < 4096) {
+        EAD.tile_cache[i] = document.createElement("canvas");
+        EAD.tile_cache[i].width = EAD.BASE_PX;
+        EAD.tile_cache[i].height = EAD.BASE_PX;
+        EAD.tile_cache[i].getContext("2d").drawImage(
+            EAD.tileset,
+            (i % 64) * EAD.BASE_PX,
+            Math.floor(i / 64) * EAD.BASE_PX,
+            EAD.BASE_PX,
+            EAD.BASE_PX,
+            0,
+            0,
+            EAD.BASE_PX,
+            EAD.BASE_PX
+        );
+        i += 1;
+    }
+
     EAD.init();
     EAD.setup();
     window.setTimeout(step, 500);

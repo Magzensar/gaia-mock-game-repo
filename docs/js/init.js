@@ -39,6 +39,8 @@ EAD.rng = (function (state) {
     };
 }(EAD.seed));
 
+EAD.debug = /[?&]debug=1/.test(window.location.search);
+
 EAD.VERSION = "v3.2.0";
 EAD.FPS = 30;
 EAD.WIDTH = 320;

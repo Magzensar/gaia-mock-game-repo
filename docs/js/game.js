@@ -444,6 +444,13 @@ EAD.loop = function () {
 
     EAD.ctx.front.fillText("HIGH SCORE  " + high_score, 2, 12);
     EAD.ctx.front.fillText("SCORE       " + score, 2, 24);
+    if (EAD.debug) {
+        EAD.ctx.front.fillText(
+            "SEED " + EAD.seed + "  AREA " + EAD.game.area_index,
+            2,
+            36
+        );
+    }
 
     EAD.bg01.scroll();
     EAD.bg02.scroll();

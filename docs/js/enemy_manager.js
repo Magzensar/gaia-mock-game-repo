@@ -59,6 +59,12 @@ EAD.enemy_manager.hideEnemyShips = function () {
     }
 };
 
+/**
+ * Advance the enemy manager by one frame.
+ *
+ * @param {number} player_x
+ * @param {number} player_y
+ */
 EAD.enemy_manager.update = function (player_x, player_y) {
     "use strict";
 

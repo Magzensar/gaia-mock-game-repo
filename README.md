@@ -9,6 +9,23 @@ MIT License. See [NOTICE](./NOTICE) and [LICENSE](./LICENSE).
 
 Run locally: `python3 -m http.server -d docs 8000`, then open <http://localhost:8000/>.
 
+### Query parameters
+
+| Parameter | Effect |
+| --- | --- |
+| `seed=<n>` | Pins the random seed (area order, enemy behaviour, item drops) so a run replays exactly |
+| `autoplay=1` | Plays the game with scripted input (see `docs/js/bench.js`) |
+| `frames=<n>` | With `autoplay=1`: stop after n frames and print `EAD_BENCH {...}` to the console |
+| `start_area=<id>` | With `autoplay=1`: jump to area id 0-7 as soon as play starts |
+| `invincible=1` | With `autoplay=1`: the player never runs out of lives |
+| `drop_item=<id>` | With `autoplay=1`: drop item 2 (plasma), 3 (shield) or 4 (flash) above the player every 3 s |
+| `debug=1` | Shows the seed and current area on the HUD |
+
+Headless replay without a browser (Node 18+):
+`node tools/replay.js --query "?seed=42&autoplay=1&invincible=1&start_area=7" --frames 6000 --device mali-g52`
+
+Lint: `./tools/lint.sh`
+
 ---
 
 EVADE AND DESTROY

@@ -43,6 +43,12 @@ EAD.enemy_shot_manager.fire = function (enemy_x, enemy_y, on_ground) {
     }
 };
 
+/**
+ * Advance the enemy shot manager by one frame.
+ *
+ * @param {number} player_x
+ * @param {number} player_y
+ */
 EAD.enemy_shot_manager.update = function (player_x, player_y) {
     "use strict";
 

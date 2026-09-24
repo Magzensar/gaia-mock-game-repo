@@ -34,7 +34,7 @@ EAD.Enemy = function () {
     this.virtual_top = 0;
 };
 
-EAD.Enemy.RANDOM_RANGE = 288;
+EAD.Enemy.RANDOM_RANGE = 272;
 EAD.Enemy.SCROLL_GND_VY = 0.5;
 
 EAD.Enemy.prototype.COLLISION_RADIUS = 10;

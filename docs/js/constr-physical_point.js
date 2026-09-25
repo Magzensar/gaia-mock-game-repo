@@ -23,7 +23,7 @@ EAD.PhysicalPoint = function (x, y) {
     this.prev_time = Date.now();
 };
 
-EAD.PhysicalPoint.FRICTION = 0.78;
+EAD.PhysicalPoint.FRICTION = 0.82;
 
 EAD.PhysicalPoint.prototype.setAcceleration = function (ax, ay) {
     "use strict";

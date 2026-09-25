@@ -80,6 +80,9 @@ EAD.enemy_manager.update = function (player_x, player_y) {
     }
 };
 
+/**
+ * Draw the enemy manager on its canvas layer.
+ */
 EAD.enemy_manager.draw = function () {
     "use strict";
 

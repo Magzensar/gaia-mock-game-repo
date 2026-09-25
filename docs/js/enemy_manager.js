@@ -17,6 +17,27 @@ EAD.enemy_manager.MAX_ENEMIES = EAD.MAP_COLS * EAD.MAP_ROWS;
 EAD.enemies = [];
 EAD.enemy_id = 0;
 
+EAD.enemy_manager.KINDS = {
+    10: {group: "empty"},
+    21: {group: "radar"},
+    25: {group: "turret"},
+    31: {group: "aa"},
+    32: {group: "aa"},
+    34: {group: "aa"},
+    35: {group: "aa"},
+    37: {group: "aa"},
+    38: {group: "aa"},
+    40: {group: "ship"},
+    50: {group: "recon"},
+    60: {group: "fighter"},
+    71: {group: "missile"},
+    72: {group: "missile"},
+    80: {group: "meteor"},
+    90: {group: "random"}
+};
+EAD.enemy_manager.spawn_counts = {};
+
+
 EAD.enemy_manager.setup = function () {
     "use strict";
 
@@ -88,6 +109,7 @@ EAD.enemy_manager.draw = function () {
 
     var i = 0,
         last_enemy_id = EAD.enemies_map.length - 1,
+        kind = "",
         virtual_gap_y = 0;
 
     while (i < EAD.enemy_manager.MAX_ENEMIES) {
@@ -98,6 +120,9 @@ EAD.enemy_manager.draw = function () {
                     (EAD.HEIGHT - EAD.BASE_PX);
 
             EAD.enemies[i].name = EAD.enemies_map[EAD.enemy_id];
+            kind = EAD.enemy_manager.KINDS[EAD.enemies[i].name].group;
+            EAD.enemy_manager.spawn_counts[kind] =
+                    (EAD.enemy_manager.spawn_counts[kind] || 0) + 1;
             EAD.enemies[i].state = EAD.enemies[i].STATE.INIT;
             EAD.enemies[i].virtual_left = i % EAD.MAP_COLS * EAD.BASE_PX;
             EAD.enemies[i].virtual_top = -EAD.BASE_PX + virtual_gap_y;

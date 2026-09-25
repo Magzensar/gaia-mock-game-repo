@@ -65,6 +65,9 @@ EAD.PlayerItem.prototype.drop = function (enemy_x, enemy_y) {
     return true;
 };
 
+/**
+ * Advance this player item by one frame.
+ */
 EAD.PlayerItem.prototype.update = function () {
     "use strict";
 

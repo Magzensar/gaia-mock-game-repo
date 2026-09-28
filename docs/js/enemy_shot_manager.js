@@ -16,6 +16,9 @@ EAD.enemy_shot_manager.MAX_ENEMY_SHOTS = 16;
 
 EAD.enemy_shots = [];
 
+/**
+ * Reset the enemy shot manager to its initial state.
+ */
 EAD.enemy_shot_manager.setup = function () {
     "use strict";
 

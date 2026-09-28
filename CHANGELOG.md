@@ -1,5 +1,29 @@
 # Changelog
 
+## v3.3.0
+
+- feat(level): track the current area
+- docs(game): add JSDoc for loop
+- tune(balance): MAX_DIFFICULTY 336000 -> 328000
+- feat(tools): headless replay runner and repro options
+- art(area-2): retile background row 60
+- docs(game): add JSDoc for setup
+- level(area-6): move missile in row 46
+- feat(debug): ?debug=1 shows seed and area on the HUD
+- perf(art): pre-render background tiles at startup
+- tune(balance): MAX_DIFFICULTY 328000 -> 336000
+- tune(boss): TIME_LIMIT 1600 -> 1800
+- docs(enemy_manager): add JSDoc for enemy_manager.update
+- tune(enemy): RANDOM_RANGE 256 -> 288
+- docs(readme): document seed, autoplay and debug parameters
+- docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.update
+- perf(art): pre-render only the tiles the maps use
+- tune(enemy): RANDOM_RANGE 288 -> 272
+- docs(constr-player_item): add JSDoc for PlayerItem.prototype.update
+- tune(physics): FRICTION 0.78 -> 0.82
+- docs(enemy_manager): add JSDoc for enemy_manager.draw
+- feat(telemetry): count enemy spawns by kind for balance reports
+
 ## v3.2.0
 
 - tune(physics): FRICTION 0.8 -> 0.78

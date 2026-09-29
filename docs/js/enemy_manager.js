@@ -55,6 +55,8 @@ EAD.enemy_manager.setup = function () {
         EAD.enemies[i].x = EAD.enemies[i].virtual_left + EAD.BASE_PX / 2;
         EAD.enemies[i].y = EAD.enemies[i].virtual_top + EAD.BASE_PX / 2;
 
+        // enemy_id walks the concatenated area maps and wraps to 0
+        // after the final area, so the run loops instead of ending.
         EAD.enemy_id = EAD.enemy_id < last_enemy_id
             ? EAD.enemy_id + 1
             : 0;

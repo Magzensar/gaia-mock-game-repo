@@ -55,6 +55,9 @@ EAD.player_item_manager.update = function () {
     }
 };
 
+/**
+ * Draw the player item manager on its canvas layer.
+ */
 EAD.player_item_manager.draw = function () {
     "use strict";
 

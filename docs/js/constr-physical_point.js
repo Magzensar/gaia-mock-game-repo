@@ -32,6 +32,9 @@ EAD.PhysicalPoint.prototype.setAcceleration = function (ax, ay) {
     this.ay = ay;
 };
 
+/**
+ * Advance this physical point by one frame.
+ */
 EAD.PhysicalPoint.prototype.update = function () {
     "use strict";
 

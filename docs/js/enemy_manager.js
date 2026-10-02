@@ -114,10 +114,7 @@ EAD.enemy_manager.draw = function () {
         kind = "",
         virtual_gap_y = 0;
 
-    // Soft drop shadow so ships read better against bright tiles.
-    EAD.ctx.e_ship.shadowColor = "rgba(0, 0, 0, 0.65)";
-    EAD.ctx.e_ship.shadowBlur = 14;
-    EAD.ctx.e_ship.shadowOffsetY = 6;
+    EAD.ctx.e_ship.shadowBlur = 0;
 
     while (i < EAD.enemy_manager.MAX_ENEMIES) {
         EAD.enemies[i].virtual_top += EAD.Enemy.SCROLL_GND_VY;

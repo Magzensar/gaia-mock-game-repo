@@ -35,6 +35,7 @@ EAD.enemy_manager.KINDS = {
     80: {group: "meteor"},
     90: {group: "random"}
 };
+// Spawn totals per enemy group, read by the balance report export.
 EAD.enemy_manager.spawn_counts = {};
 
 

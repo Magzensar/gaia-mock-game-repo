@@ -45,8 +45,8 @@ input.btn {
 
 .btn {
     background-color: #8c8c8c;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
     border: 0;
     color: #fff;
     cursor: pointer;

@@ -1,5 +1,26 @@
 # Changelog
 
+## v3.4.0
+
+- level(area-0): move fighter in row 60
+- tune(player): INITIAL_ENERGY_GREEN 200 -> 180
+- tune(boss): INITIAL_LIVES 128 -> 136
+- art(area-3): retile background row 53
+- docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.setup
+- feat(fx): soft drop shadows under enemy ships
+- docs(enemy_manager): explain enemy_id wrap-around
+- level(area-1): shift meteor placement (row 16)
+- tune(balance): MAX_DIFFICULTY 336000 -> 344000
+- docs(constr-physical_point): add JSDoc for PhysicalPoint.prototype.update
+- art(area-1): fix tile seam in row 45
+- docs(player_item_manager): add JSDoc for player_item_manager.draw
+- perf(fx): remove live shadowBlur from the enemy layer
+- tune(items): ENERGY_RED 520 -> 600
+- style(ui): darker neutral button for contrast
+- tune(enemy): RANDOM_RANGE 272 -> 288
+- level(area-3): add a missile wave in row 9
+- docs(enemy_manager): explain spawn_counts
+
 ## v3.3.0
 
 - feat(level): track the current area

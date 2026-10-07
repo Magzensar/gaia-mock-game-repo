@@ -125,7 +125,8 @@ EAD.enemy_manager.draw = function () {
                     (EAD.HEIGHT - EAD.BASE_PX);
 
             EAD.enemies[i].name = EAD.enemies_map[EAD.enemy_id];
-            kind = EAD.enemy_manager.KINDS[EAD.enemies[i].name].group;
+            kind = (EAD.enemy_manager.KINDS[EAD.enemies[i].name] ||
+                    {group: "other"}).group;
             EAD.enemy_manager.spawn_counts[kind] =
                     (EAD.enemy_manager.spawn_counts[kind] || 0) + 1;
             EAD.enemies[i].state = EAD.enemies[i].STATE.INIT;

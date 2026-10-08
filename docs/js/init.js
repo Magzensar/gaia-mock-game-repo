@@ -177,6 +177,9 @@ window.onload = function () {
     window.setTimeout(step, 500);
 };
 
+/**
+ * Wire up touch and mouse input on the front canvas.
+ */
 EAD.init = function () {
     "use strict";
 

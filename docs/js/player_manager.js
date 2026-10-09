@@ -21,6 +21,9 @@ EAD.player_manager.setup = function () {
     EAD.player.state = EAD.player.STATE.INIT;
 };
 
+/**
+ * Advance the player manager by one frame.
+ */
 EAD.player_manager.update = function () {
     "use strict";
 

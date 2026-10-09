@@ -586,6 +586,9 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {
     }
 };
 
+/**
+ * Draw this enemy on its canvas layer.
+ */
 EAD.Enemy.prototype.draw = function () {
     "use strict";
 

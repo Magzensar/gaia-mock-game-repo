@@ -209,6 +209,9 @@ EAD.Boss.prototype.update = function (player_x, player_y) {
     }
 };
 
+/**
+ * Draw this boss on its canvas layer.
+ */
 EAD.Boss.prototype.draw = function () {
     "use strict";
 

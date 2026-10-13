@@ -33,7 +33,14 @@ EAD.player_shot_manager.setup = function () {
 EAD.player_shot_manager.fire = function (energy_red) {
     "use strict";
 
-    var i = 0;
+    var i = 0,
+        side_shot = null;
+
+    if (energy_red > 0) {
+        side_shot = new EAD.PlayerShot();
+        side_shot.fire(energy_red);
+        EAD.player_shots.push(side_shot);
+    }
 
     while (i < EAD.player_shot_manager.MAX_PLAYER_SHOTS) {
         if (EAD.player_shots[i].fire(energy_red)) {
@@ -57,7 +64,7 @@ EAD.player_shot_manager.update = function (player_x, player_y) {
 
     var i = 0;
 
-    while (i < EAD.player_shot_manager.MAX_PLAYER_SHOTS) {
+    while (i < EAD.player_shots.length) {
         EAD.player_shots[i].update(player_x, player_y);
 
         i += 1;
@@ -69,7 +76,7 @@ EAD.player_shot_manager.draw = function () {
 
     var i = 0;
 
-    while (i < EAD.player_shot_manager.MAX_PLAYER_SHOTS) {
+    while (i < EAD.player_shots.length) {
         if (EAD.player_shots[i].state !== EAD.player_shots[i].STATE.GARBAGE) {
             EAD.player_shots[i].draw();
         }

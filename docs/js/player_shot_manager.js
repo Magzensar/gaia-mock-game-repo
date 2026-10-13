@@ -12,6 +12,7 @@
 
 EAD.player_shot_manager = {};
 
+// Four shots on screen keeps the pool allocation-free during play.
 EAD.player_shot_manager.MAX_PLAYER_SHOTS = 4;
 
 EAD.player_shots = [];

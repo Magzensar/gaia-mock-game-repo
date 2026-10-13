@@ -43,6 +43,9 @@ EAD.player_item_manager.drop = function (enemy_x, enemy_y) {
     }
 };
 
+/**
+ * Advance the player item manager by one frame.
+ */
 EAD.player_item_manager.update = function () {
     "use strict";
 

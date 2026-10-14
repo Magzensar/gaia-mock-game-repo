@@ -1,5 +1,27 @@
 # Changelog
 
+## v3.5.0
+
+- style(ui): rounder dialog buttons
+- tune(player): INITIAL_ENERGY_GREEN 180 -> 200
+- tune(boss): MAX_HIT 155 -> 165
+- style(ui): more spacing between dialog buttons
+- fix(telemetry): count unknown enemy kinds instead of throwing
+- tune(items): ENERGY_BLUE 256 -> 288
+- tune(items): ENERGY_GREEN 375 -> 425
+- docs(init): add JSDoc for init
+- tune(player): INITIAL_ENERGY_GREEN 200 -> 220
+- docs(player_manager): add JSDoc for player_manager.update
+- docs(constr-enemy): add JSDoc for Enemy.prototype.draw
+- docs(constr-boss): add JSDoc for Boss.prototype.draw
+- style(ui): use the system font stack
+- tune(enemy): RANDOM_RANGE 288 -> 304
+- tune(items): ENERGY_RED 600 -> 680
+- docs(player_shot_manager): note why the shot pool is fixed
+- feat(weapon): side shots while the plasma cannon is active
+- tune(items): ENERGY_RED 680 -> 720
+- docs(player_item_manager): add JSDoc for player_item_manager.update
+
 ## v3.4.0
 
 - level(area-0): move fighter in row 60

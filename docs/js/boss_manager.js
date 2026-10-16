@@ -21,6 +21,12 @@ EAD.boss_manager.setup = function () {
     EAD.boss.state = EAD.boss.STATE.GARBAGE;
 };
 
+/**
+ * Advance the boss manager by one frame.
+ *
+ * @param {number} player_x
+ * @param {number} player_y
+ */
 EAD.boss_manager.update = function (player_x, player_y) {
     "use strict";
 

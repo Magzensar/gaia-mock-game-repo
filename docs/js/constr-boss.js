@@ -10,6 +10,9 @@
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
+/**
+ * Create a new boss.
+ */
 EAD.Boss = function () {
     "use strict";
 

@@ -32,6 +32,13 @@ EAD.enemy_shot_manager.setup = function () {
     }
 };
 
+/**
+ * Try to fire; returns true when a shot was spawned.
+ *
+ * @param {number} enemy_x
+ * @param {number} enemy_y
+ * @param {number} on_ground
+ */
 EAD.enemy_shot_manager.fire = function (enemy_x, enemy_y, on_ground) {
     "use strict";
 

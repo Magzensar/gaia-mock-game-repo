@@ -10,6 +10,9 @@
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
+/**
+ * Create a new enemy shot.
+ */
 EAD.EnemyShot = function () {
     "use strict";
 

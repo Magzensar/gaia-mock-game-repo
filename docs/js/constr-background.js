@@ -10,6 +10,13 @@
 /*jslint bitwise, browser, multivar, this*/
 /*global EAD, Image, Promise, caches, fetch, self, window*/
 
+/**
+ * Create a new background.
+ *
+ * @param {Object} layer
+ * @param {number} scroll_vy
+ * @param {number} tile_map
+ */
 EAD.Background = function (layer, scroll_vy, tile_map) {
     "use strict";
 

@@ -27,6 +27,9 @@ EAD.Tile = function (layer) {
 
 EAD.Tile.SRC_COLS = 10;
 
+/**
+ * Draw this tile on its canvas layer.
+ */
 EAD.Tile.prototype.draw = function () {
     "use strict";
 

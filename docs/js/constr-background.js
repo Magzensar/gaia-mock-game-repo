@@ -51,6 +51,9 @@ EAD.Background.prototype.setup = function () {
     }
 };
 
+/**
+ * Scroll the background layer by one step.
+ */
 EAD.Background.prototype.scroll = function () {
     "use strict";
 

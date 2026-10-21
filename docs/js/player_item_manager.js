@@ -29,6 +29,12 @@ EAD.player_item_manager.setup = function () {
     }
 };
 
+/**
+ * Drop an item at the given position if the slot is free.
+ *
+ * @param {number} enemy_x
+ * @param {number} enemy_y
+ */
 EAD.player_item_manager.drop = function (enemy_x, enemy_y) {
     "use strict";
 

@@ -136,6 +136,9 @@ EAD.PlayerShot.prototype.update = function (player_x, player_y) {
     }
 };
 
+/**
+ * Draw this player shot on its canvas layer.
+ */
 EAD.PlayerShot.prototype.draw = function () {
     "use strict";
 

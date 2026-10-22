@@ -126,6 +126,7 @@ EAD.Player.prototype.update = function () {
         break;
 
     case this.STATE.DAMAGED:
+        this.flash();
         this.sprite_x = 1;
         this.sprite_y = 3;
         this.state = this.STATE.EXPLODING;
@@ -164,6 +165,20 @@ EAD.Player.prototype.update = function () {
         this.y = EAD.HEIGHT;
         this.state = this.STATE.GARBAGE;
     }
+};
+
+EAD.Player.prototype.flash = function () {
+    "use strict";
+
+    var gl = EAD.Player.flash_gl;
+
+    if (!gl) {
+        EAD.Player.flash_canvas = document.createElement("canvas");
+        gl = EAD.Player.flash_canvas.getContext("webgl");
+        EAD.Player.flash_gl = gl;
+    }
+    gl.clearColor(1, 0, 0, 0.35);
+    gl.clear(gl.COLOR_BUFFER_BIT);
 };
 
 EAD.Player.prototype.draw = function () {

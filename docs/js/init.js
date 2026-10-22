@@ -41,7 +41,7 @@ EAD.rng = (function (state) {
 
 EAD.debug = /[?&]debug=1/.test(window.location.search);
 
-EAD.VERSION = "v3.5.0";
+EAD.VERSION = "v3.6.0";
 EAD.FPS = 30;
 EAD.WIDTH = 320;
 EAD.HEIGHT = 480;

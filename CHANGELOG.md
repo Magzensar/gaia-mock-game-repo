@@ -1,5 +1,34 @@
 # Changelog
 
+## v3.6.0
+
+- tune(items): ENERGY_RED 720 -> 680
+- level(area-6): shift boss marker placement (row 27)
+- level(area-0): shift fighter placement (row 57)
+- level(area-4): shift fighter placement (row 56)
+- tune(boss): INITIAL_LIVES 136 -> 120
+- tune(enemy): RANDOM_RANGE 304 -> 272
+- level(area-0): rebalance row 28
+- level(area-1): move meteor in row 37
+- docs(boss_manager): add JSDoc for boss_manager.update
+- docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.fire
+- docs(constr-boss): add JSDoc for Boss
+- level(area-6): shift boss marker placement (row 36)
+- level(area-6): shift fighter placement (row 26)
+- tune(player): BONUS_EVERY 130000 -> 120000
+- level(area-3): shift meteor placement (row 16)
+- docs(constr-enemy_shot): add JSDoc for EnemyShot
+- fix(weapon): cap side shots so spent ones are not kept forever
+- docs(constr-tile): add JSDoc for Tile.prototype.draw
+- level(area-7): rebalance row 58
+- tune(boss): TIME_LIMIT 1800 -> 1900
+- docs(constr-background): add JSDoc for Background
+- level(area-2): rebalance row 48
+- docs(player_manager): note that the player is created lazily
+- tune(balance): MAX_DIFFICULTY 344000 -> 352000
+- docs(player_item_manager): add JSDoc for player_item_manager.drop
+- docs(constr-background): add JSDoc for Background.prototype.scroll
+
 ## v3.5.0
 
 - style(ui): rounder dialog buttons

@@ -25,6 +25,12 @@ EAD.PhysicalPoint = function (x, y) {
 
 EAD.PhysicalPoint.FRICTION = 0.82;
 
+/**
+ * Set acceleration.
+ *
+ * @param {number} ax
+ * @param {number} ay
+ */
 EAD.PhysicalPoint.prototype.setAcceleration = function (ax, ay) {
     "use strict";
 

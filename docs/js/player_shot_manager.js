@@ -30,6 +30,11 @@ EAD.player_shot_manager.setup = function () {
     }
 };
 
+/**
+ * Try to fire; returns true when a shot was spawned.
+ *
+ * @param {number} energy_red
+ */
 EAD.player_shot_manager.fire = function (energy_red) {
     "use strict";
 

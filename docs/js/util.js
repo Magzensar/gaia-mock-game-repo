@@ -23,6 +23,13 @@ EAD.util.abs = function (n) {
     return (n ^ (n >> 31)) - (n >> 31);
 };
 
+/**
+ * Return the velocity that moves from one point toward another at the given speed.
+ *
+ * @param {Object} from
+ * @param {Object} to
+ * @param {number} speed
+ */
 EAD.util.calcVelocity = function (from, to, speed) {
     "use strict";
 

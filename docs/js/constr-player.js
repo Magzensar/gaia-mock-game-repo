@@ -177,6 +177,9 @@ EAD.Player.prototype.flash = function () {
         gl = EAD.Player.flash_canvas.getContext("webgl");
         EAD.Player.flash_gl = gl;
     }
+    if (!gl) {
+        return;
+    }
     gl.clearColor(1, 0, 0, 0.35);
     gl.clear(gl.COLOR_BUFFER_BIT);
 };

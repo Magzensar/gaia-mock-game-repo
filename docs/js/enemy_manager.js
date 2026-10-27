@@ -39,6 +39,9 @@ EAD.enemy_manager.KINDS = {
 EAD.enemy_manager.spawn_counts = {};
 
 
+/**
+ * Reset the enemy manager to its initial state.
+ */
 EAD.enemy_manager.setup = function () {
     "use strict";
 

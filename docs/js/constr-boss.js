@@ -52,6 +52,12 @@ EAD.Boss.prototype.STATE = {
     GARBAGE: 10
 };
 
+/**
+ * Advance this boss by one frame.
+ *
+ * @param {number} player_x
+ * @param {number} player_y
+ */
 EAD.Boss.prototype.update = function (player_x, player_y) {
     "use strict";
 

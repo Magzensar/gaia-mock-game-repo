@@ -399,7 +399,7 @@ EAD.loop = function () {
         EAD.ctx.front.fillText(
             "LIVES " + lives,
             2,
-            EAD.HEIGHT - EAD.BASE_PX - 3
+            EAD.HEIGHT - EAD.BASE_PX - 5
         );
         break;
 

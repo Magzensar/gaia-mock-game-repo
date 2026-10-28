@@ -24,6 +24,7 @@ EAD.game.STATE = {
 EAD.game.state = EAD.game.STATE.LOADING;
 EAD.game.storage_error = "";
 EAD.game.area_index = 0;
+EAD.game.banner = "";
 
 /**
  * Reset the game to its initial state.
@@ -88,7 +89,9 @@ EAD.loop = function () {
         energy_red = EAD.util.padLeft(EAD.player.energy_red, 3),
         energy_green = EAD.util.padLeft(EAD.player.energy_green, 3),
         lives = EAD.util.padLeft(EAD.player.lives, 2),
-        area_index = 0;
+        area_index = 0,
+        area_progress = 0,
+        next_area = null;
 
     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);
 
@@ -191,6 +194,13 @@ EAD.loop = function () {
         if (area_index !== EAD.game.area_index) {
             EAD.game.area_index = area_index;
             EAD.telemetry.crumb("area_enter:" + EAD.area_order[area_index]);
+        }
+        area_progress = (EAD.enemy_id % EAD.AREA_LEN) / EAD.AREA_LEN;
+        next_area = EAD.area_info[EAD.area_order[EAD.game.area_index + 1]];
+        if (area_progress > 0.9) {
+            EAD.game.banner = "NEXT AREA: " + next_area.name;
+        } else {
+            EAD.game.banner = "";
         }
         while (i < EAD.enemy_manager.MAX_ENEMIES) {
             if (
@@ -365,6 +375,13 @@ EAD.loop = function () {
                 ? EAD.player.lives + 1
                 : EAD.Player.MAX_LIVES;
             EAD.player.bonus_count += 1;
+        }
+        if (EAD.game.banner) {
+            EAD.ctx.front.fillText(
+                EAD.game.banner,
+                EAD.WIDTH / 2 - 64,
+                EAD.HEIGHT / 2
+            );
         }
         if (EAD.player.state === EAD.player.STATE.GARBAGE) {
             EAD.game.state = EAD.game.STATE.SAVING;

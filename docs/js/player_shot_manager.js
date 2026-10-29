@@ -17,6 +17,9 @@ EAD.player_shot_manager.MAX_PLAYER_SHOTS = 4;
 
 EAD.player_shots = [];
 
+/**
+ * Reset the player shot manager to its initial state.
+ */
 EAD.player_shot_manager.setup = function () {
     "use strict";
 

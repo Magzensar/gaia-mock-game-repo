@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {
     this.state = this.STATE.GARBAGE;
 };
 
-EAD.PlayerItem.ENERGY_RED = 680;
+EAD.PlayerItem.ENERGY_RED = 600;
 EAD.PlayerItem.ENERGY_GREEN = 450;
 EAD.PlayerItem.ENERGY_BLUE = 288;
 

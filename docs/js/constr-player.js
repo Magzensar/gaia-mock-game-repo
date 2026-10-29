@@ -184,6 +184,9 @@ EAD.Player.prototype.flash = function () {
     gl.clear(gl.COLOR_BUFFER_BIT);
 };
 
+/**
+ * Draw this player on its canvas layer.
+ */
 EAD.Player.prototype.draw = function () {
     "use strict";
 

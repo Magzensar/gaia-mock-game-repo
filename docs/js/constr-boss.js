@@ -36,7 +36,7 @@ EAD.Boss = function () {
 EAD.Boss.BASE_PX = EAD.BASE_PX * 2;
 EAD.Boss.INITIAL_LIVES = 120;
 EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);
-EAD.Boss.TIME_LIMIT = 1900;
+EAD.Boss.TIME_LIMIT = 1800;
 EAD.Boss.MAX_FRAME_COUNT = 2;
 
 EAD.Boss.prototype.COLLISION_RADIUS = 22;

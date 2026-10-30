@@ -1,5 +1,29 @@
 # Changelog
 
+## v3.7.0
+
+- feat(fx): red damage flash when the player is hit
+- tune(items): ENERGY_RED 680 -> 720
+- docs(constr-player_shot): add JSDoc for PlayerShot.prototype.draw
+- tune(player): THRUST 12 -> 13
+- docs(player_shot_manager): add JSDoc for player_shot_manager.fire
+- docs(constr-physical_point): add JSDoc for PhysicalPoint.prototype.setAcceleration
+- tune(balance): MAX_DIFFICULTY 352000 -> 344000
+- tune(items): ENERGY_RED 720 -> 680
+- level(area-3): move meteor in row 37
+- fix(fx): skip the damage flash when WebGL is unavailable
+- docs(util): add JSDoc for util.calcVelocity
+- tune(items): ENERGY_GREEN 425 -> 450
+- docs(constr-boss): add JSDoc for Boss.prototype.update
+- docs(enemy_manager): add JSDoc for enemy_manager.setup
+- level(area-7): move fighter in row 29
+- feat(hud): warn the player before the next area
+- fix(hud): keep LIVES counter clear of the fire button
+- level(area-1): shift ship spawn placement (row 29)
+- docs(player_shot_manager): add JSDoc for player_shot_manager.setup
+- docs(constr-player): add JSDoc for Player.prototype.draw
+- tune(items): ENERGY_RED 680 -> 600
+
 ## v3.6.0
 
 - tune(items): ENERGY_RED 720 -> 680

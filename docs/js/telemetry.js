@@ -25,6 +25,11 @@ EAD.telemetry.crumb = function (action) {
     }
 };
 
+/**
+ * Send a crash payload to the native shell, or log it on web builds.
+ *
+ * @param {number} payload
+ */
 EAD.telemetry.report = function (payload) {
     "use strict";
 

@@ -197,7 +197,7 @@ EAD.loop = function () {
         }
         area_progress = (EAD.enemy_id % EAD.AREA_LEN) / EAD.AREA_LEN;
         next_area = EAD.area_info[EAD.area_order[EAD.game.area_index + 1]];
-        if (area_progress > 0.9) {
+        if (area_progress > 0.9 && next_area) {
             EAD.game.banner = "NEXT AREA: " + next_area.name;
         } else {
             EAD.game.banner = "";

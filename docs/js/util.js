@@ -71,6 +71,12 @@ EAD.util.generateTweetUrl = function (query_param) {
         : WEB_INTENT_URL;
 };
 
+/**
+ * Return true when two collision circles overlap.
+ *
+ * @param {Object} circle1
+ * @param {Object} circle2
+ */
 EAD.util.hasCollision = function (circle1, circle2) {
     "use strict";
 

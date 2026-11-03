@@ -69,6 +69,9 @@ EAD.enemy_manager.setup = function () {
     }
 };
 
+/**
+ * Remove ships still on standby so they do not pop in mid-transition.
+ */
 EAD.enemy_manager.hideEnemyShips = function () {
     "use strict";
 

@@ -12,7 +12,7 @@
 
 EAD.player_shot_manager = {};
 
-// Four shots on screen keeps the pool allocation-free during play.
+// Four pooled shots on screen; plasma side shots come on top of these.
 EAD.player_shot_manager.MAX_PLAYER_SHOTS = 4;
 
 EAD.player_shots = [];

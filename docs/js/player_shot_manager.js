@@ -44,10 +44,7 @@ EAD.player_shot_manager.fire = function (energy_red) {
     var i = 0,
         side_shot = null;
 
-    if (
-        energy_red > 0 &&
-        EAD.player_shots.length < EAD.player_shot_manager.MAX_PLAYER_SHOTS * 2
-    ) {
+    if (energy_red > 0) {
         side_shot = new EAD.PlayerShot();
         side_shot.fire(energy_red);
         EAD.player_shots.push(side_shot);

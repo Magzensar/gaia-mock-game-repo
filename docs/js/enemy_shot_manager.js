@@ -12,7 +12,7 @@
 
 EAD.enemy_shot_manager = {};
 
-EAD.enemy_shot_manager.MAX_ENEMY_SHOTS = 16;
+EAD.enemy_shot_manager.MAX_ENEMY_SHOTS = 20;
 
 EAD.enemy_shots = [];
 

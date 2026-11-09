@@ -141,6 +141,9 @@ EAD.PlayerItem.prototype.update = function () {
     }
 };
 
+/**
+ * Draw this player item on its canvas layer.
+ */
 EAD.PlayerItem.prototype.draw = function () {
     "use strict";
 

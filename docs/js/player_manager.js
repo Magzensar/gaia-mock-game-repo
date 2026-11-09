@@ -15,6 +15,9 @@ EAD.player_manager = {};
 // Single player instance, created lazily in setup().
 EAD.player = null;
 
+/**
+ * Reset the player manager to its initial state.
+ */
 EAD.player_manager.setup = function () {
     "use strict";
 

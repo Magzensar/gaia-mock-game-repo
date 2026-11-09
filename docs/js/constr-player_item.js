@@ -25,7 +25,7 @@ EAD.PlayerItem = function () {
 
 EAD.PlayerItem.ENERGY_RED = 560;
 EAD.PlayerItem.ENERGY_GREEN = 400;
-EAD.PlayerItem.ENERGY_BLUE = 288;
+EAD.PlayerItem.ENERGY_BLUE = 304;
 
 EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;
 EAD.PlayerItem.prototype.NAME = {

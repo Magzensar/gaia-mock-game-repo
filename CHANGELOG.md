@@ -1,5 +1,33 @@
 # Changelog
 
+## v3.8.0
+
+- tune(boss): TIME_LIMIT 1900 -> 1800
+- art(area-5): fix tile seam in row 20
+- docs(telemetry): add JSDoc for telemetry.report
+- tune(items): ENERGY_GREEN 450 -> 425
+- fix(hud): guard next-area banner on the final area
+- art(area-2): retile background row 55
+- tune(boss): TIME_LIMIT 1800 -> 1700
+- docs(enemy_manager): add JSDoc for enemy_manager.hideEnemyShips
+- docs(util): add JSDoc for util.hasCollision
+- art(area-5): fix tile seam in row 33
+- level(area-4): rebalance row 14
+- tune(items): ENERGY_RED 600 -> 560
+- tune(boss): INITIAL_LIVES 120 -> 136
+- docs(player_shot_manager): clarify the shot pool comment
+- refactor(weapon): tidy side-shot spawning in fire()
+- art(area-4): fix tile seam in row 36
+- level(area-4): move missile in row 22
+- level(area-0): move boss marker in row 17
+- tune(enemy): MAX_ENEMY_SHOTS 16 -> 20
+- tune(balance): MAX_DIFFICULTY 344000 -> 352000
+- tune(items): ENERGY_GREEN 425 -> 400
+- fix(weapon): restore the side-shot cap lost in the fire() tidy-up
+- docs(constr-player_item): add JSDoc for PlayerItem.prototype.draw
+- docs(player_manager): add JSDoc for player_manager.setup
+- tune(items): ENERGY_BLUE 288 -> 304
+
 ## v3.7.0
 
 - feat(fx): red damage flash when the player is hit

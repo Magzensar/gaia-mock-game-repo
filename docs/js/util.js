@@ -47,6 +47,11 @@ EAD.util.calcVelocity = function (from, to, speed) {
     return {vx: Math.floor(dx * ratio), vy: Math.floor(dy * ratio)};
 };
 
+/**
+ * Build a Twitter web-intent URL for sharing a score.
+ *
+ * @param {Object} query_param
+ */
 EAD.util.generateTweetUrl = function (query_param) {
     "use strict";
 

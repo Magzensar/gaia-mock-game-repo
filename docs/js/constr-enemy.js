@@ -72,6 +72,12 @@ EAD.Enemy.prototype.STATE = {
     GARBAGE: 10
 };
 
+/**
+ * Advance this enemy by one frame.
+ *
+ * @param {number} player_x
+ * @param {number} player_y
+ */
 EAD.Enemy.prototype.update = function (player_x, player_y) {
     "use strict";
 

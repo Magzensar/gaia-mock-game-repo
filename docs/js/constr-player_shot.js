@@ -142,6 +142,28 @@ EAD.PlayerShot.prototype.update = function (player_x, player_y) {
 EAD.PlayerShot.prototype.draw = function () {
     "use strict";
 
+    var t = 1;
+
+    // Motion trail: fading, blurred copies behind the shot.
+    EAD.ctx.p_shot.filter = "blur(2px)";
+    while (t <= 6) {
+        EAD.ctx.p_shot.globalAlpha = 0.5 / t;
+        EAD.ctx.p_shot.drawImage(
+            EAD.sprites,
+            EAD.PlayerShot.BASE_PX * this.sprite_x,
+            EAD.PlayerShot.BASE_PX * this.sprite_y,
+            EAD.PlayerShot.BASE_PX,
+            EAD.PlayerShot.BASE_PX,
+            Math.floor(this.x - EAD.PlayerShot.BASE_PX / 2),
+            Math.floor(this.y - EAD.PlayerShot.BASE_PX / 2) + t * 4,
+            EAD.PlayerShot.BASE_PX,
+            EAD.PlayerShot.BASE_PX
+        );
+        t += 1;
+    }
+    EAD.ctx.p_shot.filter = "none";
+    EAD.ctx.p_shot.globalAlpha = 1;
+
     EAD.ctx.p_shot.drawImage(
         EAD.sprites,
         EAD.PlayerShot.BASE_PX * this.sprite_x,

@@ -34,6 +34,17 @@ EAD.PlayerItem.prototype.NAME = {
     G_GODMODE: 3,
     B_FLASH: 4
 };
+EAD.PlayerItem.prototype.LABELS = {
+    2: {text: "PLASMA", color: "#f44"},
+    3: {text: "SHIELD", color: "#4f4"},
+    5: {text: "FLASH", color: "#48f"}
+};
+
+EAD.PlayerItem.prototype.label = function () {
+    "use strict";
+
+    return this.LABELS[this.name].text;
+};
 EAD.PlayerItem.prototype.STATE = {
     INIT: 1,
     ACTIVE: 4,

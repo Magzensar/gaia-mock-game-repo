@@ -344,6 +344,7 @@ EAD.loop = function () {
                 EAD.player_items[i].state =
                         EAD.player_items[i].STATE.GARBAGE;
                 EAD.telemetry.crumb("item:" + EAD.player_items[i].name);
+                EAD.game.pickup_label = EAD.player_items[i].label();
                 switch (EAD.player_items[i].name) {
                 case EAD.player_items[i].NAME.R_PLASMA:
                     EAD.player.energy_red = EAD.PlayerItem.ENERGY_RED;

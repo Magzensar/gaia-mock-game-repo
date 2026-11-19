@@ -41,6 +41,11 @@ EAD.PlayerShot.prototype.STATE = {
     GARBAGE: 10
 };
 
+/**
+ * Try to fire; returns true when a shot was spawned.
+ *
+ * @param {number} energy_red
+ */
 EAD.PlayerShot.prototype.fire = function (energy_red) {
     "use strict";
 

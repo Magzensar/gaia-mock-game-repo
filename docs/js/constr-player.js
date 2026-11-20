@@ -167,6 +167,9 @@ EAD.Player.prototype.update = function () {
     }
 };
 
+/**
+ * Flash.
+ */
 EAD.Player.prototype.flash = function () {
     "use strict";
 

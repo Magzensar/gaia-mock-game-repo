@@ -37,7 +37,7 @@ EAD.PlayerItem.prototype.NAME = {
 EAD.PlayerItem.prototype.LABELS = {
     2: {text: "PLASMA", color: "#f44"},
     3: {text: "SHIELD", color: "#4f4"},
-    5: {text: "FLASH", color: "#48f"}
+    4: {text: "FLASH", color: "#48f"}
 };
 
 EAD.PlayerItem.prototype.label = function () {

@@ -150,8 +150,7 @@ EAD.PlayerShot.prototype.draw = function () {
     var t = 1;
 
     // Motion trail: fading, blurred copies behind the shot.
-    EAD.ctx.p_shot.filter = "blur(2px)";
-    while (t <= 6) {
+    while (t <= 2) {
         EAD.ctx.p_shot.globalAlpha = 0.5 / t;
         EAD.ctx.p_shot.drawImage(
             EAD.sprites,

@@ -33,6 +33,9 @@ EAD.boss_manager.update = function (player_x, player_y) {
     EAD.boss.update(player_x, player_y);
 };
 
+/**
+ * Draw the boss manager on its canvas layer.
+ */
 EAD.boss_manager.draw = function () {
     "use strict";
 

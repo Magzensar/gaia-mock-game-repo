@@ -1,5 +1,30 @@
 # Changelog
 
+## v3.9.0
+
+- level(area-4): rebalance row 35
+- tune(items): ENERGY_BLUE 304 -> 320
+- art(area-3): fix tile seam in row 58
+- tune(items): ENERGY_RED 560 -> 520
+- tune(player): BONUS_EVERY 120000 -> 100000
+- tune(player): INITIAL_ENERGY_GREEN 220 -> 200
+- level(area-1): rebalance row 24
+- level(area-5): shift boss marker placement (row 60)
+- docs(util): add JSDoc for util.generateTweetUrl
+- level(area-3): rebalance row 34
+- docs(constr-enemy): add JSDoc for Enemy.prototype.update
+- feat(hud): name the item the player just picked up
+- feat(fx): motion trail behind player shots
+- tune(items): ENERGY_BLUE 320 -> 336
+- tune(items): ENERGY_BLUE 336 -> 304
+- art(area-0): retile background row 36
+- art(area-6): fix tile seam in row 48
+- docs(constr-player_shot): add JSDoc for PlayerShot.prototype.fire
+- docs(boss_manager): add JSDoc for boss_manager.draw
+- fix(hud): key the FLASH pickup label by B_FLASH (4)
+- perf(fx): shorter shot trail without the blur filter
+- docs(constr-player): add JSDoc for Player.prototype.flash
+
 ## v3.8.0
 
 - tune(boss): TIME_LIMIT 1900 -> 1800

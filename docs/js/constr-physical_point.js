@@ -23,7 +23,7 @@ EAD.PhysicalPoint = function (x, y) {
     this.prev_time = Date.now();
 };
 
-EAD.PhysicalPoint.FRICTION = 0.82;
+EAD.PhysicalPoint.FRICTION = 0.84;
 
 /**
  * Set acceleration.

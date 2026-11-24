@@ -1,0 +1,65 @@
+{
+  "build_id": "1004",
+  "tag": "build-1004",
+  "commit_range": "build-1003..build-1004",
+  "previous_build_id": "1003",
+  "commits": [
+    {
+      "sha": "1e46aa4f5541b400e0b441683ff0db3f562d3f4d",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-09-09T10:04:10+05:30",
+      "message": "release: v3.1.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nnew file mode 100644\nindex 0000000..6097b2d\n--- /dev/null\n+++ b/CHANGELOG.md\n@@ -0,0 +1,18 @@\n+# Changelog\n+\n+## v3.1.0\n+\n+- docs(constr-enemy_shot): add JSDoc for EnemyShot.prototype.draw\n+- chore: adopt EVADE AND DESTROY as the engine base\n+- feat(engine): seeded RNG so runs can be replayed\n+- level(area-2): rebalance row 41\n+- feat(tools): autoplay benchmark mode (?autoplay=1&frames=N)\n+- ci: add tools/lint.sh syntax check\n+- level(area-5): shift missile placement (row 16)\n+- tune(balance): MAX_DIFFICULTY 320000 -> 336000\n+- chore(pwa): label internal QA builds\n+- art(area-6): retile background row 35\n+- feat(util): add padLeft helper for HUD fields\n+- docs(constr-player_shot): add JSDoc for PlayerShot.prototype.update\n+- refactor(hud): use padLeft for score, energy and lives\n+\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 0c8ecfa..485ec1f 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -39,7 +39,7 @@ EAD.rng = (function (state) {\n     };\n }(EAD.seed));\n \n-EAD.VERSION = \"v3.0.1\";\n+EAD.VERSION = \"v3.1.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex ca3e513..a871723 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.0.1\",\n+var CACHE_NAME = \"EAD-cache-v3.1.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "2668479b72b225a35010e80300301a425a8e39c7",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-09T13:10:42+05:30",
+      "message": "tune(physics): FRICTION 0.8 -> 0.78",
+      "files": [
+        "docs/js/constr-physical_point.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-physical_point.js b/docs/js/constr-physical_point.js\nindex be0aa43..dd83dda 100644\n--- a/docs/js/constr-physical_point.js\n+++ b/docs/js/constr-physical_point.js\n@@ -23,7 +23,7 @@ EAD.PhysicalPoint = function (x, y) {\n     this.prev_time = Date.now();\n };\n \n-EAD.PhysicalPoint.FRICTION = 0.8;\n+EAD.PhysicalPoint.FRICTION = 0.78;\n \n EAD.PhysicalPoint.prototype.setAcceleration = function (ax, ay) {\n     \"use strict\";\n"
+    },
+    {
+      "sha": "ea11596bac93e12ecf2f52bf34e4929a418672dc",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-09T15:42:20+05:30",
+      "message": "tune(items): ENERGY_GREEN 400 -> 375\n\nRequested in design review.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 6fa50b1..5519313 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -24,7 +24,7 @@ EAD.PlayerItem = function () {\n };\n \n EAD.PlayerItem.ENERGY_RED = 600;\n-EAD.PlayerItem.ENERGY_GREEN = 400;\n+EAD.PlayerItem.ENERGY_GREEN = 375;\n EAD.PlayerItem.ENERGY_BLUE = 256;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n"
+    },
+    {
+      "sha": "a9164fe8e74081f0c33704b08eb14975d8faddbe",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-09T17:53:40+05:30",
+      "message": "tune(boss): MAX_HIT 150 -> 155\n\nPlaytest feedback: max hit felt too easy.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 485ec1f..dd6a5cf 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -50,7 +50,7 @@ EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n EAD.MAX_DIFFICULTY = 336000;\n-EAD.MAX_HIT = 150;\n+EAD.MAX_HIT = 155;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n EAD.DIFFICULTY_HARD = Math.floor(EAD.MAX_DIFFICULTY * 0.6);\n"
+    },
+    {
+      "sha": "eb93b6171297b4a9b4eda0c4ddbf28896c0ce77c",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-09T17:56:53+05:30",
+      "message": "level(area-6): move boss marker in row 36",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex b31d641..948a517 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -420,7 +420,7 @@ EAD.enemies_maps[6] = [\n     10, 50, 10, 10, 50, 10, 10, 50, 80, 10,\n     50, 10, 10, 50, 10, 10, 50, 10, 10, 50,\n     10, 10, 90, 10, 90, 90, 10, 10, 90, 10,\n-    10, 90, 10, 10, 10, 90, 10, 90, 10, 90,\n+    10, 90, 10, 10, 90, 90, 10, 10, 10, 90,\n     10, 25, 72, 60, 72, 71, 60, 71, 25, 10,\n     60, 10, 60, 10, 21, 21, 10, 60, 10, 60,\n     10, 25, 71, 60, 71, 72, 60, 72, 25, 10,\n"
+    }
+  ]
+}

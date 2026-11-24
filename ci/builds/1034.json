@@ -1,0 +1,65 @@
+{
+  "build_id": "1034",
+  "tag": "build-1034",
+  "commit_range": "build-1033..build-1034",
+  "previous_build_id": "1033",
+  "commits": [
+    {
+      "sha": "a732f848c710c5b4b7b501bc875d2bac07d8316d",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-10-22T09:46:35+05:30",
+      "message": "release: v3.6.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex 5eee212..afdfcf8 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,34 @@\n # Changelog\n \n+## v3.6.0\n+\n+- tune(items): ENERGY_RED 720 -> 680\n+- level(area-6): shift boss marker placement (row 27)\n+- level(area-0): shift fighter placement (row 57)\n+- level(area-4): shift fighter placement (row 56)\n+- tune(boss): INITIAL_LIVES 136 -> 120\n+- tune(enemy): RANDOM_RANGE 304 -> 272\n+- level(area-0): rebalance row 28\n+- level(area-1): move meteor in row 37\n+- docs(boss_manager): add JSDoc for boss_manager.update\n+- docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.fire\n+- docs(constr-boss): add JSDoc for Boss\n+- level(area-6): shift boss marker placement (row 36)\n+- level(area-6): shift fighter placement (row 26)\n+- tune(player): BONUS_EVERY 130000 -> 120000\n+- level(area-3): shift meteor placement (row 16)\n+- docs(constr-enemy_shot): add JSDoc for EnemyShot\n+- fix(weapon): cap side shots so spent ones are not kept forever\n+- docs(constr-tile): add JSDoc for Tile.prototype.draw\n+- level(area-7): rebalance row 58\n+- tune(boss): TIME_LIMIT 1800 -> 1900\n+- docs(constr-background): add JSDoc for Background\n+- level(area-2): rebalance row 48\n+- docs(player_manager): note that the player is created lazily\n+- tune(balance): MAX_DIFFICULTY 344000 -> 352000\n+- docs(player_item_manager): add JSDoc for player_item_manager.drop\n+- docs(constr-background): add JSDoc for Background.prototype.scroll\n+\n ## v3.5.0\n \n - style(ui): rounder dialog buttons\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 100cb17..7283704 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -41,7 +41,7 @@ EAD.rng = (function (state) {\n \n EAD.debug = /[?&]debug=1/.test(window.location.search);\n \n-EAD.VERSION = \"v3.5.0\";\n+EAD.VERSION = \"v3.6.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex 04457b0..dfdc7b0 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.5.0\",\n+var CACHE_NAME = \"EAD-cache-v3.6.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "23eb3ce69a31dd89028c13c330fa34bb76d832c7",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-22T13:38:58+05:30",
+      "message": "feat(fx): red damage flash when the player is hit\n\nHits were easy to miss on small screens. Adds a short red flash\nrendered with a tiny WebGL pass.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 4219d33..daecd2b 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -126,6 +126,7 @@ EAD.Player.prototype.update = function () {\n         break;\n \n     case this.STATE.DAMAGED:\n+        this.flash();\n         this.sprite_x = 1;\n         this.sprite_y = 3;\n         this.state = this.STATE.EXPLODING;\n@@ -166,6 +167,20 @@ EAD.Player.prototype.update = function () {\n     }\n };\n \n+EAD.Player.prototype.flash = function () {\n+    \"use strict\";\n+\n+    var gl = EAD.Player.flash_gl;\n+\n+    if (!gl) {\n+        EAD.Player.flash_canvas = document.createElement(\"canvas\");\n+        gl = EAD.Player.flash_canvas.getContext(\"webgl\");\n+        EAD.Player.flash_gl = gl;\n+    }\n+    gl.clearColor(1, 0, 0, 0.35);\n+    gl.clear(gl.COLOR_BUFFER_BIT);\n+};\n+\n EAD.Player.prototype.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "f36f94058871b290f6683754be8511ed308480a5",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-22T13:52:00+05:30",
+      "message": "tune(items): ENERGY_RED 680 -> 720\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex c0e29ef..e55f549 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 680;\n+EAD.PlayerItem.ENERGY_RED = 720;\n EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n"
+    },
+    {
+      "sha": "db10ff35a10f6b11cb228c342f1f51ec1db97109",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-10-22T17:38:39+05:30",
+      "message": "docs(constr-player_shot): add JSDoc for PlayerShot.prototype.draw",
+      "files": [
+        "docs/js/constr-player_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_shot.js b/docs/js/constr-player_shot.js\nindex 210b63f..ab79495 100644\n--- a/docs/js/constr-player_shot.js\n+++ b/docs/js/constr-player_shot.js\n@@ -136,6 +136,9 @@ EAD.PlayerShot.prototype.update = function (player_x, player_y) {\n     }\n };\n \n+/**\n+ * Draw this player shot on its canvas layer.\n+ */\n EAD.PlayerShot.prototype.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "713aa5cd9f6357bf3a22ccfb1bb2a347c8197205",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-22T17:40:53+05:30",
+      "message": "tune(player): THRUST 12 -> 13\n\nShip felt sluggish when dodging after a hit.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex daecd2b..6d91cbb 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -37,7 +37,7 @@ EAD.Player.INITIAL_ENERGY_GREEN = 220;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n EAD.Player.BONUS_EVERY = 120000;\n-EAD.Player.THRUST = 12;\n+EAD.Player.THRUST = 13;\n \n EAD.Player.prototype.COLLISION_RADIUS = 4;\n EAD.Player.prototype.STATE = {\n"
+    }
+  ]
+}

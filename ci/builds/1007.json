@@ -1,0 +1,43 @@
+{
+  "build_id": "1007",
+  "tag": "build-1007",
+  "commit_range": "build-1006..build-1007",
+  "previous_build_id": "1006",
+  "commits": [
+    {
+      "sha": "eb325e0793c4104f511e24dcbfe5dbb56e09aa86",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-14T13:15:02+05:30",
+      "message": "art(area-4): fix tile seam in row 51",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex 4cb7b31..d43bbb2 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -311,7 +311,7 @@ EAD.bg02_maps[4] = [\n     20, 21, 20, 20, 20, 12, 10, 10, 10, 10,\n     10, 28, 10, 10, 10, 10, 10, 10, 10, 10,\n     22, 23, 22, 22, 22, 22, 22, 22, 14, 10,\n-    16, 16, 16, 16, 16, 16, 16, 16, 26, 10,\n+    16, 16, 26, 16, 16, 16, 16, 16, 16, 10,\n     17, 17, 17, 17, 17, 17, 17, 16, 26, 10,\n     16, 16, 16, 16, 16, 16, 16, 16, 26, 10,\n     20, 20, 20, 20, 21, 21, 20, 20, 12, 10,\n"
+    },
+    {
+      "sha": "c689d52ed6397c9848943a329f45de8cb92bda4c",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-09-14T16:01:27+05:30",
+      "message": "docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.draw",
+      "files": [
+        "docs/js/enemy_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_shot_manager.js b/docs/js/enemy_shot_manager.js\nindex 522df16..4adba66 100644\n--- a/docs/js/enemy_shot_manager.js\n+++ b/docs/js/enemy_shot_manager.js\n@@ -57,6 +57,9 @@ EAD.enemy_shot_manager.update = function (player_x, player_y) {\n     }\n };\n \n+/**\n+ * Draw the enemy shot manager on its canvas layer.\n+ */\n EAD.enemy_shot_manager.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "3ef72c29563de1e8b46071cb870e1af3dfe02f7d",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-14T16:51:11+05:30",
+      "message": "feat(telemetry): breadcrumbs and crash reporter hook",
+      "files": [
+        "docs/index.html",
+        "docs/js/telemetry.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/docs/index.html b/docs/index.html\nindex f4f4038..5e2c052 100644\n--- a/docs/index.html\n+++ b/docs/index.html\n@@ -20,6 +20,7 @@\n     <link rel=\"manifest\" href=\"./manifest.json\">\n     <link rel=\"stylesheet\" href=\"./css/styles.css\">\n     <script src=\"./js/init.js\"></script>\n+    <script src=\"./js/telemetry.js\"></script>\n     <script src=\"./js/util.js\"></script>\n     <script src=\"./js/map-bg01.js\"></script>\n     <script src=\"./js/map-bg02.js\"></script>\ndiff --git a/docs/js/telemetry.js b/docs/js/telemetry.js\nnew file mode 100644\nindex 0000000..bfbd15f\n--- /dev/null\n+++ b/docs/js/telemetry.js\n@@ -0,0 +1,52 @@\n+/*!\n+ * Name    : telemetry.js\n+ * Purpose : Breadcrumbs and crash reporting\n+ *\n+ * On Android builds the native shell exposes window.EADNative.reportCrash,\n+ * which batches reports to the crash backend. Web builds only log locally.\n+ *\n+ * License : MIT License\n+ */\n+\n+/*jslint browser, multivar, this*/\n+/*global EAD, console, window*/\n+\n+EAD.telemetry = {};\n+\n+EAD.telemetry.MAX_CRUMBS = 20;\n+EAD.telemetry.crumbs = [];\n+\n+EAD.telemetry.crumb = function (action) {\n+    \"use strict\";\n+\n+    EAD.telemetry.crumbs.push({t: Date.now(), action: action});\n+    if (EAD.telemetry.crumbs.length > EAD.telemetry.MAX_CRUMBS) {\n+        EAD.telemetry.crumbs.shift();\n+    }\n+};\n+\n+EAD.telemetry.report = function (payload) {\n+    \"use strict\";\n+\n+    if (window.EADNative && window.EADNative.reportCrash) {\n+        window.EADNative.reportCrash(JSON.stringify(payload));\n+    } else {\n+        console.warn(\"EAD crash\", payload);\n+    }\n+};\n+\n+window.addEventListener(\"error\", function (evt) {\n+    \"use strict\";\n+\n+    EAD.telemetry.report({\n+        message: evt.message,\n+        file: evt.filename,\n+        line: evt.lineno,\n+        column: evt.colno,\n+        stack: evt.error && evt.error.stack,\n+        version: EAD.VERSION,\n+        seed: EAD.seed,\n+        area: EAD.game && EAD.game.area_index,\n+        crumbs: EAD.telemetry.crumbs.slice()\n+    });\n+});\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex a871723..5f038a9 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -39,6 +39,7 @@ var CACHE_NAME = \"EAD-cache-v3.1.0\",\n         \"./js/player_item_manager.js\",\n         \"./js/player_manager.js\",\n         \"./js/player_shot_manager.js\",\n+        \"./js/telemetry.js\",\n         \"./js/util.js\"\n     ];\n \n"
+    }
+  ]
+}

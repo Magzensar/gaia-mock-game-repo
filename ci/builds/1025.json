@@ -1,0 +1,41 @@
+{
+  "build_id": "1025",
+  "tag": "build-1025",
+  "commit_range": "build-1024..build-1025",
+  "previous_build_id": "1024",
+  "commits": [
+    {
+      "sha": "a8954735cb4f7cce02064c2dcde26bc802b1be44",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-09T11:41:57+05:30",
+      "message": "tune(player): INITIAL_ENERGY_GREEN 200 -> 220\n\nBalance pass after reviewing session-length telemetry.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 73b0e96..cdd6755 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -33,7 +33,7 @@ EAD.Player = function () {\n     this.state = this.STATE.INACTIVE;\n };\n \n-EAD.Player.INITIAL_ENERGY_GREEN = 200;\n+EAD.Player.INITIAL_ENERGY_GREEN = 220;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n EAD.Player.BONUS_EVERY = 130000;\n"
+    },
+    {
+      "sha": "6fbdf799fab228a97566699f37c5b8dceaf0037d",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-09T13:59:40+05:30",
+      "message": "docs(player_manager): add JSDoc for player_manager.update",
+      "files": [
+        "docs/js/player_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_manager.js b/docs/js/player_manager.js\nindex c64bf56..709061f 100644\n--- a/docs/js/player_manager.js\n+++ b/docs/js/player_manager.js\n@@ -21,6 +21,9 @@ EAD.player_manager.setup = function () {\n     EAD.player.state = EAD.player.STATE.INIT;\n };\n \n+/**\n+ * Advance the player manager by one frame.\n+ */\n EAD.player_manager.update = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "7962ab9a2ed73850d5589965005aab37c0696bb6",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-09T17:58:38+05:30",
+      "message": "docs(constr-enemy): add JSDoc for Enemy.prototype.draw",
+      "files": [
+        "docs/js/constr-enemy.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy.js b/docs/js/constr-enemy.js\nindex 5d9d956..3fb1610 100644\n--- a/docs/js/constr-enemy.js\n+++ b/docs/js/constr-enemy.js\n@@ -586,6 +586,9 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {\n     }\n };\n \n+/**\n+ * Draw this enemy on its canvas layer.\n+ */\n EAD.Enemy.prototype.draw = function () {\n     \"use strict\";\n \n"
+    }
+  ]
+}

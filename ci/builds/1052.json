@@ -1,0 +1,76 @@
+{
+  "build_id": "1052",
+  "tag": "build-1052",
+  "commit_range": "build-1051..build-1052",
+  "previous_build_id": "1051",
+  "commits": [
+    {
+      "sha": "64d8136575a2029504b15405871d84b1553e80d4",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-11-23T09:37:38+05:30",
+      "message": "release: v3.9.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex 7b755a8..929086e 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,30 @@\n # Changelog\n \n+## v3.9.0\n+\n+- level(area-4): rebalance row 35\n+- tune(items): ENERGY_BLUE 304 -> 320\n+- art(area-3): fix tile seam in row 58\n+- tune(items): ENERGY_RED 560 -> 520\n+- tune(player): BONUS_EVERY 120000 -> 100000\n+- tune(player): INITIAL_ENERGY_GREEN 220 -> 200\n+- level(area-1): rebalance row 24\n+- level(area-5): shift boss marker placement (row 60)\n+- docs(util): add JSDoc for util.generateTweetUrl\n+- level(area-3): rebalance row 34\n+- docs(constr-enemy): add JSDoc for Enemy.prototype.update\n+- feat(hud): name the item the player just picked up\n+- feat(fx): motion trail behind player shots\n+- tune(items): ENERGY_BLUE 320 -> 336\n+- tune(items): ENERGY_BLUE 336 -> 304\n+- art(area-0): retile background row 36\n+- art(area-6): fix tile seam in row 48\n+- docs(constr-player_shot): add JSDoc for PlayerShot.prototype.fire\n+- docs(boss_manager): add JSDoc for boss_manager.draw\n+- fix(hud): key the FLASH pickup label by B_FLASH (4)\n+- perf(fx): shorter shot trail without the blur filter\n+- docs(constr-player): add JSDoc for Player.prototype.flash\n+\n ## v3.8.0\n \n - tune(boss): TIME_LIMIT 1900 -> 1800\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 7be0c15..1d5af92 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -41,7 +41,7 @@ EAD.rng = (function (state) {\n \n EAD.debug = /[?&]debug=1/.test(window.location.search);\n \n-EAD.VERSION = \"v3.8.0\";\n+EAD.VERSION = \"v3.9.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex e9d8d07..a60f0f1 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.8.0\",\n+var CACHE_NAME = \"EAD-cache-v3.9.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "fe2df5e79e29302363a2b3ed9e2fe99eed96f53d",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-11-23T09:52:34+05:30",
+      "message": "art(area-6): fix tile seam in row 22",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex ff5bc2c..f21eae8 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -406,7 +406,7 @@ EAD.bg02_maps[6] = [\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n-    10, 10, 10, 10, 10, 10, 10, 13, 22, 14,\n+    10, 10, 10, 10, 10, 10, 14, 13, 22, 10,\n     29, 29, 29, 29, 29, 29, 29, 25, 17, 27,\n     10, 10, 10, 10, 10, 10, 10, 11, 20, 12,\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n"
+    },
+    {
+      "sha": "48819ad28396e9e6da6843e042adc6a8cc35574c",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-23T10:01:19+05:30",
+      "message": "tune(player): BONUS_EVERY 100000 -> 80000",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex ee6bd01..3edccba 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -36,7 +36,7 @@ EAD.Player = function () {\n EAD.Player.INITIAL_ENERGY_GREEN = 200;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n-EAD.Player.BONUS_EVERY = 100000;\n+EAD.Player.BONUS_EVERY = 80000;\n EAD.Player.THRUST = 13;\n \n EAD.Player.prototype.COLLISION_RADIUS = 4;\n"
+    },
+    {
+      "sha": "37ccbd6ccae5b98cbb68626afd1c785b2b7c0f90",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-23T11:43:49+05:30",
+      "message": "art(area-6): retile background row 43",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex f21eae8..17e5303 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -427,7 +427,7 @@ EAD.bg02_maps[6] = [\n     24, 16, 26, 11, 21, 21, 12, 24, 16, 26,\n     11, 21, 12, 10, 28, 28, 10, 11, 21, 12,\n     13, 23, 22, 22, 23, 23, 22, 22, 23, 14,\n-    24, 15, 15, 15, 15, 15, 15, 15, 15, 26,\n+    24, 15, 15, 15, 26, 15, 15, 15, 15, 15,\n     24, 15, 18, 17, 15, 15, 17, 18, 15, 26,\n     24, 15, 18, 16, 15, 15, 16, 18, 15, 26,\n     24, 15, 18, 17, 15, 15, 17, 18, 15, 26,\n"
+    },
+    {
+      "sha": "2e6e4261eed8afde3a003a26281232fd7f322601",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-23T13:03:56+05:30",
+      "message": "tune(physics): FRICTION 0.82 -> 0.84\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-physical_point.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-physical_point.js b/docs/js/constr-physical_point.js\nindex 564c978..958e9ce 100644\n--- a/docs/js/constr-physical_point.js\n+++ b/docs/js/constr-physical_point.js\n@@ -23,7 +23,7 @@ EAD.PhysicalPoint = function (x, y) {\n     this.prev_time = Date.now();\n };\n \n-EAD.PhysicalPoint.FRICTION = 0.82;\n+EAD.PhysicalPoint.FRICTION = 0.84;\n \n /**\n  * Set acceleration.\n"
+    },
+    {
+      "sha": "28b4102a92737047bded077f543d4abf2b31b9bc",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-23T15:24:17+05:30",
+      "message": "tune(items): ENERGY_GREEN 400 -> 425\n\nRequested in design review.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 6183d1c..5db4b18 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -24,7 +24,7 @@ EAD.PlayerItem = function () {\n };\n \n EAD.PlayerItem.ENERGY_RED = 520;\n-EAD.PlayerItem.ENERGY_GREEN = 400;\n+EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 304;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n"
+    }
+  ]
+}

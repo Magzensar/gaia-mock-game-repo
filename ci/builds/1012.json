@@ -1,0 +1,42 @@
+{
+  "build_id": "1012",
+  "tag": "build-1012",
+  "commit_range": "build-1011..build-1012",
+  "previous_build_id": "1011",
+  "commits": [
+    {
+      "sha": "b6ed2f2e40f8e6fa9329f7a53e66a00eadce787c",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-22T11:10:10+05:30",
+      "message": "feat(debug): ?debug=1 shows seed and area on the HUD",
+      "files": [
+        "docs/js/game.js",
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex f9cf925..d5abd9f 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -444,6 +444,13 @@ EAD.loop = function () {\n \n     EAD.ctx.front.fillText(\"HIGH SCORE  \" + high_score, 2, 12);\n     EAD.ctx.front.fillText(\"SCORE       \" + score, 2, 24);\n+    if (EAD.debug) {\n+        EAD.ctx.front.fillText(\n+            \"SEED \" + EAD.seed + \"  AREA \" + EAD.game.area_index,\n+            2,\n+            36\n+        );\n+    }\n \n     EAD.bg01.scroll();\n     EAD.bg02.scroll();\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex b82279b..5b88743 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -39,6 +39,8 @@ EAD.rng = (function (state) {\n     };\n }(EAD.seed));\n \n+EAD.debug = /[?&]debug=1/.test(window.location.search);\n+\n EAD.VERSION = \"v3.2.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n"
+    },
+    {
+      "sha": "1ed4e615a894ccdb3f66e4c83d645a1e0c6d7267",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-22T16:32:49+05:30",
+      "message": "perf(art): pre-render background tiles at startup\n\nThe first background scroll stuttered while tiles were decoded on\ndemand. Draw every tile into its own canvas during load instead.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 5b88743..a957d92 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -151,6 +151,27 @@ window.onload = function () {\n         }\n     };\n \n+    // Pre-render background tiles so the first scroll does not stutter.\n+    EAD.tile_cache = [];\n+    i = 0;\n+    while (i < 4096) {\n+        EAD.tile_cache[i] = document.createElement(\"canvas\");\n+        EAD.tile_cache[i].width = EAD.BASE_PX;\n+        EAD.tile_cache[i].height = EAD.BASE_PX;\n+        EAD.tile_cache[i].getContext(\"2d\").drawImage(\n+            EAD.tileset,\n+            (i % 64) * EAD.BASE_PX,\n+            Math.floor(i / 64) * EAD.BASE_PX,\n+            EAD.BASE_PX,\n+            EAD.BASE_PX,\n+            0,\n+            0,\n+            EAD.BASE_PX,\n+            EAD.BASE_PX\n+        );\n+        i += 1;\n+    }\n+\n     EAD.init();\n     EAD.setup();\n     window.setTimeout(step, 500);\n"
+    },
+    {
+      "sha": "faae969aa2505ab871082cdb1d527daa9b99d4ba",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-22T16:38:52+05:30",
+      "message": "tune(balance): MAX_DIFFICULTY 328000 -> 336000\n\nLate areas felt flat in the last internal playtest.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex a957d92..0dc82cb 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -51,7 +51,7 @@ EAD.BASE_PX = 32;\n EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n-EAD.MAX_DIFFICULTY = 328000;\n+EAD.MAX_DIFFICULTY = 336000;\n EAD.MAX_HIT = 155;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n"
+    }
+  ]
+}

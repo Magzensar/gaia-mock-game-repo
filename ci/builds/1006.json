@@ -1,0 +1,52 @@
+{
+  "build_id": "1006",
+  "tag": "build-1006",
+  "commit_range": "build-1005..build-1006",
+  "previous_build_id": "1005",
+  "commits": [
+    {
+      "sha": "ebe7c54bac525ea27c4f0a42831a29e0b5dccd97",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-09-11T09:49:13+05:30",
+      "message": "docs(constr-tile): add JSDoc for Tile",
+      "files": [
+        "docs/js/constr-tile.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-tile.js b/docs/js/constr-tile.js\nindex e5fe234..d5492d0 100644\n--- a/docs/js/constr-tile.js\n+++ b/docs/js/constr-tile.js\n@@ -10,6 +10,11 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n+/**\n+ * Create a new tile.\n+ *\n+ * @param {Object} layer\n+ */\n EAD.Tile = function (layer) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "aec650b71dfafec46e00aba0e202f24af3abd976",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-11T11:53:03+05:30",
+      "message": "art(area-3): fix tile seam in row 18",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex 6395d52..4cb7b31 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -216,7 +216,7 @@ EAD.bg02_maps[3] = [\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     22, 22, 14, 10, 10, 10, 10, 13, 22, 22,\n     15, 15, 26, 10, 10, 10, 10, 24, 15, 15,\n-    19, 15, 26, 13, 22, 22, 14, 24, 15, 19,\n+    19, 15, 26, 13, 22, 22, 14, 19, 15, 24,\n     17, 15, 27, 25, 17, 17, 27, 25, 15, 17,\n     19, 15, 26, 11, 21, 21, 12, 24, 15, 19,\n     15, 15, 26, 10, 28, 28, 10, 24, 15, 15,\n"
+    },
+    {
+      "sha": "c2853d2ad03aaa37f06ca7140889eca580a0df97",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-11T12:52:40+05:30",
+      "message": "level(area-4): rebalance row 14",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 948a517..7fe1b1d 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -274,7 +274,7 @@ EAD.enemies_maps[4] = [\n     10, 10, 10, 50, 10, 50, 10, 10, 10, 10,\n     50, 10, 50, 10, 50, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 90, 10, 50, 10, 50,\n-    10, 10, 10, 10, 10, 10, 80, 10, 10, 10,\n+    10, 80, 10, 10, 10, 10, 10, 10, 10, 10,\n     72, 40, 72, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 72, 40, 72, 10, 10,\n     10, 60, 10, 10, 60, 10, 10, 10, 10, 80,\n"
+    },
+    {
+      "sha": "bac636d62568eb0a1aa81a0278ec0ff9904ddfbf",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-11T13:31:12+05:30",
+      "message": "docs(player_shot_manager): add JSDoc for player_shot_manager.update",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex 95da797..6765e08 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -45,6 +45,12 @@ EAD.player_shot_manager.fire = function (energy_red) {\n     return false;\n };\n \n+/**\n+ * Advance the player shot manager by one frame.\n+ *\n+ * @param {number} player_x\n+ * @param {number} player_y\n+ */\n EAD.player_shot_manager.update = function (player_x, player_y) {\n     \"use strict\";\n \n"
+    }
+  ]
+}

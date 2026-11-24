@@ -1,0 +1,52 @@
+{
+  "build_id": "1043",
+  "tag": "build-1043",
+  "commit_range": "build-1042..build-1043",
+  "previous_build_id": "1042",
+  "commits": [
+    {
+      "sha": "35af8a77b6f581ebdb99a099f1ce52c96510bbd1",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-11-05T11:45:59+05:30",
+      "message": "docs(player_shot_manager): clarify the shot pool comment",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex 036e450..c420ad7 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -12,7 +12,7 @@\n \n EAD.player_shot_manager = {};\n \n-// Four shots on screen keeps the pool allocation-free during play.\n+// Four pooled shots on screen; plasma side shots come on top of these.\n EAD.player_shot_manager.MAX_PLAYER_SHOTS = 4;\n \n EAD.player_shots = [];\n"
+    },
+    {
+      "sha": "9939b1e33a8d0c284f28dd1f69cd4b018f254095",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-11-05T13:28:40+05:30",
+      "message": "refactor(weapon): tidy side-shot spawning in fire()\n\nCollapses the multi-line condition. No behaviour change intended.",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex c420ad7..b058d29 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -44,10 +44,7 @@ EAD.player_shot_manager.fire = function (energy_red) {\n     var i = 0,\n         side_shot = null;\n \n-    if (\n-        energy_red > 0 &&\n-        EAD.player_shots.length < EAD.player_shot_manager.MAX_PLAYER_SHOTS * 2\n-    ) {\n+    if (energy_red > 0) {\n         side_shot = new EAD.PlayerShot();\n         side_shot.fire(energy_red);\n         EAD.player_shots.push(side_shot);\n"
+    },
+    {
+      "sha": "825e26094050266173ef8777f25fc6615e4665b7",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-05T14:03:17+05:30",
+      "message": "art(area-4): fix tile seam in row 36",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex be2ec19..be8d445 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -296,7 +296,7 @@ EAD.bg02_maps[4] = [\n     10, 10, 10, 10, 10, 10, 11, 21, 12, 11,\n     22, 22, 22, 22, 22, 22, 22, 23, 22, 14,\n     15, 15, 15, 15, 15, 15, 15, 18, 15, 26,\n-    15, 15, 15, 15, 16, 15, 15, 15, 15, 26,\n+    15, 15, 15, 15, 16, 15, 26, 15, 15, 15,\n     15, 16, 15, 15, 15, 15, 15, 15, 15, 26,\n     20, 21, 20, 20, 20, 20, 20, 20, 20, 12,\n     22, 23, 22, 22, 22, 14, 10, 10, 10, 10,\n"
+    },
+    {
+      "sha": "0dbdc81246860b01605b433cfaa14192a59f7b7c",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-11-05T14:52:01+05:30",
+      "message": "level(area-4): move missile in row 22",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex fb1cccb..26e0597 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -282,7 +282,7 @@ EAD.enemies_maps[4] = [\n     10, 60, 80, 10, 60, 10, 60, 10, 90, 10,\n     80, 10, 10, 90, 10, 90, 10, 10, 80, 10,\n     10, 10, 10, 10, 80, 10, 71, 50, 71, 10,\n-    25, 71, 40, 71, 10, 10, 90, 10, 10, 80,\n+    25, 71, 40, 10, 10, 71, 90, 10, 10, 80,\n     10, 80, 90, 10, 72, 60, 72, 10, 90, 10,\n     10, 10, 80, 10, 10, 10, 10, 80, 10, 10,\n     10, 10, 72, 50, 72, 80, 10, 90, 10, 10,\n"
+    }
+  ]
+}

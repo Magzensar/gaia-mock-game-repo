@@ -1,0 +1,65 @@
+{
+  "build_id": "1040",
+  "tag": "build-1040",
+  "commit_range": "build-1039..build-1040",
+  "previous_build_id": "1039",
+  "commits": [
+    {
+      "sha": "02b8e1db110f5c8b25764e43dc7f533490bea318",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-10-30T12:31:01+05:30",
+      "message": "release: v3.7.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex afdfcf8..c857afc 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,29 @@\n # Changelog\n \n+## v3.7.0\n+\n+- feat(fx): red damage flash when the player is hit\n+- tune(items): ENERGY_RED 680 -> 720\n+- docs(constr-player_shot): add JSDoc for PlayerShot.prototype.draw\n+- tune(player): THRUST 12 -> 13\n+- docs(player_shot_manager): add JSDoc for player_shot_manager.fire\n+- docs(constr-physical_point): add JSDoc for PhysicalPoint.prototype.setAcceleration\n+- tune(balance): MAX_DIFFICULTY 352000 -> 344000\n+- tune(items): ENERGY_RED 720 -> 680\n+- level(area-3): move meteor in row 37\n+- fix(fx): skip the damage flash when WebGL is unavailable\n+- docs(util): add JSDoc for util.calcVelocity\n+- tune(items): ENERGY_GREEN 425 -> 450\n+- docs(constr-boss): add JSDoc for Boss.prototype.update\n+- docs(enemy_manager): add JSDoc for enemy_manager.setup\n+- level(area-7): move fighter in row 29\n+- feat(hud): warn the player before the next area\n+- fix(hud): keep LIVES counter clear of the fire button\n+- level(area-1): shift ship spawn placement (row 29)\n+- docs(player_shot_manager): add JSDoc for player_shot_manager.setup\n+- docs(constr-player): add JSDoc for Player.prototype.draw\n+- tune(items): ENERGY_RED 680 -> 600\n+\n ## v3.6.0\n \n - tune(items): ENERGY_RED 720 -> 680\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 290e65f..2a7c4d1 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -41,7 +41,7 @@ EAD.rng = (function (state) {\n \n EAD.debug = /[?&]debug=1/.test(window.location.search);\n \n-EAD.VERSION = \"v3.6.0\";\n+EAD.VERSION = \"v3.7.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex dfdc7b0..fb46538 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.6.0\",\n+var CACHE_NAME = \"EAD-cache-v3.7.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "965730a89db45a95c770555d2a49614be5a0cf8a",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-30T12:38:15+05:30",
+      "message": "tune(boss): TIME_LIMIT 1900 -> 1800\n\nPlaytest feedback: time limit felt too harsh.",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex b2d4eff..0bdae82 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -36,7 +36,7 @@ EAD.Boss = function () {\n EAD.Boss.BASE_PX = EAD.BASE_PX * 2;\n EAD.Boss.INITIAL_LIVES = 120;\n EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);\n-EAD.Boss.TIME_LIMIT = 1900;\n+EAD.Boss.TIME_LIMIT = 1800;\n EAD.Boss.MAX_FRAME_COUNT = 2;\n \n EAD.Boss.prototype.COLLISION_RADIUS = 22;\n"
+    },
+    {
+      "sha": "888add164796ae376cd567a1a56b57037fd07219",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-30T14:18:21+05:30",
+      "message": "art(area-5): fix tile seam in row 20",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex a67c23c..018eab2 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -342,7 +342,7 @@ EAD.bg02_maps[5] = [\n     24, 15, 15, 15, 26, 24, 15, 15, 15, 26,\n     25, 15, 17, 15, 27, 25, 15, 17, 15, 27,\n     24, 15, 15, 15, 26, 24, 15, 15, 15, 26,\n-    11, 20, 21, 20, 12, 11, 20, 21, 20, 12,\n+    11, 11, 21, 20, 12, 20, 20, 21, 20, 12,\n     13, 22, 23, 22, 14, 13, 22, 23, 22, 14,\n     24, 15, 15, 15, 26, 24, 15, 15, 15, 26,\n     25, 15, 17, 15, 27, 25, 15, 17, 15, 27,\n"
+    },
+    {
+      "sha": "350cb2ddfd6d51ce8b5fe3c11825806dc285cad8",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-10-30T16:05:57+05:30",
+      "message": "docs(telemetry): add JSDoc for telemetry.report",
+      "files": [
+        "docs/js/telemetry.js"
+      ],
+      "diff": "diff --git a/docs/js/telemetry.js b/docs/js/telemetry.js\nindex bfbd15f..5224ca8 100644\n--- a/docs/js/telemetry.js\n+++ b/docs/js/telemetry.js\n@@ -25,6 +25,11 @@ EAD.telemetry.crumb = function (action) {\n     }\n };\n \n+/**\n+ * Send a crash payload to the native shell, or log it on web builds.\n+ *\n+ * @param {number} payload\n+ */\n EAD.telemetry.report = function (payload) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "55f8b6007a984602b78e201e64fedf0b89b51f12",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-30T17:03:52+05:30",
+      "message": "tune(items): ENERGY_GREEN 450 -> 425",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 8e62627..c6208dc 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -24,7 +24,7 @@ EAD.PlayerItem = function () {\n };\n \n EAD.PlayerItem.ENERGY_RED = 600;\n-EAD.PlayerItem.ENERGY_GREEN = 450;\n+EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n"
+    }
+  ]
+}

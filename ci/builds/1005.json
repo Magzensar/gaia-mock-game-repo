@@ -1,0 +1,53 @@
+{
+  "build_id": "1005",
+  "tag": "build-1005",
+  "commit_range": "build-1004..build-1005",
+  "previous_build_id": "1004",
+  "commits": [
+    {
+      "sha": "1828bd9e981181bc8b411ac749f6a6013b4e2bac",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-09-10T14:21:12+05:30",
+      "message": "docs(constr-enemy_shot): add JSDoc for EnemyShot.prototype.update",
+      "files": [
+        "docs/js/constr-enemy_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy_shot.js b/docs/js/constr-enemy_shot.js\nindex 8197fd7..74d61ec 100644\n--- a/docs/js/constr-enemy_shot.js\n+++ b/docs/js/constr-enemy_shot.js\n@@ -55,6 +55,12 @@ EAD.EnemyShot.prototype.fire = function (enemy_x, enemy_y, on_ground) {\n     return true;\n };\n \n+/**\n+ * Advance this enemy shot by one frame.\n+ *\n+ * @param {number} player_x\n+ * @param {number} player_y\n+ */\n EAD.EnemyShot.prototype.update = function (player_x, player_y) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "16949d466659594111fca594e378d5fc14007e4e",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-09-10T16:09:29+05:30",
+      "message": "docs(constr-player): add JSDoc for Player",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 6f9fe58..f464842 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -10,6 +10,9 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n+/**\n+ * Create a new player.\n+ */\n EAD.Player = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "81b6337e3cf3a61dbe05c998c162abca2f91b27c",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-10T17:27:23+05:30",
+      "message": "docs(constr-player): add JSDoc for Player.prototype.update",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex f464842..50a87de 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -52,6 +52,9 @@ EAD.Player.prototype.STATE = {\n     GARBAGE: 10\n };\n \n+/**\n+ * Advance this player by one frame.\n+ */\n EAD.Player.prototype.update = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "893ce1ccd18edd6ce7d67a8793425fcdb3047c82",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-10T17:34:22+05:30",
+      "message": "refactor(game): clamp difficulty and score with util.clamp",
+      "files": [
+        "docs/js/game.js",
+        "docs/js/util.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex a795d02..fcf4726 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -335,12 +335,12 @@ EAD.loop = function () {\n             }\n             i += 1;\n         }\n-        EAD.difficulty = EAD.difficulty < EAD.MAX_DIFFICULTY\n-            ? EAD.difficulty + 1\n-            : EAD.MAX_DIFFICULTY;\n-        EAD.score = EAD.score < EAD.MAX_SCORE\n-            ? EAD.score + 1\n-            : EAD.MAX_SCORE;\n+        EAD.difficulty = EAD.util.clamp(\n+            EAD.difficulty + 1,\n+            0,\n+            EAD.MAX_DIFFICULTY\n+        );\n+        EAD.score = EAD.util.clamp(EAD.score + 1, 0, EAD.MAX_SCORE);\n         EAD.high_score = EAD.score < EAD.high_score\n             ? EAD.high_score\n             : EAD.score;\ndiff --git a/docs/js/util.js b/docs/js/util.js\nindex bcca5ff..daf1093 100644\n--- a/docs/js/util.js\n+++ b/docs/js/util.js\n@@ -95,3 +95,21 @@ EAD.util.padLeft = function (value, width) {\n \n     return str.slice(-width);\n };\n+\n+/**\n+ * Clamp a number to the range [min, max].\n+ *\n+ * @param {number} n\n+ * @param {number} min\n+ * @param {number} max\n+ * @returns {number}\n+ */\n+EAD.util.clamp = function (n, min, max) {\n+    \"use strict\";\n+\n+    return n < min\n+        ? min\n+        : n > max\n+            ? max\n+            : n;\n+};\n"
+    }
+  ]
+}

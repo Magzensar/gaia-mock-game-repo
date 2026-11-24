@@ -1,0 +1,52 @@
+{
+  "build_id": "1013",
+  "tag": "build-1013",
+  "commit_range": "build-1012..build-1013",
+  "previous_build_id": "1012",
+  "commits": [
+    {
+      "sha": "e29a205c86ad6741dc21555ac34ba2ec86249904",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-23T10:25:08+05:30",
+      "message": "tune(boss): TIME_LIMIT 1600 -> 1800\n\nRequested in design review.",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex 84df228..bd6489b 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -33,7 +33,7 @@ EAD.Boss = function () {\n EAD.Boss.BASE_PX = EAD.BASE_PX * 2;\n EAD.Boss.INITIAL_LIVES = 128;\n EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);\n-EAD.Boss.TIME_LIMIT = 1600;\n+EAD.Boss.TIME_LIMIT = 1800;\n EAD.Boss.MAX_FRAME_COUNT = 2;\n \n EAD.Boss.prototype.COLLISION_RADIUS = 22;\n"
+    },
+    {
+      "sha": "88ac513736b5b0ec7ef284de5104b6e35eeca23b",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-23T13:49:09+05:30",
+      "message": "docs(enemy_manager): add JSDoc for enemy_manager.update",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex ba3bde0..3d54e36 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -59,6 +59,12 @@ EAD.enemy_manager.hideEnemyShips = function () {\n     }\n };\n \n+/**\n+ * Advance the enemy manager by one frame.\n+ *\n+ * @param {number} player_x\n+ * @param {number} player_y\n+ */\n EAD.enemy_manager.update = function (player_x, player_y) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "8e55027b2ba803d5dc0e211c3028eb2b3935e34b",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-23T14:32:07+05:30",
+      "message": "tune(enemy): RANDOM_RANGE 256 -> 288\n\nRetention dashboard shows players dropping in the first two areas.",
+      "files": [
+        "docs/js/constr-enemy.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy.js b/docs/js/constr-enemy.js\nindex d2eb303..5d9d956 100644\n--- a/docs/js/constr-enemy.js\n+++ b/docs/js/constr-enemy.js\n@@ -34,7 +34,7 @@ EAD.Enemy = function () {\n     this.virtual_top = 0;\n };\n \n-EAD.Enemy.RANDOM_RANGE = 256;\n+EAD.Enemy.RANDOM_RANGE = 288;\n EAD.Enemy.SCROLL_GND_VY = 0.5;\n \n EAD.Enemy.prototype.COLLISION_RADIUS = 10;\n"
+    },
+    {
+      "sha": "32b0b2c8edb4b0b4fafeed815be047ada0521827",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-23T17:25:17+05:30",
+      "message": "docs(readme): document seed, autoplay and debug parameters",
+      "files": [
+        "README.md"
+      ],
+      "diff": "diff --git a/README.md b/README.md\nindex f64186e..d83c343 100644\n--- a/README.md\n+++ b/README.md\n@@ -9,6 +9,23 @@ MIT License. See [NOTICE](./NOTICE) and [LICENSE](./LICENSE).\n \n Run locally: `python3 -m http.server -d docs 8000`, then open <http://localhost:8000/>.\n \n+### Query parameters\n+\n+| Parameter | Effect |\n+| --- | --- |\n+| `seed=<n>` | Pins the random seed (area order, enemy behaviour, item drops) so a run replays exactly |\n+| `autoplay=1` | Plays the game with scripted input (see `docs/js/bench.js`) |\n+| `frames=<n>` | With `autoplay=1`: stop after n frames and print `EAD_BENCH {...}` to the console |\n+| `start_area=<id>` | With `autoplay=1`: jump to area id 0-7 as soon as play starts |\n+| `invincible=1` | With `autoplay=1`: the player never runs out of lives |\n+| `drop_item=<id>` | With `autoplay=1`: drop item 2 (plasma), 3 (shield) or 4 (flash) above the player every 3 s |\n+| `debug=1` | Shows the seed and current area on the HUD |\n+\n+Headless replay without a browser (Node 18+):\n+`node tools/replay.js --query \"?seed=42&autoplay=1&invincible=1&start_area=7\" --frames 6000 --device mali-g52`\n+\n+Lint: `./tools/lint.sh`\n+\n ---\n \n EVADE AND DESTROY\n"
+    }
+  ]
+}

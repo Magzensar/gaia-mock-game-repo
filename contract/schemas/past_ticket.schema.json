@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PastTicket",
+  "description": "Historical ticket for RAG search and de-duplication. tickets/past_tickets.json is a JSON array of these. When investigating build N, only tickets created before build N's created_at may be used.",
+  "type": "object",
+  "required": [
+    "ticket_id",
+    "title",
+    "type",
+    "status",
+    "component",
+    "description",
+    "stack_signature",
+    "root_cause",
+    "fix_summary",
+    "created_at",
+    "resolved_at",
+    "fix_commit",
+    "fix_build_id",
+    "duplicate_of",
+    "source"
+  ],
+  "properties": {
+    "ticket_id": {
+      "type": "string",
+      "pattern": "^GAME-[0-9]+$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "crash",
+        "frametime",
+        "memory",
+        "load",
+        "balance",
+        "art",
+        "ui"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "resolved",
+        "duplicate",
+        "wontfix"
+      ]
+    },
+    "component": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "stack_signature": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "<exception>|<file>:<function>|... for the top frames"
+    },
+    "root_cause": {
+      "type": "string"
+    },
+    "fix_summary": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolved_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "fix_commit": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "fix_build_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]{4}$"
+    },
+    "duplicate_of": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^GAME-[0-9]+$"
+    },
+    "source": {
+      "const": "mock",
+      "description": "Records without source=mock did not come from the mock repo; reject them"
+    }
+  },
+  "additionalProperties": false
+}

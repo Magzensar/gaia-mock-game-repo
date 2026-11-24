@@ -1,0 +1,41 @@
+{
+  "build_id": "1002",
+  "tag": "build-1002",
+  "commit_range": "build-1001..build-1002",
+  "previous_build_id": "1001",
+  "commits": [
+    {
+      "sha": "bb7d7a2484b1984681d7ac6aa09ad09c56c60e5e",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-07T10:01:02+05:30",
+      "message": "tune(balance): MAX_DIFFICULTY 320000 -> 336000\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 5312dcf..0c8ecfa 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -49,7 +49,7 @@ EAD.BASE_PX = 32;\n EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n-EAD.MAX_DIFFICULTY = 320000;\n+EAD.MAX_DIFFICULTY = 336000;\n EAD.MAX_HIT = 150;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n"
+    },
+    {
+      "sha": "1f44b2b485156fe8156a4b9611a15678f13094fc",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-09-07T14:38:50+05:30",
+      "message": "chore(pwa): label internal QA builds",
+      "files": [
+        "docs/manifest.json"
+      ],
+      "diff": "diff --git a/docs/manifest.json b/docs/manifest.json\nindex 9f5ed50..560e56e 100644\n--- a/docs/manifest.json\n+++ b/docs/manifest.json\n@@ -1,7 +1,7 @@\n {\n     \"lang\": \"en\",\n-    \"name\": \"EVADE AND DESTROY\",\n-    \"short_name\": \"E.A.D.\",\n+    \"name\": \"EVADE AND DESTROY (GAIA QA)\",\n+    \"short_name\": \"EAD QA\",\n     \"description\": \"HTML5 space shooter game using pure JavaScript\",\n     \"background_color\": \"#000000\",\n     \"theme_color\": \"#000000\",\n"
+    },
+    {
+      "sha": "caf029bfbe9b539d333b3e0d86fe8fe279cec31e",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-07T15:13:25+05:30",
+      "message": "art(area-6): retile background row 35",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex afdadc1..6395d52 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -419,7 +419,7 @@ EAD.bg02_maps[6] = [\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n-    13, 22, 14, 10, 10, 10, 10, 13, 22, 14,\n+    13, 22, 22, 10, 10, 10, 10, 13, 14, 14,\n     24, 16, 26, 13, 22, 22, 14, 24, 16, 26,\n     24, 17, 27, 25, 15, 15, 27, 25, 17, 26,\n     24, 16, 26, 24, 17, 17, 26, 24, 16, 26,\n"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "build_id": "1037",
+  "tag": "build-1037",
+  "commit_range": "build-1036..build-1037",
+  "previous_build_id": "1036",
+  "commits": [
+    {
+      "sha": "9a0500c93d86be23ddf15e18369c82e88f511d55",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-27T11:31:03+05:30",
+      "message": "docs(constr-boss): add JSDoc for Boss.prototype.update",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex 01659f1..b2d4eff 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -52,6 +52,12 @@ EAD.Boss.prototype.STATE = {\n     GARBAGE: 10\n };\n \n+/**\n+ * Advance this boss by one frame.\n+ *\n+ * @param {number} player_x\n+ * @param {number} player_y\n+ */\n EAD.Boss.prototype.update = function (player_x, player_y) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "b493d7112b1a1192f2776de8fe6d7589c4aa2f37",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-27T11:41:10+05:30",
+      "message": "docs(enemy_manager): add JSDoc for enemy_manager.setup",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex efa6aa1..0259989 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -39,6 +39,9 @@ EAD.enemy_manager.KINDS = {\n EAD.enemy_manager.spawn_counts = {};\n \n \n+/**\n+ * Reset the enemy manager to its initial state.\n+ */\n EAD.enemy_manager.setup = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "ae20cf685e4b13ad5a2f1bd1f838925127d452ae",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-27T18:06:40+05:30",
+      "message": "level(area-7): move fighter in row 29",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex a6f78eb..da53967 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -475,7 +475,7 @@ EAD.enemies_maps[7] = [\n     60, 38, 10, 60, 71, 71, 60, 10, 38, 60,\n     60, 38, 60, 10, 71, 71, 10, 60, 38, 60,\n     10, 60, 10, 60, 71, 71, 60, 10, 60, 10,\n-    60, 10, 60, 10, 60, 60, 10, 60, 10, 60,\n+    60, 60, 60, 10, 10, 60, 10, 60, 10, 60,\n     90, 71, 71, 71, 71, 71, 71, 71, 71, 90,\n     10, 72, 60, 72, 10, 10, 72, 60, 72, 10,\n     71, 25, 25, 71, 90, 90, 71, 25, 25, 71,\n"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "build_id": "1049",
+  "tag": "build-1049",
+  "commit_range": "build-1048..build-1049",
+  "previous_build_id": "1048",
+  "commits": [
+    {
+      "sha": "7144a52dbd988b0bb04fe0eb2b8d00e7cdda4fc4",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-11-17T12:13:13+05:30",
+      "message": "feat(hud): name the item the player just picked up\n\nStores a short label (PLASMA, SHIELD, FLASH) for the pickup toast.",
+      "files": [
+        "docs/js/constr-player_item.js",
+        "docs/js/game.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 1a6dfa4..0129e4f 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -34,6 +34,17 @@ EAD.PlayerItem.prototype.NAME = {\n     G_GODMODE: 3,\n     B_FLASH: 4\n };\n+EAD.PlayerItem.prototype.LABELS = {\n+    2: {text: \"PLASMA\", color: \"#f44\"},\n+    3: {text: \"SHIELD\", color: \"#4f4\"},\n+    5: {text: \"FLASH\", color: \"#48f\"}\n+};\n+\n+EAD.PlayerItem.prototype.label = function () {\n+    \"use strict\";\n+\n+    return this.LABELS[this.name].text;\n+};\n EAD.PlayerItem.prototype.STATE = {\n     INIT: 1,\n     ACTIVE: 4,\ndiff --git a/docs/js/game.js b/docs/js/game.js\nindex bfb30cf..59c1a28 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -344,6 +344,7 @@ EAD.loop = function () {\n                 EAD.player_items[i].state =\n                         EAD.player_items[i].STATE.GARBAGE;\n                 EAD.telemetry.crumb(\"item:\" + EAD.player_items[i].name);\n+                EAD.game.pickup_label = EAD.player_items[i].label();\n                 switch (EAD.player_items[i].name) {\n                 case EAD.player_items[i].NAME.R_PLASMA:\n                     EAD.player.energy_red = EAD.PlayerItem.ENERGY_RED;\n"
+    },
+    {
+      "sha": "a09229d2bd6c06a14b68d13e0169418dd6b64747",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-11-17T13:07:54+05:30",
+      "message": "feat(fx): motion trail behind player shots\n\nFading, slightly blurred copies make fast shots easier to follow.",
+      "files": [
+        "docs/js/constr-player_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_shot.js b/docs/js/constr-player_shot.js\nindex ab79495..9e8e93b 100644\n--- a/docs/js/constr-player_shot.js\n+++ b/docs/js/constr-player_shot.js\n@@ -142,6 +142,28 @@ EAD.PlayerShot.prototype.update = function (player_x, player_y) {\n EAD.PlayerShot.prototype.draw = function () {\n     \"use strict\";\n \n+    var t = 1;\n+\n+    // Motion trail: fading, blurred copies behind the shot.\n+    EAD.ctx.p_shot.filter = \"blur(2px)\";\n+    while (t <= 6) {\n+        EAD.ctx.p_shot.globalAlpha = 0.5 / t;\n+        EAD.ctx.p_shot.drawImage(\n+            EAD.sprites,\n+            EAD.PlayerShot.BASE_PX * this.sprite_x,\n+            EAD.PlayerShot.BASE_PX * this.sprite_y,\n+            EAD.PlayerShot.BASE_PX,\n+            EAD.PlayerShot.BASE_PX,\n+            Math.floor(this.x - EAD.PlayerShot.BASE_PX / 2),\n+            Math.floor(this.y - EAD.PlayerShot.BASE_PX / 2) + t * 4,\n+            EAD.PlayerShot.BASE_PX,\n+            EAD.PlayerShot.BASE_PX\n+        );\n+        t += 1;\n+    }\n+    EAD.ctx.p_shot.filter = \"none\";\n+    EAD.ctx.p_shot.globalAlpha = 1;\n+\n     EAD.ctx.p_shot.drawImage(\n         EAD.sprites,\n         EAD.PlayerShot.BASE_PX * this.sprite_x,\n"
+    },
+    {
+      "sha": "54b140b14f5201dcc954a6fd9a811bcdb70ba9ee",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-17T13:26:38+05:30",
+      "message": "tune(items): ENERGY_BLUE 320 -> 336\n\nFlash bomb ran out before clearing a full wave.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 0129e4f..784f3dd 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -25,7 +25,7 @@ EAD.PlayerItem = function () {\n \n EAD.PlayerItem.ENERGY_RED = 520;\n EAD.PlayerItem.ENERGY_GREEN = 400;\n-EAD.PlayerItem.ENERGY_BLUE = 320;\n+EAD.PlayerItem.ENERGY_BLUE = 336;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n EAD.PlayerItem.prototype.NAME = {\n"
+    }
+  ]
+}

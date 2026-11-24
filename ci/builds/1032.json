@@ -1,0 +1,63 @@
+{
+  "build_id": "1032",
+  "tag": "build-1032",
+  "commit_range": "build-1031..build-1032",
+  "previous_build_id": "1031",
+  "commits": [
+    {
+      "sha": "95d9f5a8167341b185ca3fa9e06e7ceb4d55a1c4",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-20T10:33:45+05:30",
+      "message": "docs(constr-tile): add JSDoc for Tile.prototype.draw",
+      "files": [
+        "docs/js/constr-tile.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-tile.js b/docs/js/constr-tile.js\nindex d5492d0..e5890d7 100644\n--- a/docs/js/constr-tile.js\n+++ b/docs/js/constr-tile.js\n@@ -27,6 +27,9 @@ EAD.Tile = function (layer) {\n \n EAD.Tile.SRC_COLS = 10;\n \n+/**\n+ * Draw this tile on its canvas layer.\n+ */\n EAD.Tile.prototype.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "5aaee5dbae6aef955eaa8fea50ca7bb43c6a009e",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-20T10:42:22+05:30",
+      "message": "level(area-7): rebalance row 58",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex e2fe1bb..e1c7e44 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -504,7 +504,7 @@ EAD.enemies_maps[7] = [\n     10, 10, 10, 10, 80, 10, 10, 10, 10, 10,\n     32, 32, 10, 10, 10, 10, 10, 10, 80, 10,\n     80, 10, 10, 10, 10, 80, 10, 10, 10, 10,\n-    10, 10, 10, 80, 10, 10, 10, 10, 10, 10,\n+    10, 10, 80, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 80, 10, 34,\n     10, 10, 80, 10, 10, 10, 10, 10, 10, 80\n ];\n"
+    },
+    {
+      "sha": "5d4787df510e205fc2a0e9ded197ef0f7142f2ed",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-20T12:24:36+05:30",
+      "message": "tune(boss): TIME_LIMIT 1800 -> 1900\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex 86eec50..01659f1 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -36,7 +36,7 @@ EAD.Boss = function () {\n EAD.Boss.BASE_PX = EAD.BASE_PX * 2;\n EAD.Boss.INITIAL_LIVES = 120;\n EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);\n-EAD.Boss.TIME_LIMIT = 1800;\n+EAD.Boss.TIME_LIMIT = 1900;\n EAD.Boss.MAX_FRAME_COUNT = 2;\n \n EAD.Boss.prototype.COLLISION_RADIUS = 22;\n"
+    },
+    {
+      "sha": "91e0baae78ab7ff6bbb7acd4aad1618b4b3810f1",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-10-20T12:28:18+05:30",
+      "message": "docs(constr-background): add JSDoc for Background",
+      "files": [
+        "docs/js/constr-background.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-background.js b/docs/js/constr-background.js\nindex 3bd0530..e88ce78 100644\n--- a/docs/js/constr-background.js\n+++ b/docs/js/constr-background.js\n@@ -10,6 +10,13 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n+/**\n+ * Create a new background.\n+ *\n+ * @param {Object} layer\n+ * @param {number} scroll_vy\n+ * @param {number} tile_map\n+ */\n EAD.Background = function (layer, scroll_vy, tile_map) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "03d79de5bcfc856152c5a4d4ab5a931af86acd6c",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-20T16:37:41+05:30",
+      "message": "level(area-2): rebalance row 48",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex e1c7e44..406ead5 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -184,7 +184,7 @@ EAD.enemies_maps[2] = [\n     50, 10, 10, 50, 10, 80, 50, 80, 10, 90,\n     90, 10, 80, 40, 10, 10, 40, 10, 80, 40,\n     40, 10, 10, 40, 80, 10, 40, 80, 10, 40,\n-    71, 80, 72, 71, 10, 72, 10, 71, 80, 10,\n+    72, 80, 72, 71, 10, 71, 10, 71, 80, 10,\n     72, 25, 80, 71, 10, 80, 71, 72, 25, 71,\n     80, 71, 72, 10, 71, 10, 71, 80, 10, 72,\n     71, 21, 71, 72, 10, 72, 80, 71, 21, 80,\n"
+    }
+  ]
+}

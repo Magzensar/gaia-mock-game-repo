@@ -1,0 +1,41 @@
+{
+  "build_id": "1020",
+  "tag": "build-1020",
+  "commit_range": "build-1019..build-1020",
+  "previous_build_id": "1019",
+  "commits": [
+    {
+      "sha": "cbb11c8d9794765e79c6400cf036e93e0f2c2d7d",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-10-02T10:31:43+05:30",
+      "message": "perf(fx): remove live shadowBlur from the enemy layer\n\nshadowBlur blurs every drawImage call on the layer. On Mali-G52 and\nAdreno 610 this cost 15-20 ms per frame and caused constant hitches.\nShadows will come back pre-rendered in the sprite sheet.",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex c06524c..d231918 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -114,10 +114,7 @@ EAD.enemy_manager.draw = function () {\n         kind = \"\",\n         virtual_gap_y = 0;\n \n-    // Soft drop shadow so ships read better against bright tiles.\n-    EAD.ctx.e_ship.shadowColor = \"rgba(0, 0, 0, 0.65)\";\n-    EAD.ctx.e_ship.shadowBlur = 14;\n-    EAD.ctx.e_ship.shadowOffsetY = 6;\n+    EAD.ctx.e_ship.shadowBlur = 0;\n \n     while (i < EAD.enemy_manager.MAX_ENEMIES) {\n         EAD.enemies[i].virtual_top += EAD.Enemy.SCROLL_GND_VY;\n"
+    },
+    {
+      "sha": "7bb02a0bca66452e81a15adbe882c8d549193414",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-02T11:05:11+05:30",
+      "message": "tune(items): ENERGY_RED 520 -> 600\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 856c820..dc7786b 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 520;\n+EAD.PlayerItem.ENERGY_RED = 600;\n EAD.PlayerItem.ENERGY_GREEN = 375;\n EAD.PlayerItem.ENERGY_BLUE = 256;\n \n"
+    },
+    {
+      "sha": "d55b0d9b6d920c4d15ab1666ad10d29ad1c88b9c",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-02T15:27:06+05:30",
+      "message": "style(ui): darker neutral button for contrast",
+      "files": [
+        "docs/css/styles.css"
+      ],
+      "diff": "diff --git a/docs/css/styles.css b/docs/css/styles.css\nindex 6662ffb..7139732 100644\n--- a/docs/css/styles.css\n+++ b/docs/css/styles.css\n@@ -44,7 +44,7 @@ input.btn {\n }\n \n .btn {\n-    background-color: #999;\n+    background-color: #8c8c8c;\n     -webkit-border-radius: 2px;\n     border-radius: 2px;\n     border: 0;\n"
+    }
+  ]
+}

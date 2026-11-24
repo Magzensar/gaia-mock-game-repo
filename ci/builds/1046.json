@@ -1,0 +1,65 @@
+{
+  "build_id": "1046",
+  "tag": "build-1046",
+  "commit_range": "build-1045..build-1046",
+  "previous_build_id": "1045",
+  "commits": [
+    {
+      "sha": "a720f6529105f2198d26b21ac81cfb25cd57e0db",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-11-10T11:14:23+05:30",
+      "message": "release: v3.8.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex c857afc..7b755a8 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,33 @@\n # Changelog\n \n+## v3.8.0\n+\n+- tune(boss): TIME_LIMIT 1900 -> 1800\n+- art(area-5): fix tile seam in row 20\n+- docs(telemetry): add JSDoc for telemetry.report\n+- tune(items): ENERGY_GREEN 450 -> 425\n+- fix(hud): guard next-area banner on the final area\n+- art(area-2): retile background row 55\n+- tune(boss): TIME_LIMIT 1800 -> 1700\n+- docs(enemy_manager): add JSDoc for enemy_manager.hideEnemyShips\n+- docs(util): add JSDoc for util.hasCollision\n+- art(area-5): fix tile seam in row 33\n+- level(area-4): rebalance row 14\n+- tune(items): ENERGY_RED 600 -> 560\n+- tune(boss): INITIAL_LIVES 120 -> 136\n+- docs(player_shot_manager): clarify the shot pool comment\n+- refactor(weapon): tidy side-shot spawning in fire()\n+- art(area-4): fix tile seam in row 36\n+- level(area-4): move missile in row 22\n+- level(area-0): move boss marker in row 17\n+- tune(enemy): MAX_ENEMY_SHOTS 16 -> 20\n+- tune(balance): MAX_DIFFICULTY 344000 -> 352000\n+- tune(items): ENERGY_GREEN 425 -> 400\n+- fix(weapon): restore the side-shot cap lost in the fire() tidy-up\n+- docs(constr-player_item): add JSDoc for PlayerItem.prototype.draw\n+- docs(player_manager): add JSDoc for player_manager.setup\n+- tune(items): ENERGY_BLUE 288 -> 304\n+\n ## v3.7.0\n \n - feat(fx): red damage flash when the player is hit\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 3b2038d..7be0c15 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -41,7 +41,7 @@ EAD.rng = (function (state) {\n \n EAD.debug = /[?&]debug=1/.test(window.location.search);\n \n-EAD.VERSION = \"v3.7.0\";\n+EAD.VERSION = \"v3.8.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex fb46538..e9d8d07 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.7.0\",\n+var CACHE_NAME = \"EAD-cache-v3.8.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "b62ec2d390c20f5b26cc77341aa686f72e54477e",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-11-10T14:07:00+05:30",
+      "message": "level(area-4): rebalance row 35",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex f0fd177..7539c2b 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -295,7 +295,7 @@ EAD.enemies_maps[4] = [\n     10, 90, 10, 90, 80, 10, 10, 80, 10, 10,\n     90, 10, 90, 10, 10, 80, 10, 10, 80, 10,\n     10, 80, 80, 10, 10, 10, 10, 80, 10, 10,\n-    10, 10, 10, 60, 10, 10, 60, 10, 10, 80,\n+    10, 10, 10, 60, 10, 10, 60, 10, 80, 10,\n     10, 60, 10, 10, 10, 80, 10, 10, 60, 10,\n     80, 10, 10, 60, 10, 10, 60, 10, 10, 10,\n     10, 10, 10, 10, 80, 10, 10, 10, 80, 10,\n"
+    },
+    {
+      "sha": "db6954a4dd2b3506225b09e5003e50e60af0e9c0",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-10T14:31:23+05:30",
+      "message": "tune(items): ENERGY_BLUE 304 -> 320",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex ac88666..411699a 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -25,7 +25,7 @@ EAD.PlayerItem = function () {\n \n EAD.PlayerItem.ENERGY_RED = 560;\n EAD.PlayerItem.ENERGY_GREEN = 400;\n-EAD.PlayerItem.ENERGY_BLUE = 304;\n+EAD.PlayerItem.ENERGY_BLUE = 320;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n EAD.PlayerItem.prototype.NAME = {\n"
+    },
+    {
+      "sha": "45c2dddfc3bff5860f4fc3b2a1d34b01138cb2e9",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-11-10T15:28:29+05:30",
+      "message": "art(area-3): fix tile seam in row 58",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex be8d445..c88fed5 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -256,7 +256,7 @@ EAD.bg02_maps[3] = [\n     18, 15, 18, 15, 18, 15, 16, 16, 16, 16,\n     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,\n     20, 20, 21, 20, 20, 20, 20, 20, 20, 20,\n-    22, 22, 23, 22, 22, 14, 10, 10, 10, 10,\n+    22, 22, 23, 10, 22, 14, 10, 10, 10, 22,\n     17, 16, 17, 16, 17, 26, 10, 10, 10, 10,\n     20, 20, 20, 20, 20, 12, 10, 10, 10, 10\n ];\n"
+    },
+    {
+      "sha": "e398d54eb05163f95dc0ecfc5c0e929a8a39f34d",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-10T15:40:13+05:30",
+      "message": "tune(items): ENERGY_RED 560 -> 520",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 411699a..1a6dfa4 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 560;\n+EAD.PlayerItem.ENERGY_RED = 520;\n EAD.PlayerItem.ENERGY_GREEN = 400;\n EAD.PlayerItem.ENERGY_BLUE = 320;\n \n"
+    }
+  ]
+}

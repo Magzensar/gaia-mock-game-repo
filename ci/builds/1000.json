@@ -1,0 +1,56 @@
+{
+  "build_id": "1000",
+  "tag": "build-1000",
+  "commit_range": "84fb2226daa2768dcecb342ad3958f7aef2c6214..build-1000",
+  "previous_build_id": null,
+  "commits": [
+    {
+      "sha": "c83fc54eb933e8c5963c3b5514d951f3112c2ba9",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-01T12:16:49+05:30",
+      "message": "docs(constr-enemy_shot): add JSDoc for EnemyShot.prototype.draw",
+      "files": [
+        "docs/js/constr-enemy_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy_shot.js b/docs/js/constr-enemy_shot.js\nindex 915cb05..8197fd7 100644\n--- a/docs/js/constr-enemy_shot.js\n+++ b/docs/js/constr-enemy_shot.js\n@@ -139,6 +139,9 @@ EAD.EnemyShot.prototype.update = function (player_x, player_y) {\n     }\n };\n \n+/**\n+ * Draw this enemy shot on its canvas layer.\n+ */\n EAD.EnemyShot.prototype.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "b758a2947ef07f0eb07e3ba9a5c685a09a66500a",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-09-01T16:44:51+05:30",
+      "message": "chore: adopt EVADE AND DESTROY as the engine base\n\nAdds NOTICE with the upstream MIT credit and a short project header\nin the README.",
+      "files": [
+        "NOTICE",
+        "README.md"
+      ],
+      "diff": "diff --git a/NOTICE b/NOTICE\nnew file mode 100644\nindex 0000000..6a3dcc3\n--- /dev/null\n+++ b/NOTICE\n@@ -0,0 +1,12 @@\n+GAIA mock game\n+==============\n+\n+This repository is a test fixture for GAIA (Game Anomaly Investigation Agent).\n+All builds, crash reports and telemetry under ci/ and telemetry/ are synthetic.\n+\n+The game code is based on EVADE AND DESTROY by KUSANAGI Mitsuhisa\n+https://github.com/mikkun/evade-and-destroy\n+Copyright (c) 2017 KUSANAGI Mitsuhisa, released under the MIT License (see LICENSE).\n+\n+Changes made from September 2026 onwards are by the GAIA mock studio team\n+and are released under the same MIT License.\ndiff --git a/README.md b/README.md\nindex 0f369fe..f64186e 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,3 +1,16 @@\n+GAIA mock game (based on EVADE AND DESTROY)\n+===========================================\n+\n+Internal mock game used to exercise GAIA, the Game Anomaly Investigation Agent.\n+Every build, crash report and telemetry file in this repository is synthetic (`\"source\": \"mock\"`).\n+\n+Based on [EVADE AND DESTROY](https://github.com/mikkun/evade-and-destroy) by KUSANAGI Mitsuhisa,\n+MIT License. See [NOTICE](./NOTICE) and [LICENSE](./LICENSE).\n+\n+Run locally: `python3 -m http.server -d docs 8000`, then open <http://localhost:8000/>.\n+\n+---\n+\n EVADE AND DESTROY\n =================\n \n"
+    },
+    {
+      "sha": "57eda8b38a0e255e1081c9c2f822651b4fbb36f8",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-01T16:58:46+05:30",
+      "message": "feat(engine): seeded RNG so runs can be replayed\n\nReplaces Math.random() with EAD.rng() (mulberry32). ?seed=<n> pins\nthe seed; QA needs identical runs to reproduce crashes.",
+      "files": [
+        "docs/js/constr-boss.js",
+        "docs/js/constr-enemy.js",
+        "docs/js/constr-player_item.js",
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex bb3c30e..84df228 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -160,8 +160,8 @@ EAD.Boss.prototype.update = function (player_x, player_y) {\n \n     if (this.time < EAD.Boss.TIME_LIMIT) {\n         if (this.time % 55 === 0) {\n-            this.vx = (Math.floor(Math.random() * 3 - 1)) * 2;\n-            this.vy = (Math.floor(Math.random() * 3 - 1)) * 3;\n+            this.vx = (Math.floor(EAD.rng() * 3 - 1)) * 2;\n+            this.vy = (Math.floor(EAD.rng() * 3 - 1)) * 3;\n             if (this.vy < 0) {\n                 this.vy = -5;\n             }\ndiff --git a/docs/js/constr-enemy.js b/docs/js/constr-enemy.js\nindex d066211..d2eb303 100644\n--- a/docs/js/constr-enemy.js\n+++ b/docs/js/constr-enemy.js\n@@ -86,7 +86,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {\n                 : random_range;\n             if (\n                 !Math.floor(\n-                    Math.random() *\n+                    EAD.rng() *\n                     (2 - EAD.difficulty / EAD.MAX_DIFFICULTY) *\n                     (random_range / 2)\n                 )\n@@ -120,13 +120,13 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {\n                 : this.name + 10;\n         } else if (this.name === this.NAME.RANDOM) {\n             this.name = EAD.difficulty > EAD.DIFFICULTY_HARD\n-                ? this.name - (Math.floor(Math.random() * 4) + 1) * 10\n+                ? this.name - (Math.floor(EAD.rng() * 4) + 1) * 10\n                 : 10;\n         }\n         if (this.name === this.NAME.FIGHTER) {\n-            this.name += Math.floor(Math.random() * 2) + 1;\n+            this.name += Math.floor(EAD.rng() * 2) + 1;\n         } else if (this.name === this.NAME.MISSILE) {\n-            this.name += Math.floor(Math.random() * 2) + 1;\n+            this.name += Math.floor(EAD.rng() * 2) + 1;\n         }\n         break;\n \n@@ -399,7 +399,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {\n                 : player_x - this.x < 0\n                     ? Math.ceil((player_x - this.x) / EAD.BASE_PX)\n                     : 0;\n-            this.vy = Math.floor(Math.random() * 3) + 21;\n+            this.vy = Math.floor(EAD.rng() * 3) + 21;\n             this.has_weapon = true;\n             this.on_ground = false;\n             this.lives = 1;\n@@ -538,7 +538,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {\n     case this.NAME.METEOR:\n         if (this.state === this.STATE.INIT) {\n             this.vx = 0;\n-            this.vy = Math.floor(Math.random() * 3) + 1;\n+            this.vy = Math.floor(EAD.rng() * 3) + 1;\n             this.has_weapon = false;\n             this.on_ground = false;\n             this.lives = 255;\n@@ -568,7 +568,7 @@ EAD.Enemy.prototype.update = function (player_x, player_y) {\n \n     if (this.state === this.STATE.INIT) {\n         if (!this.on_ground) {\n-            this.y -= Math.floor(Math.random() * 2) * EAD.BASE_PX / 2;\n+            this.y -= Math.floor(EAD.rng() * 2) * EAD.BASE_PX / 2;\n         }\n         this.state = this.name === this.NAME.EMPTY\n             ? this.STATE.INACTIVE\ndiff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex f651ac4..6fa50b1 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -43,7 +43,7 @@ EAD.PlayerItem.prototype.STATE = {\n EAD.PlayerItem.prototype.drop = function (enemy_x, enemy_y) {\n     \"use strict\";\n \n-    var n = Math.random();\n+    var n = EAD.rng();\n \n     if (this.state !== this.STATE.GARBAGE) {\n         return false;\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 89e2430..5312dcf 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -12,6 +12,33 @@\n \n var EAD = {};\n \n+// Seeded random numbers so a run can be replayed exactly.\n+// Use ?seed=<n> to pin the seed; otherwise a fresh seed is picked.\n+EAD.seed = (function () {\n+    \"use strict\";\n+\n+    var match = /[?&]seed=(\\d+)/.exec(window.location.search);\n+\n+    return match\n+        ? parseInt(match[1], 10) >>> 0\n+        : Math.floor(Date.now() % 4294967296);\n+}());\n+\n+EAD.rng = (function (state) {\n+    \"use strict\";\n+\n+    // mulberry32\n+    return function () {\n+        var t = 0;\n+\n+        state = (state + 0x6D2B79F5) | 0;\n+        t = Math.imul(state ^ (state >>> 15), 1 | state);\n+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;\n+\n+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;\n+    };\n+}(EAD.seed));\n+\n EAD.VERSION = \"v3.0.1\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n@@ -59,7 +86,7 @@ EAD.area_order = (function () {\n         index = 0;\n \n     while (len) {\n-        index = Math.floor(Math.random() * len);\n+        index = Math.floor(EAD.rng() * len);\n         area_order.push(area_ids.splice(index, 1)[0]);\n \n         len -= 1;\n"
+    },
+    {
+      "sha": "06bae38b475d1201cf5d932a2b9f7fb41f18ae51",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-01T17:51:00+05:30",
+      "message": "level(area-2): rebalance row 41",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex e5cece7..a08ccd3 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -177,7 +177,7 @@ EAD.enemies_maps[2] = [\n     10, 71, 60, 71, 10, 10, 71, 60, 71, 80,\n     71, 60, 71, 10, 80, 71, 60, 71, 10, 10,\n     10, 71, 60, 71, 10, 10, 80, 71, 60, 71,\n-    80, 10, 80, 10, 10, 10, 10, 10, 10, 80,\n+    80, 10, 10, 10, 10, 10, 10, 10, 80, 80,\n     10, 10, 10, 80, 10, 80, 10, 80, 10, 10,\n     50, 10, 80, 10, 10, 10, 50, 10, 80, 50,\n     50, 80, 10, 50, 80, 10, 10, 10, 10, 50,\n"
+    }
+  ]
+}

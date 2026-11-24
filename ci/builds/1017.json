@@ -1,0 +1,30 @@
+{
+  "build_id": "1017",
+  "tag": "build-1017",
+  "commit_range": "build-1016..build-1017",
+  "previous_build_id": "1016",
+  "commits": [
+    {
+      "sha": "d498f9ee4991add3fd8775c6c873c656697f9c0b",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-29T15:28:17+05:30",
+      "message": "feat(fx): soft drop shadows under enemy ships\n\nShips were hard to read against the bright tiles in the ice and\nnebula areas. Adds a soft shadow on the e_ship layer.",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex 04d9bdc..54a44dc 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -112,6 +112,11 @@ EAD.enemy_manager.draw = function () {\n         kind = \"\",\n         virtual_gap_y = 0;\n \n+    // Soft drop shadow so ships read better against bright tiles.\n+    EAD.ctx.e_ship.shadowColor = \"rgba(0, 0, 0, 0.65)\";\n+    EAD.ctx.e_ship.shadowBlur = 14;\n+    EAD.ctx.e_ship.shadowOffsetY = 6;\n+\n     while (i < EAD.enemy_manager.MAX_ENEMIES) {\n         EAD.enemies[i].virtual_top += EAD.Enemy.SCROLL_GND_VY;\n \n"
+    },
+    {
+      "sha": "67453c10b3c349d49c116a41c2f694126f4b60a6",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-29T15:58:32+05:30",
+      "message": "docs(enemy_manager): explain enemy_id wrap-around",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex 54a44dc..c06524c 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -55,6 +55,8 @@ EAD.enemy_manager.setup = function () {\n         EAD.enemies[i].x = EAD.enemies[i].virtual_left + EAD.BASE_PX / 2;\n         EAD.enemies[i].y = EAD.enemies[i].virtual_top + EAD.BASE_PX / 2;\n \n+        // enemy_id walks the concatenated area maps and wraps to 0\n+        // after the final area, so the run loops instead of ending.\n         EAD.enemy_id = EAD.enemy_id < last_enemy_id\n             ? EAD.enemy_id + 1\n             : 0;\n"
+    }
+  ]
+}

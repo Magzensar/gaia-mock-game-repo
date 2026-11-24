@@ -1,0 +1,52 @@
+{
+  "build_id": "1045",
+  "tag": "build-1045",
+  "commit_range": "build-1044..build-1045",
+  "previous_build_id": "1044",
+  "commits": [
+    {
+      "sha": "2461ecae29d0fb504d30890aa301984ec069e438",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-09T09:39:01+05:30",
+      "message": "fix(weapon): restore the side-shot cap lost in the fire() tidy-up\n\nThe refactor dropped the length check, so spent side shots piled up\nin EAD.player_shots again (same leak as before).",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex b058d29..c420ad7 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -44,7 +44,10 @@ EAD.player_shot_manager.fire = function (energy_red) {\n     var i = 0,\n         side_shot = null;\n \n-    if (energy_red > 0) {\n+    if (\n+        energy_red > 0 &&\n+        EAD.player_shots.length < EAD.player_shot_manager.MAX_PLAYER_SHOTS * 2\n+    ) {\n         side_shot = new EAD.PlayerShot();\n         side_shot.fire(energy_red);\n         EAD.player_shots.push(side_shot);\n"
+    },
+    {
+      "sha": "420f48d61dfa78ffd3ca6bb08571d2297feba316",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-09T13:06:49+05:30",
+      "message": "docs(constr-player_item): add JSDoc for PlayerItem.prototype.draw",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 7732f9d..5367df6 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -141,6 +141,9 @@ EAD.PlayerItem.prototype.update = function () {\n     }\n };\n \n+/**\n+ * Draw this player item on its canvas layer.\n+ */\n EAD.PlayerItem.prototype.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "6443a274c7c814329efbcb799ea589f9cb4face7",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-11-09T16:36:44+05:30",
+      "message": "docs(player_manager): add JSDoc for player_manager.setup",
+      "files": [
+        "docs/js/player_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_manager.js b/docs/js/player_manager.js\nindex 48a1007..5cbe8ed 100644\n--- a/docs/js/player_manager.js\n+++ b/docs/js/player_manager.js\n@@ -15,6 +15,9 @@ EAD.player_manager = {};\n // Single player instance, created lazily in setup().\n EAD.player = null;\n \n+/**\n+ * Reset the player manager to its initial state.\n+ */\n EAD.player_manager.setup = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "5abe5ffc6f5b940043dcebf0784d34af86cfa90d",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-09T17:03:12+05:30",
+      "message": "tune(items): ENERGY_BLUE 288 -> 304\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 5367df6..ac88666 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -25,7 +25,7 @@ EAD.PlayerItem = function () {\n \n EAD.PlayerItem.ENERGY_RED = 560;\n EAD.PlayerItem.ENERGY_GREEN = 400;\n-EAD.PlayerItem.ENERGY_BLUE = 288;\n+EAD.PlayerItem.ENERGY_BLUE = 304;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n EAD.PlayerItem.prototype.NAME = {\n"
+    }
+  ]
+}

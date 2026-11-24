@@ -1,0 +1,41 @@
+{
+  "build_id": "1021",
+  "tag": "build-1021",
+  "commit_range": "build-1020..build-1021",
+  "previous_build_id": "1020",
+  "commits": [
+    {
+      "sha": "66c18e93503d511694b8d074260ba1b8892fd244",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-05T15:58:53+05:30",
+      "message": "tune(enemy): RANDOM_RANGE 272 -> 288\n\nRandom enemies clustered too tightly in the middle lanes.",
+      "files": [
+        "docs/js/constr-enemy.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy.js b/docs/js/constr-enemy.js\nindex 67e457c..5d9d956 100644\n--- a/docs/js/constr-enemy.js\n+++ b/docs/js/constr-enemy.js\n@@ -34,7 +34,7 @@ EAD.Enemy = function () {\n     this.virtual_top = 0;\n };\n \n-EAD.Enemy.RANDOM_RANGE = 272;\n+EAD.Enemy.RANDOM_RANGE = 288;\n EAD.Enemy.SCROLL_GND_VY = 0.5;\n \n EAD.Enemy.prototype.COLLISION_RADIUS = 10;\n"
+    },
+    {
+      "sha": "782cb67d8ba1c95ec894fb9719ea2b96a2d1c10c",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-05T16:37:39+05:30",
+      "message": "level(area-3): add a missile wave in row 9\n\nArea 3 felt quiet before the base cluster. Three missiles across the\nmiddle lanes.",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 2e76c9c..91e1236 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -207,7 +207,7 @@ EAD.enemies_maps[3] = [\n     10, 10, 10, 10, 10, 80, 10, 10, 10, 10,\n     80, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 80, 10, 10, 80, 10, 10, 10,\n-    10, 80, 10, 10, 10, 10, 10, 10, 80, 10,\n+    10, 80, 70, 10, 10, 70, 10, 70, 80, 10,\n     10, 10, 10, 50, 10, 10, 50, 10, 10, 10,\n     10, 50, 10, 10, 10, 10, 10, 10, 50, 10,\n     10, 50, 10, 10, 10, 10, 10, 10, 50, 10,\n"
+    },
+    {
+      "sha": "a0475815f8df75700995fbd9d307d9efaee8bedc",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-10-05T17:27:02+05:30",
+      "message": "docs(enemy_manager): explain spawn_counts",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex d231918..b12c453 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -35,6 +35,7 @@ EAD.enemy_manager.KINDS = {\n     80: {group: \"meteor\"},\n     90: {group: \"random\"}\n };\n+// Spawn totals per enemy group, read by the balance report export.\n EAD.enemy_manager.spawn_counts = {};\n \n \n"
+    }
+  ]
+}

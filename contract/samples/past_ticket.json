@@ -1,0 +1,17 @@
+{
+  "ticket_id": "GAME-111",
+  "title": "Background tiles repeat visibly in area-6, row 35",
+  "type": "art",
+  "status": "resolved",
+  "component": "assets",
+  "description": "QA screenshot shows the problem in area 6 near row 35.",
+  "stack_signature": null,
+  "root_cause": "Neighbouring tile ids in the bg02 map did not line up.",
+  "fix_summary": "Swapped the tile ids in that row.",
+  "created_at": "2026-09-05T12:13:25+05:30",
+  "resolved_at": "2026-09-07T15:13:25+05:30",
+  "fix_commit": "caf029bfbe9b539d333b3e0d86fe8fe279cec31e",
+  "fix_build_id": "1002",
+  "duplicate_of": null,
+  "source": "mock"
+}

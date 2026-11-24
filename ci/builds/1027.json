@@ -1,0 +1,52 @@
+{
+  "build_id": "1027",
+  "tag": "build-1027",
+  "commit_range": "build-1026..build-1027",
+  "previous_build_id": "1026",
+  "commits": [
+    {
+      "sha": "42345dfeb10565c29016ddc18fb1b7c45f8afe54",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-10-13T11:03:10+05:30",
+      "message": "docs(player_shot_manager): note why the shot pool is fixed",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex 6765e08..9ceda7c 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -12,6 +12,7 @@\n \n EAD.player_shot_manager = {};\n \n+// Four shots on screen keeps the pool allocation-free during play.\n EAD.player_shot_manager.MAX_PLAYER_SHOTS = 4;\n \n EAD.player_shots = [];\n"
+    },
+    {
+      "sha": "94d994dcc57924d1af083cde1f83fdd709076bf7",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-13T15:59:30+05:30",
+      "message": "feat(weapon): side shots while the plasma cannon is active\n\nPlasma pickups felt weak compared to the normal shot. Adds an extra\nside shot per volley while energy_red > 0.",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex 9ceda7c..3f982e5 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -33,7 +33,14 @@ EAD.player_shot_manager.setup = function () {\n EAD.player_shot_manager.fire = function (energy_red) {\n     \"use strict\";\n \n-    var i = 0;\n+    var i = 0,\n+        side_shot = null;\n+\n+    if (energy_red > 0) {\n+        side_shot = new EAD.PlayerShot();\n+        side_shot.fire(energy_red);\n+        EAD.player_shots.push(side_shot);\n+    }\n \n     while (i < EAD.player_shot_manager.MAX_PLAYER_SHOTS) {\n         if (EAD.player_shots[i].fire(energy_red)) {\n@@ -57,7 +64,7 @@ EAD.player_shot_manager.update = function (player_x, player_y) {\n \n     var i = 0;\n \n-    while (i < EAD.player_shot_manager.MAX_PLAYER_SHOTS) {\n+    while (i < EAD.player_shots.length) {\n         EAD.player_shots[i].update(player_x, player_y);\n \n         i += 1;\n@@ -69,7 +76,7 @@ EAD.player_shot_manager.draw = function () {\n \n     var i = 0;\n \n-    while (i < EAD.player_shot_manager.MAX_PLAYER_SHOTS) {\n+    while (i < EAD.player_shots.length) {\n         if (EAD.player_shots[i].state !== EAD.player_shots[i].STATE.GARBAGE) {\n             EAD.player_shots[i].draw();\n         }\n"
+    },
+    {
+      "sha": "a04ed65b7644cf7f1f71132d12b87576af6d7653",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-13T17:59:28+05:30",
+      "message": "tune(items): ENERGY_RED 680 -> 720\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex c0e29ef..e55f549 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 680;\n+EAD.PlayerItem.ENERGY_RED = 720;\n EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n"
+    },
+    {
+      "sha": "41f4ae1a0550c830fb565cfa4580547965ff9850",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-13T18:06:32+05:30",
+      "message": "docs(player_item_manager): add JSDoc for player_item_manager.update",
+      "files": [
+        "docs/js/player_item_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_item_manager.js b/docs/js/player_item_manager.js\nindex 5d73687..dc3c925 100644\n--- a/docs/js/player_item_manager.js\n+++ b/docs/js/player_item_manager.js\n@@ -43,6 +43,9 @@ EAD.player_item_manager.drop = function (enemy_x, enemy_y) {\n     }\n };\n \n+/**\n+ * Advance the player item manager by one frame.\n+ */\n EAD.player_item_manager.update = function () {\n     \"use strict\";\n \n"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "build_id": "1003",
+  "tag": "build-1003",
+  "commit_range": "build-1002..build-1003",
+  "previous_build_id": "1002",
+  "commits": [
+    {
+      "sha": "1e9e005ff2aa9ee11f960a9fc60436d1407d710a",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-09-08T10:48:26+05:30",
+      "message": "feat(util): add padLeft helper for HUD fields",
+      "files": [
+        "docs/js/util.js"
+      ],
+      "diff": "diff --git a/docs/js/util.js b/docs/js/util.js\nindex 40f1672..bcca5ff 100644\n--- a/docs/js/util.js\n+++ b/docs/js/util.js\n@@ -76,3 +76,22 @@ EAD.util.hasCollision = function (circle1, circle2) {\n \n     return true;\n };\n+\n+/**\n+ * Right-align a value in a fixed-width HUD field.\n+ *\n+ * @param {number|string} value\n+ * @param {number} width\n+ * @returns {string}\n+ */\n+EAD.util.padLeft = function (value, width) {\n+    \"use strict\";\n+\n+    var str = String(value);\n+\n+    while (str.length < width) {\n+        str = \" \" + str;\n+    }\n+\n+    return str.slice(-width);\n+};\n"
+    },
+    {
+      "sha": "4a136770f4908f11ea83ea37c2a2b2eb770a4f01",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-08T12:47:10+05:30",
+      "message": "docs(constr-player_shot): add JSDoc for PlayerShot.prototype.update",
+      "files": [
+        "docs/js/constr-player_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_shot.js b/docs/js/constr-player_shot.js\nindex c208831..2f469cb 100644\n--- a/docs/js/constr-player_shot.js\n+++ b/docs/js/constr-player_shot.js\n@@ -53,6 +53,12 @@ EAD.PlayerShot.prototype.fire = function (energy_red) {\n     return true;\n };\n \n+/**\n+ * Advance this player shot by one frame.\n+ *\n+ * @param {number} player_x\n+ * @param {number} player_y\n+ */\n EAD.PlayerShot.prototype.update = function (player_x, player_y) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "2bac269fcf8b7752e72e8f8c934739e556698e29",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-09-08T16:16:31+05:30",
+      "message": "refactor(hud): use padLeft for score, energy and lives",
+      "files": [
+        "docs/js/game.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex 5365df8..a795d02 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -76,11 +76,11 @@ EAD.loop = function () {\n     var i = 0,\n         j = 0,\n         button_y = 0,\n-        high_score = (\"        \" + EAD.high_score).slice(-9),\n-        score = (\"        \" + EAD.score).slice(-9),\n-        energy_red = (\"  \" + EAD.player.energy_red).slice(-3),\n-        energy_green = (\"  \" + EAD.player.energy_green).slice(-3),\n-        lives = (\" \" + EAD.player.lives).slice(-2);\n+        high_score = EAD.util.padLeft(EAD.high_score, 9),\n+        score = EAD.util.padLeft(EAD.score, 9),\n+        energy_red = EAD.util.padLeft(EAD.player.energy_red, 3),\n+        energy_green = EAD.util.padLeft(EAD.player.energy_green, 3),\n+        lives = EAD.util.padLeft(EAD.player.lives, 2);\n \n     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);\n \n"
+    }
+  ]
+}

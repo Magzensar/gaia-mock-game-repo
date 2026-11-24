@@ -1,0 +1,52 @@
+{
+  "build_id": "1039",
+  "tag": "build-1039",
+  "commit_range": "build-1038..build-1039",
+  "previous_build_id": "1038",
+  "commits": [
+    {
+      "sha": "62dc55ee1f8daecb1e07fc8f81e3f794bc123919",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-29T11:14:56+05:30",
+      "message": "level(area-1): shift ship spawn placement (row 29)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex da53967..abe916c 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -103,7 +103,7 @@ EAD.enemies_maps[1] = [\n     10, 60, 10, 60, 10, 25, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 80, 10, 10, 10, 10,\n     10, 10, 80, 10, 10, 10, 10, 10, 80, 25,\n-    10, 40, 10, 10, 10, 10, 10, 40, 10, 10,\n+    40, 10, 10, 10, 10, 10, 10, 40, 10, 10,\n     10, 10, 40, 10, 10, 10, 40, 10, 10, 25,\n     80, 10, 10, 40, 10, 40, 10, 10, 10, 10,\n     21, 80, 60, 10, 60, 21, 10, 10, 10, 25,\n"
+    },
+    {
+      "sha": "b2ef24499b0c72311a8a60f5c71e9081e4dfb25f",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-29T13:50:32+05:30",
+      "message": "docs(player_shot_manager): add JSDoc for player_shot_manager.setup",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex a80820f..036e450 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -17,6 +17,9 @@ EAD.player_shot_manager.MAX_PLAYER_SHOTS = 4;\n \n EAD.player_shots = [];\n \n+/**\n+ * Reset the player shot manager to its initial state.\n+ */\n EAD.player_shot_manager.setup = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "0b77aeb115a8bc791745c74c284a4f19110224c9",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-29T14:47:59+05:30",
+      "message": "docs(constr-player): add JSDoc for Player.prototype.draw",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex fdc8e80..5fd4eb3 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -184,6 +184,9 @@ EAD.Player.prototype.flash = function () {\n     gl.clear(gl.COLOR_BUFFER_BIT);\n };\n \n+/**\n+ * Draw this player on its canvas layer.\n+ */\n EAD.Player.prototype.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "3ad5f0190ad7994f77fd9185fb77b2708c5edc89",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-29T16:49:49+05:30",
+      "message": "tune(items): ENERGY_RED 680 -> 600",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 84e03ab..8e62627 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 680;\n+EAD.PlayerItem.ENERGY_RED = 600;\n EAD.PlayerItem.ENERGY_GREEN = 450;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n"
+    }
+  ]
+}

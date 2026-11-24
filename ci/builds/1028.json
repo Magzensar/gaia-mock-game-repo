@@ -1,0 +1,65 @@
+{
+  "build_id": "1028",
+  "tag": "build-1028",
+  "commit_range": "build-1027..build-1028",
+  "previous_build_id": "1027",
+  "commits": [
+    {
+      "sha": "ce6b1a237d27b27ce3d3084e2cc218fd0356ae50",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-10-14T10:44:43+05:30",
+      "message": "release: v3.5.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex fd8ee2a..5eee212 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,27 @@\n # Changelog\n \n+## v3.5.0\n+\n+- style(ui): rounder dialog buttons\n+- tune(player): INITIAL_ENERGY_GREEN 180 -> 200\n+- tune(boss): MAX_HIT 155 -> 165\n+- style(ui): more spacing between dialog buttons\n+- fix(telemetry): count unknown enemy kinds instead of throwing\n+- tune(items): ENERGY_BLUE 256 -> 288\n+- tune(items): ENERGY_GREEN 375 -> 425\n+- docs(init): add JSDoc for init\n+- tune(player): INITIAL_ENERGY_GREEN 200 -> 220\n+- docs(player_manager): add JSDoc for player_manager.update\n+- docs(constr-enemy): add JSDoc for Enemy.prototype.draw\n+- docs(constr-boss): add JSDoc for Boss.prototype.draw\n+- style(ui): use the system font stack\n+- tune(enemy): RANDOM_RANGE 288 -> 304\n+- tune(items): ENERGY_RED 600 -> 680\n+- docs(player_shot_manager): note why the shot pool is fixed\n+- feat(weapon): side shots while the plasma cannon is active\n+- tune(items): ENERGY_RED 680 -> 720\n+- docs(player_item_manager): add JSDoc for player_item_manager.update\n+\n ## v3.4.0\n \n - level(area-0): move fighter in row 60\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 998de01..7d1b093 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -41,7 +41,7 @@ EAD.rng = (function (state) {\n \n EAD.debug = /[?&]debug=1/.test(window.location.search);\n \n-EAD.VERSION = \"v3.4.0\";\n+EAD.VERSION = \"v3.5.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex ae8dced..04457b0 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.4.0\",\n+var CACHE_NAME = \"EAD-cache-v3.5.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "79f1a2967019c5a04f09f55f2575d7fed7ce093c",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-14T12:29:53+05:30",
+      "message": "tune(items): ENERGY_RED 720 -> 680\n\nBalance pass after reviewing session-length telemetry.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex e55f549..c0e29ef 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 720;\n+EAD.PlayerItem.ENERGY_RED = 680;\n EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n"
+    },
+    {
+      "sha": "5835aca5a7e723d9fe03911ccacd953314986c69",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-14T13:50:01+05:30",
+      "message": "level(area-6): shift boss marker placement (row 27)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 91e1236..db74b40 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -411,7 +411,7 @@ EAD.enemies_maps[6] = [\n     10, 72, 60, 72, 10, 10, 72, 60, 72, 10,\n     10, 60, 10, 60, 10, 10, 60, 10, 60, 10,\n     60, 10, 60, 10, 10, 60, 10, 60, 10, 60,\n-    10, 10, 10, 90, 90, 10, 90, 10, 90, 10,\n+    90, 10, 10, 10, 90, 10, 90, 10, 90, 10,\n     10, 50, 10, 10, 50, 10, 10, 50, 10, 10,\n     10, 80, 50, 10, 10, 50, 10, 10, 50, 10,\n     50, 10, 10, 50, 10, 10, 50, 10, 10, 50,\n"
+    },
+    {
+      "sha": "e5175a88c2d4336e5c725c238c9b737a652b26a2",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-10-14T14:12:25+05:30",
+      "message": "level(area-0): shift fighter placement (row 57)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex db74b40..99cdbcb 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -69,7 +69,7 @@ EAD.enemies_maps[0] = [\n     10, 10, 25, 60, 10, 10, 60, 25, 10, 10,\n     10, 10, 90, 10, 10, 80, 10, 21, 10, 90,\n     10, 60, 10, 10, 10, 10, 10, 10, 60, 10,\n-    10, 10, 60, 10, 10, 10, 10, 60, 10, 10,\n+    10, 60, 60, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 60, 10, 10, 60, 25, 10, 10,\n     10, 90, 10, 80, 10, 10, 80, 10, 90, 10,\n     60, 10, 10, 10, 60, 10, 10, 60, 10, 60\n"
+    },
+    {
+      "sha": "d9629aba1e07d1dedf80a01b6caf74d6e54ba394",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-14T16:09:07+05:30",
+      "message": "level(area-4): shift fighter placement (row 56)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 99cdbcb..b510725 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -316,7 +316,7 @@ EAD.enemies_maps[4] = [\n     10, 10, 90, 80, 90, 10, 90, 10, 10, 10,\n     90, 10, 10, 10, 10, 90, 80, 10, 10, 90,\n     10, 90, 80, 90, 80, 10, 10, 90, 10, 80,\n-    10, 60, 10, 10, 10, 10, 10, 10, 60, 10,\n+    10, 10, 10, 60, 10, 10, 10, 10, 60, 10,\n     10, 10, 60, 10, 10, 10, 10, 60, 10, 10,\n     10, 10, 10, 60, 25, 25, 60, 10, 10, 10,\n     10, 10, 10, 80, 10, 10, 80, 10, 10, 10,\n"
+    }
+  ]
+}

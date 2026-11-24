@@ -1,0 +1,105 @@
+{
+  "build_id": "1011",
+  "app_version": "v3.2.0",
+  "platform": "android",
+  "source": "mock",
+  "sessions": 59704,
+  "frame_time_ms": [
+    9.88,
+    9.36,
+    7.13,
+    6.53,
+    2.55,
+    6.16
+  ],
+  "frame_time_ms_p50": 6.83,
+  "frame_time_ms_p95": 12.87,
+  "frame_time_ms_p99": 38.15,
+  "load_time_ms": [
+    673.1,
+    953.1,
+    534.8,
+    658.9
+  ],
+  "load_time_ms_p50": 849.3,
+  "load_time_ms_p95": 1189.9,
+  "levels": {
+    "area-0": {
+      "frame_time_ms": [
+        9.88,
+        9.36,
+        7.13,
+        6.53,
+        2.55,
+        6.16
+      ],
+      "frame_time_ms_p50": 6.81,
+      "frame_time_ms_p95": 12.59,
+      "frame_time_ms_p99": 30.23,
+      "frames_sampled": 300,
+      "hitch_count": 2,
+      "hitch_pct": 0.67,
+      "memory_mb_peak": [
+        89.5,
+        97.4,
+        106.8,
+        111.0
+      ],
+      "memory_mb_peak_p95": 139.1
+    },
+    "area-7": {
+      "frame_time_ms": [
+        5.81,
+        6.64,
+        13.22,
+        10.48,
+        11.75,
+        7.31
+      ],
+      "frame_time_ms_p50": 6.76,
+      "frame_time_ms_p95": 12.92,
+      "frame_time_ms_p99": 36.72,
+      "frames_sampled": 300,
+      "hitch_count": 3,
+      "hitch_pct": 1.0,
+      "memory_mb_peak": [
+        111.0,
+        102.3,
+        96.7,
+        95.6
+      ],
+      "memory_mb_peak_p95": 139.9
+    }
+  },
+  "by_device_family": {
+    "mali-g52": {
+      "tier": "low",
+      "sessions": 10747,
+      "frame_time_ms_p95": 13.62,
+      "memory_mb_peak_p95": 105.0
+    },
+    "adreno-740": {
+      "tier": "high",
+      "sessions": 4776,
+      "frame_time_ms_p95": 4.3,
+      "memory_mb_peak_p95": 146.9
+    }
+  },
+  "hot_path": {
+    "frame_time_ms": {
+      "file": "docs/js/game.js",
+      "function": "EAD.loop",
+      "self_time_pct": 30.1
+    },
+    "memory_mb": {
+      "file": "docs/js/constr-background.js",
+      "function": "EAD.Background",
+      "retained_mb": 8.8
+    },
+    "load_time_ms": {
+      "file": "docs/js/init.js",
+      "function": "window.onload",
+      "self_time_pct": 18.4
+    }
+  }
+}

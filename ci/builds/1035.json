@@ -1,0 +1,52 @@
+{
+  "build_id": "1035",
+  "tag": "build-1035",
+  "commit_range": "build-1034..build-1035",
+  "previous_build_id": "1034",
+  "commits": [
+    {
+      "sha": "4e34fc91f8b2d8d93123f954218a098311446882",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-23T10:48:20+05:30",
+      "message": "docs(player_shot_manager): add JSDoc for player_shot_manager.fire",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex 795803e..a80820f 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -30,6 +30,11 @@ EAD.player_shot_manager.setup = function () {\n     }\n };\n \n+/**\n+ * Try to fire; returns true when a shot was spawned.\n+ *\n+ * @param {number} energy_red\n+ */\n EAD.player_shot_manager.fire = function (energy_red) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "7d49641e4a3026729d989bcaaafdcd648b7a4f86",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-10-23T10:57:14+05:30",
+      "message": "docs(constr-physical_point): add JSDoc for PhysicalPoint.prototype.setAcceleration",
+      "files": [
+        "docs/js/constr-physical_point.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-physical_point.js b/docs/js/constr-physical_point.js\nindex 2b8ef6d..564c978 100644\n--- a/docs/js/constr-physical_point.js\n+++ b/docs/js/constr-physical_point.js\n@@ -25,6 +25,12 @@ EAD.PhysicalPoint = function (x, y) {\n \n EAD.PhysicalPoint.FRICTION = 0.82;\n \n+/**\n+ * Set acceleration.\n+ *\n+ * @param {number} ax\n+ * @param {number} ay\n+ */\n EAD.PhysicalPoint.prototype.setAcceleration = function (ax, ay) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "c532c02469a5caf35c80217dd6df8b22b97fbc5e",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-23T15:22:39+05:30",
+      "message": "tune(balance): MAX_DIFFICULTY 352000 -> 344000\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 7283704..290e65f 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -51,7 +51,7 @@ EAD.BASE_PX = 32;\n EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n-EAD.MAX_DIFFICULTY = 352000;\n+EAD.MAX_DIFFICULTY = 344000;\n EAD.MAX_HIT = 165;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n"
+    },
+    {
+      "sha": "35ac566750d32e4704037919a4958a9f5f0ed13a",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-23T15:55:07+05:30",
+      "message": "tune(items): ENERGY_RED 720 -> 680",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex e55f549..c0e29ef 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 720;\n+EAD.PlayerItem.ENERGY_RED = 680;\n EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n"
+    }
+  ]
+}

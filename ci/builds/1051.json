@@ -1,0 +1,52 @@
+{
+  "build_id": "1051",
+  "tag": "build-1051",
+  "commit_range": "build-1050..build-1051",
+  "previous_build_id": "1050",
+  "commits": [
+    {
+      "sha": "3f2d7d283fb19532018febdd297520a294a678a8",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-11-20T10:56:50+05:30",
+      "message": "docs(boss_manager): add JSDoc for boss_manager.draw",
+      "files": [
+        "docs/js/boss_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/boss_manager.js b/docs/js/boss_manager.js\nindex e1ee36b..be23e0c 100644\n--- a/docs/js/boss_manager.js\n+++ b/docs/js/boss_manager.js\n@@ -33,6 +33,9 @@ EAD.boss_manager.update = function (player_x, player_y) {\n     EAD.boss.update(player_x, player_y);\n };\n \n+/**\n+ * Draw the boss manager on its canvas layer.\n+ */\n EAD.boss_manager.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "028801c153894b62a8aca57f4511e4c3cc41f09a",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-11-20T11:06:30+05:30",
+      "message": "fix(hud): key the FLASH pickup label by B_FLASH (4)\n\nThe label table used 5 for the blue item, so picking one up read\n.text of undefined.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex d37cda4..6183d1c 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -37,7 +37,7 @@ EAD.PlayerItem.prototype.NAME = {\n EAD.PlayerItem.prototype.LABELS = {\n     2: {text: \"PLASMA\", color: \"#f44\"},\n     3: {text: \"SHIELD\", color: \"#4f4\"},\n-    5: {text: \"FLASH\", color: \"#48f\"}\n+    4: {text: \"FLASH\", color: \"#48f\"}\n };\n \n EAD.PlayerItem.prototype.label = function () {\n"
+    },
+    {
+      "sha": "cff1361e84e5b1afb55de3937643ecaaf792f76c",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-11-20T14:53:56+05:30",
+      "message": "perf(fx): shorter shot trail without the blur filter\n\nThe 6-copy blurred trail cost 8-10 ms per frame on low-end GPUs.",
+      "files": [
+        "docs/js/constr-player_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_shot.js b/docs/js/constr-player_shot.js\nindex 27df95b..2e79c68 100644\n--- a/docs/js/constr-player_shot.js\n+++ b/docs/js/constr-player_shot.js\n@@ -150,8 +150,7 @@ EAD.PlayerShot.prototype.draw = function () {\n     var t = 1;\n \n     // Motion trail: fading, blurred copies behind the shot.\n-    EAD.ctx.p_shot.filter = \"blur(2px)\";\n-    while (t <= 6) {\n+    while (t <= 2) {\n         EAD.ctx.p_shot.globalAlpha = 0.5 / t;\n         EAD.ctx.p_shot.drawImage(\n             EAD.sprites,\n"
+    },
+    {
+      "sha": "3831749adc10ae5aa12f614027b0246bd9c50da3",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-11-20T15:51:05+05:30",
+      "message": "docs(constr-player): add JSDoc for Player.prototype.flash",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 31a2d5b..ee6bd01 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -167,6 +167,9 @@ EAD.Player.prototype.update = function () {\n     }\n };\n \n+/**\n+ * Flash.\n+ */\n EAD.Player.prototype.flash = function () {\n     \"use strict\";\n \n"
+    }
+  ]
+}

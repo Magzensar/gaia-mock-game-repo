@@ -1,0 +1,19 @@
+{
+  "build_id": "1011",
+  "tag": "build-1011",
+  "commit_range": "build-1010..build-1011",
+  "previous_build_id": "1010",
+  "commits": [
+    {
+      "sha": "9f64201354397c37ef94e21350bbd06df5627b4c",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-21T13:33:51+05:30",
+      "message": "art(area-2): retile background row 60",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex d43bbb2..82303ce 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -196,7 +196,7 @@ EAD.bg02_maps[2] = [\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 13, 22, 14, 13, 22, 14, 10, 10,\n     29, 29, 25, 17, 27, 25, 17, 27, 29, 29,\n-    10, 10, 11, 20, 12, 11, 20, 12, 10, 10\n+    10, 10, 11, 20, 10, 11, 20, 12, 12, 10\n ];\n EAD.bg02_maps[3] = [\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n"
+    }
+  ]
+}

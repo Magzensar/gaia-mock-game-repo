@@ -1,0 +1,41 @@
+{
+  "build_id": "1014",
+  "tag": "build-1014",
+  "commit_range": "build-1013..build-1014",
+  "previous_build_id": "1013",
+  "commits": [
+    {
+      "sha": "a90aadfff02994947ac492d189690aa5c5035646",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-24T10:09:38+05:30",
+      "message": "docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.update",
+      "files": [
+        "docs/js/enemy_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_shot_manager.js b/docs/js/enemy_shot_manager.js\nindex 4adba66..4826371 100644\n--- a/docs/js/enemy_shot_manager.js\n+++ b/docs/js/enemy_shot_manager.js\n@@ -43,6 +43,12 @@ EAD.enemy_shot_manager.fire = function (enemy_x, enemy_y, on_ground) {\n     }\n };\n \n+/**\n+ * Advance the enemy shot manager by one frame.\n+ *\n+ * @param {number} player_x\n+ * @param {number} player_y\n+ */\n EAD.enemy_shot_manager.update = function (player_x, player_y) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "30af174a76974c09d731a6ee46bd46f95fde7077",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-24T13:37:42+05:30",
+      "message": "perf(art): pre-render only the tiles the maps use\n\nThe startup pre-render drew all 4096 tile slots; the maps use 96.\nLow-end phones lost about half a second before the first frame.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 0dc82cb..44d4bfd 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -154,7 +154,7 @@ window.onload = function () {\n     // Pre-render background tiles so the first scroll does not stutter.\n     EAD.tile_cache = [];\n     i = 0;\n-    while (i < 4096) {\n+    while (i < 96) {\n         EAD.tile_cache[i] = document.createElement(\"canvas\");\n         EAD.tile_cache[i].width = EAD.BASE_PX;\n         EAD.tile_cache[i].height = EAD.BASE_PX;\n"
+    },
+    {
+      "sha": "7c326c58b81d861a440a9228a3602faab012fc76",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-24T17:35:13+05:30",
+      "message": "tune(enemy): RANDOM_RANGE 288 -> 272",
+      "files": [
+        "docs/js/constr-enemy.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy.js b/docs/js/constr-enemy.js\nindex 5d9d956..67e457c 100644\n--- a/docs/js/constr-enemy.js\n+++ b/docs/js/constr-enemy.js\n@@ -34,7 +34,7 @@ EAD.Enemy = function () {\n     this.virtual_top = 0;\n };\n \n-EAD.Enemy.RANDOM_RANGE = 288;\n+EAD.Enemy.RANDOM_RANGE = 272;\n EAD.Enemy.SCROLL_GND_VY = 0.5;\n \n EAD.Enemy.prototype.COLLISION_RADIUS = 10;\n"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "build_id": "1036",
+  "tag": "build-1036",
+  "commit_range": "build-1035..build-1036",
+  "previous_build_id": "1035",
+  "commits": [
+    {
+      "sha": "cc639962696cc63ea138f4dbd554b0a85fa14822",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-26T11:02:21+05:30",
+      "message": "level(area-3): move meteor in row 37",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 406ead5..a6f78eb 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -235,7 +235,7 @@ EAD.enemies_maps[3] = [\n     10, 80, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 90, 10, 10, 10, 10, 80,\n     31, 32, 10, 10, 10, 10, 10, 10, 10, 10,\n-    10, 10, 10, 80, 10, 10, 10, 50, 10, 10,\n+    80, 10, 10, 10, 10, 10, 10, 50, 10, 10,\n     10, 50, 10, 10, 10, 10, 10, 10, 80, 10,\n     10, 10, 10, 10, 10, 10, 10, 34, 34, 34,\n     10, 10, 50, 10, 50, 10, 10, 80, 10, 10,\n"
+    },
+    {
+      "sha": "a5a77bbd7aa792f7c88501b550ae6a5743621e3a",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-26T13:06:23+05:30",
+      "message": "fix(fx): skip the damage flash when WebGL is unavailable\n\ngetContext(\"webgl\") returns null on GPUs that Chrome blocklists\n(PowerVR GE8320 among them), and the flash then threw on every hit.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 6d91cbb..fdc8e80 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -177,6 +177,9 @@ EAD.Player.prototype.flash = function () {\n         gl = EAD.Player.flash_canvas.getContext(\"webgl\");\n         EAD.Player.flash_gl = gl;\n     }\n+    if (!gl) {\n+        return;\n+    }\n     gl.clearColor(1, 0, 0, 0.35);\n     gl.clear(gl.COLOR_BUFFER_BIT);\n };\n"
+    },
+    {
+      "sha": "f5405e4dccb457e4bb30487a46c7adcfb71a598f",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-10-26T17:27:17+05:30",
+      "message": "docs(util): add JSDoc for util.calcVelocity",
+      "files": [
+        "docs/js/util.js"
+      ],
+      "diff": "diff --git a/docs/js/util.js b/docs/js/util.js\nindex 49d7763..dd5c628 100644\n--- a/docs/js/util.js\n+++ b/docs/js/util.js\n@@ -23,6 +23,13 @@ EAD.util.abs = function (n) {\n     return (n ^ (n >> 31)) - (n >> 31);\n };\n \n+/**\n+ * Return the velocity that moves from one point toward another at the given speed.\n+ *\n+ * @param {Object} from\n+ * @param {Object} to\n+ * @param {number} speed\n+ */\n EAD.util.calcVelocity = function (from, to, speed) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "072cd13f3ae1748864192a8c94f6fb33a9705c84",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-26T18:11:57+05:30",
+      "message": "tune(items): ENERGY_GREEN 425 -> 450\n\nRetention dashboard shows players dropping in the first two areas.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex c0e29ef..84e03ab 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -24,7 +24,7 @@ EAD.PlayerItem = function () {\n };\n \n EAD.PlayerItem.ENERGY_RED = 680;\n-EAD.PlayerItem.ENERGY_GREEN = 425;\n+EAD.PlayerItem.ENERGY_GREEN = 450;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n"
+    }
+  ]
+}

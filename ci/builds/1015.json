@@ -1,0 +1,52 @@
+{
+  "build_id": "1015",
+  "tag": "build-1015",
+  "commit_range": "build-1014..build-1015",
+  "previous_build_id": "1014",
+  "commits": [
+    {
+      "sha": "3e8e22ab493ec4c7ee3b45a3a5296afc89b98214",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-25T13:20:14+05:30",
+      "message": "docs(constr-player_item): add JSDoc for PlayerItem.prototype.update",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 1567bbb..856c820 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -65,6 +65,9 @@ EAD.PlayerItem.prototype.drop = function (enemy_x, enemy_y) {\n     return true;\n };\n \n+/**\n+ * Advance this player item by one frame.\n+ */\n EAD.PlayerItem.prototype.update = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "31b9423651dc49e5e22ce5ffc8230fcd1e926efb",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-25T15:50:51+05:30",
+      "message": "tune(physics): FRICTION 0.78 -> 0.82\n\nBalance pass after reviewing session-length telemetry.",
+      "files": [
+        "docs/js/constr-physical_point.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-physical_point.js b/docs/js/constr-physical_point.js\nindex dd83dda..7475376 100644\n--- a/docs/js/constr-physical_point.js\n+++ b/docs/js/constr-physical_point.js\n@@ -23,7 +23,7 @@ EAD.PhysicalPoint = function (x, y) {\n     this.prev_time = Date.now();\n };\n \n-EAD.PhysicalPoint.FRICTION = 0.78;\n+EAD.PhysicalPoint.FRICTION = 0.82;\n \n EAD.PhysicalPoint.prototype.setAcceleration = function (ax, ay) {\n     \"use strict\";\n"
+    },
+    {
+      "sha": "5ac6cae228bba08207c762ebf79cb2db0b03074e",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-25T16:43:51+05:30",
+      "message": "docs(enemy_manager): add JSDoc for enemy_manager.draw",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex 3d54e36..e927f8f 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -80,6 +80,9 @@ EAD.enemy_manager.update = function (player_x, player_y) {\n     }\n };\n \n+/**\n+ * Draw the enemy manager on its canvas layer.\n+ */\n EAD.enemy_manager.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "3f2b9f3c0dcfe17813d15770c88edf2f7d37f1a4",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-25T17:42:54+05:30",
+      "message": "feat(telemetry): count enemy spawns by kind for balance reports",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex e927f8f..04d9bdc 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -17,6 +17,27 @@ EAD.enemy_manager.MAX_ENEMIES = EAD.MAP_COLS * EAD.MAP_ROWS;\n EAD.enemies = [];\n EAD.enemy_id = 0;\n \n+EAD.enemy_manager.KINDS = {\n+    10: {group: \"empty\"},\n+    21: {group: \"radar\"},\n+    25: {group: \"turret\"},\n+    31: {group: \"aa\"},\n+    32: {group: \"aa\"},\n+    34: {group: \"aa\"},\n+    35: {group: \"aa\"},\n+    37: {group: \"aa\"},\n+    38: {group: \"aa\"},\n+    40: {group: \"ship\"},\n+    50: {group: \"recon\"},\n+    60: {group: \"fighter\"},\n+    71: {group: \"missile\"},\n+    72: {group: \"missile\"},\n+    80: {group: \"meteor\"},\n+    90: {group: \"random\"}\n+};\n+EAD.enemy_manager.spawn_counts = {};\n+\n+\n EAD.enemy_manager.setup = function () {\n     \"use strict\";\n \n@@ -88,6 +109,7 @@ EAD.enemy_manager.draw = function () {\n \n     var i = 0,\n         last_enemy_id = EAD.enemies_map.length - 1,\n+        kind = \"\",\n         virtual_gap_y = 0;\n \n     while (i < EAD.enemy_manager.MAX_ENEMIES) {\n@@ -98,6 +120,9 @@ EAD.enemy_manager.draw = function () {\n                     (EAD.HEIGHT - EAD.BASE_PX);\n \n             EAD.enemies[i].name = EAD.enemies_map[EAD.enemy_id];\n+            kind = EAD.enemy_manager.KINDS[EAD.enemies[i].name].group;\n+            EAD.enemy_manager.spawn_counts[kind] =\n+                    (EAD.enemy_manager.spawn_counts[kind] || 0) + 1;\n             EAD.enemies[i].state = EAD.enemies[i].STATE.INIT;\n             EAD.enemies[i].virtual_left = i % EAD.MAP_COLS * EAD.BASE_PX;\n             EAD.enemies[i].virtual_top = -EAD.BASE_PX + virtual_gap_y;\n"
+    }
+  ]
+}

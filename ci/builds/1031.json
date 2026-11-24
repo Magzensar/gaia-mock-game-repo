@@ -1,0 +1,52 @@
+{
+  "build_id": "1031",
+  "tag": "build-1031",
+  "commit_range": "build-1030..build-1031",
+  "previous_build_id": "1030",
+  "commits": [
+    {
+      "sha": "63318af7a416a1d0b3f4ead354e263c3c7e101bc",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-19T11:05:27+05:30",
+      "message": "tune(player): BONUS_EVERY 130000 -> 120000\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex cdd6755..4219d33 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -36,7 +36,7 @@ EAD.Player = function () {\n EAD.Player.INITIAL_ENERGY_GREEN = 220;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n-EAD.Player.BONUS_EVERY = 130000;\n+EAD.Player.BONUS_EVERY = 120000;\n EAD.Player.THRUST = 12;\n \n EAD.Player.prototype.COLLISION_RADIUS = 4;\n"
+    },
+    {
+      "sha": "1210934f00c9d8dc6e07e7d67c76273e66576c07",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-19T15:50:43+05:30",
+      "message": "level(area-3): shift meteor placement (row 16)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex f04bd94..e2fe1bb 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -214,7 +214,7 @@ EAD.enemies_maps[3] = [\n     10, 10, 10, 50, 10, 10, 50, 10, 10, 10,\n     10, 10, 10, 10, 80, 10, 10, 10, 10, 10,\n     10, 71, 40, 71, 10, 71, 40, 71, 10, 10,\n-    10, 10, 10, 10, 10, 80, 10, 10, 10, 10,\n+    80, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 71, 40, 71, 10, 71, 40, 71, 10,\n     10, 80, 10, 10, 10, 10, 10, 10, 10, 80,\n     25, 10, 80, 10, 21, 21, 10, 80, 10, 25,\n"
+    },
+    {
+      "sha": "d0fcea6f8e0a89f789953de3bfaa2a09467ee5bd",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-10-19T17:16:24+05:30",
+      "message": "docs(constr-enemy_shot): add JSDoc for EnemyShot",
+      "files": [
+        "docs/js/constr-enemy_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy_shot.js b/docs/js/constr-enemy_shot.js\nindex 74d61ec..384c8d5 100644\n--- a/docs/js/constr-enemy_shot.js\n+++ b/docs/js/constr-enemy_shot.js\n@@ -10,6 +10,9 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n+/**\n+ * Create a new enemy shot.\n+ */\n EAD.EnemyShot = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "8fd415b8e3de841c4151cd5e898117da4342748e",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-19T18:28:55+05:30",
+      "message": "fix(weapon): cap side shots so spent ones are not kept forever\n\nEvery plasma volley pushed a new PlayerShot and nothing removed the\nspent ones, so EAD.player_shots grew for the whole run. Cap the array\nat twice the pool size.",
+      "files": [
+        "docs/js/player_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_shot_manager.js b/docs/js/player_shot_manager.js\nindex 3f982e5..795803e 100644\n--- a/docs/js/player_shot_manager.js\n+++ b/docs/js/player_shot_manager.js\n@@ -36,7 +36,10 @@ EAD.player_shot_manager.fire = function (energy_red) {\n     var i = 0,\n         side_shot = null;\n \n-    if (energy_red > 0) {\n+    if (\n+        energy_red > 0 &&\n+        EAD.player_shots.length < EAD.player_shot_manager.MAX_PLAYER_SHOTS * 2\n+    ) {\n         side_shot = new EAD.PlayerShot();\n         side_shot.fire(energy_red);\n         EAD.player_shots.push(side_shot);\n"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "build_id": "1023",
+  "tag": "build-1023",
+  "commit_range": "build-1022..build-1023",
+  "previous_build_id": "1022",
+  "commits": [
+    {
+      "sha": "29c3d2af786a31cec09df52f92ac3ff17c7e38fe",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-07T09:59:18+05:30",
+      "message": "tune(boss): MAX_HIT 155 -> 165\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex cf91497..b705744 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -52,7 +52,7 @@ EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n EAD.MAX_DIFFICULTY = 344000;\n-EAD.MAX_HIT = 155;\n+EAD.MAX_HIT = 165;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n EAD.DIFFICULTY_HARD = Math.floor(EAD.MAX_DIFFICULTY * 0.6);\n"
+    },
+    {
+      "sha": "6981d915248660e28810fd1708778350800e68a3",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-07T10:35:24+05:30",
+      "message": "style(ui): more spacing between dialog buttons",
+      "files": [
+        "docs/css/styles.css"
+      ],
+      "diff": "diff --git a/docs/css/styles.css b/docs/css/styles.css\nindex b50f75a..7689a51 100644\n--- a/docs/css/styles.css\n+++ b/docs/css/styles.css\n@@ -52,7 +52,7 @@ input.btn {\n     cursor: pointer;\n     display: block;\n     font: bold 15px/1.2 sans-serif;\n-    margin: 8px 0;\n+    margin: 10px 0;\n     padding: 8px;\n     text-align: center;\n     text-decoration: none;\n"
+    },
+    {
+      "sha": "382bacc93f2cda62f4a04bca8f72e20263655478",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-07T12:38:08+05:30",
+      "message": "fix(telemetry): count unknown enemy kinds instead of throwing\n\nThe spawn counter only knew the kinds the maps used when it was\nwritten. Code 70 (generic missile) is valid but was missing, so its\nlookup returned undefined and spawning one threw.",
+      "files": [
+        "docs/js/enemy_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_manager.js b/docs/js/enemy_manager.js\nindex b12c453..efa6aa1 100644\n--- a/docs/js/enemy_manager.js\n+++ b/docs/js/enemy_manager.js\n@@ -125,7 +125,8 @@ EAD.enemy_manager.draw = function () {\n                     (EAD.HEIGHT - EAD.BASE_PX);\n \n             EAD.enemies[i].name = EAD.enemies_map[EAD.enemy_id];\n-            kind = EAD.enemy_manager.KINDS[EAD.enemies[i].name].group;\n+            kind = (EAD.enemy_manager.KINDS[EAD.enemies[i].name] ||\n+                    {group: \"other\"}).group;\n             EAD.enemy_manager.spawn_counts[kind] =\n                     (EAD.enemy_manager.spawn_counts[kind] || 0) + 1;\n             EAD.enemies[i].state = EAD.enemies[i].STATE.INIT;\n"
+    },
+    {
+      "sha": "40eddd64bb3ed74d0012f238ecd9af915d899106",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-07T13:19:14+05:30",
+      "message": "tune(items): ENERGY_BLUE 256 -> 288\n\nBalance pass after reviewing session-length telemetry.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex dc7786b..f250552 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -25,7 +25,7 @@ EAD.PlayerItem = function () {\n \n EAD.PlayerItem.ENERGY_RED = 600;\n EAD.PlayerItem.ENERGY_GREEN = 375;\n-EAD.PlayerItem.ENERGY_BLUE = 256;\n+EAD.PlayerItem.ENERGY_BLUE = 288;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n EAD.PlayerItem.prototype.NAME = {\n"
+    }
+  ]
+}

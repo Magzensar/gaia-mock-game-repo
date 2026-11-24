@@ -1,0 +1,28 @@
+{
+  "crash_id": "c-1011-00008",
+  "build_id": "1011",
+  "app_version": "v3.2.0",
+  "platform": "android",
+  "device_family": "mali-g715",
+  "os_version": "Android 15",
+  "exception": "TypeError",
+  "message": "Cannot read properties of undefined (reading 'pageX')",
+  "stack": [
+    {
+      "function": "HTMLCanvasElement.<anonymous>",
+      "file": "docs/js/init.js",
+      "line": 169,
+      "column": 26
+    }
+  ],
+  "level": "area-0",
+  "breadcrumbs": [
+    "game_start",
+    "area_enter:0",
+    "item:2",
+    "item:4"
+  ],
+  "session_id": "s-1011-672ed913",
+  "ts": "2026-09-21T20:57:12+05:30",
+  "source": "mock"
+}

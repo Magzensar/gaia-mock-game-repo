@@ -1,0 +1,76 @@
+{
+  "build_id": "1016",
+  "tag": "build-1016",
+  "commit_range": "build-1015..build-1016",
+  "previous_build_id": "1015",
+  "commits": [
+    {
+      "sha": "497cd51879785f0791aa4ac1f8b3f2a6091c6959",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-09-28T10:38:20+05:30",
+      "message": "release: v3.3.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex 591b3a7..cc1ca02 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,29 @@\n # Changelog\n \n+## v3.3.0\n+\n+- feat(level): track the current area\n+- docs(game): add JSDoc for loop\n+- tune(balance): MAX_DIFFICULTY 336000 -> 328000\n+- feat(tools): headless replay runner and repro options\n+- art(area-2): retile background row 60\n+- docs(game): add JSDoc for setup\n+- level(area-6): move missile in row 46\n+- feat(debug): ?debug=1 shows seed and area on the HUD\n+- perf(art): pre-render background tiles at startup\n+- tune(balance): MAX_DIFFICULTY 328000 -> 336000\n+- tune(boss): TIME_LIMIT 1600 -> 1800\n+- docs(enemy_manager): add JSDoc for enemy_manager.update\n+- tune(enemy): RANDOM_RANGE 256 -> 288\n+- docs(readme): document seed, autoplay and debug parameters\n+- docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.update\n+- perf(art): pre-render only the tiles the maps use\n+- tune(enemy): RANDOM_RANGE 288 -> 272\n+- docs(constr-player_item): add JSDoc for PlayerItem.prototype.update\n+- tune(physics): FRICTION 0.78 -> 0.82\n+- docs(enemy_manager): add JSDoc for enemy_manager.draw\n+- feat(telemetry): count enemy spawns by kind for balance reports\n+\n ## v3.2.0\n \n - tune(physics): FRICTION 0.8 -> 0.78\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 44d4bfd..fd8ba10 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -41,7 +41,7 @@ EAD.rng = (function (state) {\n \n EAD.debug = /[?&]debug=1/.test(window.location.search);\n \n-EAD.VERSION = \"v3.2.0\";\n+EAD.VERSION = \"v3.3.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex 70c91d9..0b293ea 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.2.0\",\n+var CACHE_NAME = \"EAD-cache-v3.3.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "ac40130509d29e434c2dc2640d16ca250f32d710",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-28T12:02:43+05:30",
+      "message": "level(area-0): move fighter in row 60",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex effe881..3c90845 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -72,7 +72,7 @@ EAD.enemies_maps[0] = [\n     10, 10, 60, 10, 10, 10, 10, 60, 10, 10,\n     10, 10, 10, 60, 10, 10, 60, 25, 10, 10,\n     10, 90, 10, 80, 10, 10, 80, 10, 90, 10,\n-    60, 10, 60, 10, 10, 10, 10, 60, 10, 60\n+    60, 10, 10, 10, 60, 10, 10, 60, 10, 60\n ];\n EAD.enemies_maps[1] = [\n     10, 10, 80, 10, 10, 10, 10, 10, 10, 10,\n"
+    },
+    {
+      "sha": "74fdfa2270c04e5f3fe7bb4292cccadc67ba20cc",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-28T13:30:19+05:30",
+      "message": "tune(player): INITIAL_ENERGY_GREEN 200 -> 180\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 73b0e96..728d7d7 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -33,7 +33,7 @@ EAD.Player = function () {\n     this.state = this.STATE.INACTIVE;\n };\n \n-EAD.Player.INITIAL_ENERGY_GREEN = 200;\n+EAD.Player.INITIAL_ENERGY_GREEN = 180;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n EAD.Player.BONUS_EVERY = 130000;\n"
+    },
+    {
+      "sha": "61a3b5dc1e099538ab8220af9ccfb8974f7534b4",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-28T15:02:25+05:30",
+      "message": "tune(boss): INITIAL_LIVES 128 -> 136\n\nRetention dashboard shows players dropping in the first two areas.",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex bd6489b..a21d509 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -31,7 +31,7 @@ EAD.Boss = function () {\n };\n \n EAD.Boss.BASE_PX = EAD.BASE_PX * 2;\n-EAD.Boss.INITIAL_LIVES = 128;\n+EAD.Boss.INITIAL_LIVES = 136;\n EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);\n EAD.Boss.TIME_LIMIT = 1800;\n EAD.Boss.MAX_FRAME_COUNT = 2;\n"
+    },
+    {
+      "sha": "31c77c3ebd99891320604480ad9c4ebca90aae83",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-28T15:50:42+05:30",
+      "message": "art(area-3): retile background row 53",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex 82303ce..288ded4 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -251,7 +251,7 @@ EAD.bg02_maps[3] = [\n     15, 15, 15, 15, 15, 15, 16, 17, 16, 15,\n     15, 19, 19, 19, 19, 15, 16, 17, 16, 15,\n     15, 15, 15, 15, 15, 15, 16, 17, 16, 15,\n-    15, 19, 19, 19, 19, 15, 16, 17, 16, 16,\n+    19, 15, 19, 19, 19, 15, 16, 17, 16, 16,\n     15, 15, 15, 15, 15, 15, 16, 17, 17, 17,\n     18, 15, 18, 15, 18, 15, 16, 16, 16, 16,\n     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,\n"
+    },
+    {
+      "sha": "0e19adc665fe341953ccba59d140812f2e4fb3a2",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-28T16:19:00+05:30",
+      "message": "docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.setup",
+      "files": [
+        "docs/js/enemy_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_shot_manager.js b/docs/js/enemy_shot_manager.js\nindex 4826371..6724ee7 100644\n--- a/docs/js/enemy_shot_manager.js\n+++ b/docs/js/enemy_shot_manager.js\n@@ -16,6 +16,9 @@ EAD.enemy_shot_manager.MAX_ENEMY_SHOTS = 16;\n \n EAD.enemy_shots = [];\n \n+/**\n+ * Reset the enemy shot manager to its initial state.\n+ */\n EAD.enemy_shot_manager.setup = function () {\n     \"use strict\";\n \n"
+    }
+  ]
+}

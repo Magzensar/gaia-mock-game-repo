@@ -1,0 +1,63 @@
+{
+  "build_id": "1030",
+  "tag": "build-1030",
+  "commit_range": "build-1029..build-1030",
+  "previous_build_id": "1029",
+  "commits": [
+    {
+      "sha": "888d3bfa2f156a3d1bc3e5c69b2df5c14e107d61",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-10-16T11:01:52+05:30",
+      "message": "docs(boss_manager): add JSDoc for boss_manager.update",
+      "files": [
+        "docs/js/boss_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/boss_manager.js b/docs/js/boss_manager.js\nindex affa344..e1ee36b 100644\n--- a/docs/js/boss_manager.js\n+++ b/docs/js/boss_manager.js\n@@ -21,6 +21,12 @@ EAD.boss_manager.setup = function () {\n     EAD.boss.state = EAD.boss.STATE.GARBAGE;\n };\n \n+/**\n+ * Advance the boss manager by one frame.\n+ *\n+ * @param {number} player_x\n+ * @param {number} player_y\n+ */\n EAD.boss_manager.update = function (player_x, player_y) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "63eaf4a769e5e15bcf1ad20dbc1d72a317ea7a37",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-16T12:53:48+05:30",
+      "message": "docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.fire",
+      "files": [
+        "docs/js/enemy_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_shot_manager.js b/docs/js/enemy_shot_manager.js\nindex 6724ee7..c0924f8 100644\n--- a/docs/js/enemy_shot_manager.js\n+++ b/docs/js/enemy_shot_manager.js\n@@ -32,6 +32,13 @@ EAD.enemy_shot_manager.setup = function () {\n     }\n };\n \n+/**\n+ * Try to fire; returns true when a shot was spawned.\n+ *\n+ * @param {number} enemy_x\n+ * @param {number} enemy_y\n+ * @param {number} on_ground\n+ */\n EAD.enemy_shot_manager.fire = function (enemy_x, enemy_y, on_ground) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "360af810133662d1d7b8ee3b1c039938f64fbb57",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-10-16T14:18:22+05:30",
+      "message": "docs(constr-boss): add JSDoc for Boss",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex 3b6e5f1..86eec50 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -10,6 +10,9 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n+/**\n+ * Create a new boss.\n+ */\n EAD.Boss = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "678a27b6aceea32e0905556631ccc460bc8a8459",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-16T15:05:37+05:30",
+      "message": "level(area-6): shift boss marker placement (row 36)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 101c9e2..742eb24 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -420,7 +420,7 @@ EAD.enemies_maps[6] = [\n     10, 50, 10, 10, 50, 10, 10, 50, 80, 10,\n     50, 10, 10, 50, 10, 10, 50, 10, 10, 50,\n     10, 10, 90, 10, 90, 90, 10, 10, 90, 10,\n-    10, 90, 10, 10, 90, 90, 10, 10, 10, 90,\n+    10, 10, 10, 10, 90, 90, 10, 10, 90, 90,\n     10, 25, 72, 60, 72, 71, 60, 71, 25, 10,\n     60, 10, 60, 10, 21, 21, 10, 60, 10, 60,\n     10, 25, 71, 60, 71, 72, 60, 72, 25, 10,\n"
+    },
+    {
+      "sha": "d1236f5c11e98551f4af2e85f03b6c2cbe5f9ea1",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-16T17:23:16+05:30",
+      "message": "level(area-6): shift fighter placement (row 26)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 742eb24..f04bd94 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -410,7 +410,7 @@ EAD.enemies_maps[6] = [\n     10, 10, 71, 60, 71, 71, 60, 71, 25, 10,\n     10, 72, 60, 72, 10, 10, 72, 60, 72, 10,\n     10, 60, 10, 60, 10, 10, 60, 10, 60, 10,\n-    60, 10, 60, 10, 10, 60, 10, 60, 10, 60,\n+    60, 60, 10, 10, 10, 60, 10, 60, 10, 60,\n     90, 10, 10, 10, 90, 10, 90, 10, 90, 10,\n     10, 50, 10, 10, 50, 10, 10, 50, 10, 10,\n     10, 80, 50, 10, 10, 50, 10, 10, 50, 10,\n"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "build_id": "1033",
+  "tag": "build-1033",
+  "commit_range": "build-1032..build-1033",
+  "previous_build_id": "1032",
+  "commits": [
+    {
+      "sha": "61ca79fefc47047650f7fc434458aa5a7f40b066",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-10-21T15:05:17+05:30",
+      "message": "docs(player_manager): note that the player is created lazily",
+      "files": [
+        "docs/js/player_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_manager.js b/docs/js/player_manager.js\nindex 709061f..48a1007 100644\n--- a/docs/js/player_manager.js\n+++ b/docs/js/player_manager.js\n@@ -12,6 +12,7 @@\n \n EAD.player_manager = {};\n \n+// Single player instance, created lazily in setup().\n EAD.player = null;\n \n EAD.player_manager.setup = function () {\n"
+    },
+    {
+      "sha": "d8fd58e86cec49ee5e3f125917476a9cb424c1a3",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-21T15:58:42+05:30",
+      "message": "tune(balance): MAX_DIFFICULTY 344000 -> 352000\n\nBalance pass after reviewing session-length telemetry.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 7d1b093..100cb17 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -51,7 +51,7 @@ EAD.BASE_PX = 32;\n EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n-EAD.MAX_DIFFICULTY = 344000;\n+EAD.MAX_DIFFICULTY = 352000;\n EAD.MAX_HIT = 165;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n"
+    },
+    {
+      "sha": "77b53696683244172f2a29ab13220f3200967a71",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-21T16:55:47+05:30",
+      "message": "docs(player_item_manager): add JSDoc for player_item_manager.drop",
+      "files": [
+        "docs/js/player_item_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/player_item_manager.js b/docs/js/player_item_manager.js\nindex dc3c925..6386f00 100644\n--- a/docs/js/player_item_manager.js\n+++ b/docs/js/player_item_manager.js\n@@ -29,6 +29,12 @@ EAD.player_item_manager.setup = function () {\n     }\n };\n \n+/**\n+ * Drop an item at the given position if the slot is free.\n+ *\n+ * @param {number} enemy_x\n+ * @param {number} enemy_y\n+ */\n EAD.player_item_manager.drop = function (enemy_x, enemy_y) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "e29befc71b2a92a04f12c80bcb7ac672c62c4dff",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-21T17:34:30+05:30",
+      "message": "docs(constr-background): add JSDoc for Background.prototype.scroll",
+      "files": [
+        "docs/js/constr-background.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-background.js b/docs/js/constr-background.js\nindex e88ce78..c56b7f3 100644\n--- a/docs/js/constr-background.js\n+++ b/docs/js/constr-background.js\n@@ -51,6 +51,9 @@ EAD.Background.prototype.setup = function () {\n     }\n };\n \n+/**\n+ * Scroll the background layer by one step.\n+ */\n EAD.Background.prototype.scroll = function () {\n     \"use strict\";\n \n"
+    }
+  ]
+}

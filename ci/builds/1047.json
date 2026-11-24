@@ -1,0 +1,30 @@
+{
+  "build_id": "1047",
+  "tag": "build-1047",
+  "commit_range": "build-1046..build-1047",
+  "previous_build_id": "1046",
+  "commits": [
+    {
+      "sha": "a991977ffdb70c3ef355bd2c0fc0e9df5006df43",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-11-12T12:47:03+05:30",
+      "message": "tune(player): BONUS_EVERY 120000 -> 100000\n\nRetention dashboard shows players dropping in the first two areas.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 5fd4eb3..fde2402 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -36,7 +36,7 @@ EAD.Player = function () {\n EAD.Player.INITIAL_ENERGY_GREEN = 220;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n-EAD.Player.BONUS_EVERY = 120000;\n+EAD.Player.BONUS_EVERY = 100000;\n EAD.Player.THRUST = 13;\n \n EAD.Player.prototype.COLLISION_RADIUS = 4;\n"
+    },
+    {
+      "sha": "f9aa6bbeb47801b2ae89aae6f8ce44efb4fda363",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-12T18:26:49+05:30",
+      "message": "tune(player): INITIAL_ENERGY_GREEN 220 -> 200\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex fde2402..31a2d5b 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -33,7 +33,7 @@ EAD.Player = function () {\n     this.state = this.STATE.INACTIVE;\n };\n \n-EAD.Player.INITIAL_ENERGY_GREEN = 220;\n+EAD.Player.INITIAL_ENERGY_GREEN = 200;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n EAD.Player.BONUS_EVERY = 100000;\n"
+    }
+  ]
+}

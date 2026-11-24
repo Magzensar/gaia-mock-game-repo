@@ -1,0 +1,63 @@
+{
+  "build_id": "1008",
+  "tag": "build-1008",
+  "commit_range": "build-1007..build-1008",
+  "previous_build_id": "1007",
+  "commits": [
+    {
+      "sha": "a769fca0d2d8b12367ea2d81fab69d12275fed6d",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-15T12:34:18+05:30",
+      "message": "tune(player): BONUS_EVERY 100000 -> 110000",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 50a87de..12d4d34 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -36,7 +36,7 @@ EAD.Player = function () {\n EAD.Player.INITIAL_ENERGY_GREEN = 200;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n-EAD.Player.BONUS_EVERY = 100000;\n+EAD.Player.BONUS_EVERY = 110000;\n EAD.Player.THRUST = 12;\n \n EAD.Player.prototype.COLLISION_RADIUS = 4;\n"
+    },
+    {
+      "sha": "e273d8a17a347a772be07ac2ef0ceb75cabe9bdc",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-15T12:55:45+05:30",
+      "message": "level(area-7): rebalance row 48",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 7fe1b1d..5f5724d 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -494,7 +494,7 @@ EAD.enemies_maps[7] = [\n     72, 50, 72, 71, 25, 25, 71, 10, 10, 10,\n     10, 10, 10, 71, 25, 25, 71, 72, 50, 72,\n     10, 72, 50, 72, 71, 71, 10, 10, 10, 10,\n-    90, 71, 71, 10, 72, 50, 72, 71, 71, 90,\n+    90, 10, 71, 71, 72, 50, 72, 71, 71, 90,\n     71, 25, 25, 71, 90, 90, 71, 25, 25, 71,\n     71, 25, 25, 71, 90, 90, 71, 25, 25, 71,\n     90, 71, 71, 72, 50, 72, 10, 71, 71, 90,\n"
+    },
+    {
+      "sha": "a4ea8dbdec110af96eae3d8b17513e702bdd0906",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-15T15:06:42+05:30",
+      "message": "tune(player): BONUS_EVERY 110000 -> 130000",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 12d4d34..73b0e96 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -36,7 +36,7 @@ EAD.Player = function () {\n EAD.Player.INITIAL_ENERGY_GREEN = 200;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n-EAD.Player.BONUS_EVERY = 110000;\n+EAD.Player.BONUS_EVERY = 130000;\n EAD.Player.THRUST = 12;\n \n EAD.Player.prototype.COLLISION_RADIUS = 4;\n"
+    },
+    {
+      "sha": "4b0b2d6577eb574d2740777198b1e3dc550653d3",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-15T15:11:45+05:30",
+      "message": "docs(util): add JSDoc for util.abs",
+      "files": [
+        "docs/js/util.js"
+      ],
+      "diff": "diff --git a/docs/js/util.js b/docs/js/util.js\nindex daf1093..49d7763 100644\n--- a/docs/js/util.js\n+++ b/docs/js/util.js\n@@ -12,6 +12,11 @@\n \n EAD.util = {};\n \n+/**\n+ * Branch-free absolute value for 32-bit integers.\n+ *\n+ * @param {number} n\n+ */\n EAD.util.abs = function (n) {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "1b1c6a492ed7787554a7c319dddba2f3700a99d1",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-15T15:31:57+05:30",
+      "message": "feat(telemetry): record game start/over and item pickups",
+      "files": [
+        "docs/js/game.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex fcf4726..fc23ffb 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -159,6 +159,7 @@ EAD.loop = function () {\n         EAD.boss_manager.setup();\n         EAD.player.state = EAD.player.STATE.STANDBY;\n         EAD.game.state = EAD.game.STATE.PLAYING;\n+        EAD.telemetry.crumb(\"game_start\");\n         EAD.ctx.front.fillText(\" == STARTING  GAME ==\", EAD.WIDTH / 2, 12);\n         EAD.ctx.front.fillText(\" --- PLEASE  WAIT ---\", EAD.WIDTH / 2, 24);\n         break;\n@@ -318,6 +319,7 @@ EAD.loop = function () {\n             if (EAD.util.hasCollision(EAD.player_items[i], EAD.player)) {\n                 EAD.player_items[i].state =\n                         EAD.player_items[i].STATE.GARBAGE;\n+                EAD.telemetry.crumb(\"item:\" + EAD.player_items[i].name);\n                 switch (EAD.player_items[i].name) {\n                 case EAD.player_items[i].NAME.R_PLASMA:\n                     EAD.player.energy_red = EAD.PlayerItem.ENERGY_RED;\n@@ -371,6 +373,7 @@ EAD.loop = function () {\n         break;\n \n     case EAD.game.STATE.SAVING:\n+        EAD.telemetry.crumb(\"game_over\");\n         EAD.game.storage_error = \"\";\n         try {\n             window.localStorage.setItem(\"high_score\", EAD.high_score);\n"
+    }
+  ]
+}

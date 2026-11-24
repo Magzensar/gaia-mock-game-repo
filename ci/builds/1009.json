@@ -1,0 +1,41 @@
+{
+  "build_id": "1009",
+  "tag": "build-1009",
+  "commit_range": "build-1008..build-1009",
+  "previous_build_id": "1008",
+  "commits": [
+    {
+      "sha": "0e4b5939aacf7e646130f776690306dd73db7bdf",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-16T14:21:25+05:30",
+      "message": "docs(constr-player_shot): add JSDoc for PlayerShot",
+      "files": [
+        "docs/js/constr-player_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_shot.js b/docs/js/constr-player_shot.js\nindex 2f469cb..210b63f 100644\n--- a/docs/js/constr-player_shot.js\n+++ b/docs/js/constr-player_shot.js\n@@ -10,6 +10,9 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n+/**\n+ * Create a new player shot.\n+ */\n EAD.PlayerShot = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "f1ac92e7996bd45a9ae30dd85d2753636439cf30",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-16T15:25:14+05:30",
+      "message": "tune(items): ENERGY_RED 600 -> 520",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 5519313..1567bbb 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 600;\n+EAD.PlayerItem.ENERGY_RED = 520;\n EAD.PlayerItem.ENERGY_GREEN = 375;\n EAD.PlayerItem.ENERGY_BLUE = 256;\n \n"
+    },
+    {
+      "sha": "228ae5b58fd6daff5369cc470b855c87da0f3fe4",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-09-16T17:48:27+05:30",
+      "message": "style(ui): smaller button labels on narrow screens",
+      "files": [
+        "docs/css/styles.css"
+      ],
+      "diff": "diff --git a/docs/css/styles.css b/docs/css/styles.css\nindex f751c03..6662ffb 100644\n--- a/docs/css/styles.css\n+++ b/docs/css/styles.css\n@@ -51,7 +51,7 @@ input.btn {\n     color: #fff;\n     cursor: pointer;\n     display: block;\n-    font: bold 16px/1.2 sans-serif;\n+    font: bold 15px/1.2 sans-serif;\n     margin: 8px 0;\n     padding: 8px;\n     text-align: center;\n"
+    }
+  ]
+}

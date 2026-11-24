@@ -1,0 +1,30 @@
+{
+  "build_id": "1038",
+  "tag": "build-1038",
+  "commit_range": "build-1037..build-1038",
+  "previous_build_id": "1037",
+  "commits": [
+    {
+      "sha": "58eb765d489a7be8f06a9d9b7d79d97ba06c5d44",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-28T12:25:01+05:30",
+      "message": "feat(hud): warn the player before the next area\n\nShows \"NEXT AREA: <name>\" for the last 10% of each area so players\nknow a transition is coming. Uses the area tracking added in v3.2.",
+      "files": [
+        "docs/js/game.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex d5abd9f..9ac7c77 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -24,6 +24,7 @@ EAD.game.STATE = {\n EAD.game.state = EAD.game.STATE.LOADING;\n EAD.game.storage_error = \"\";\n EAD.game.area_index = 0;\n+EAD.game.banner = \"\";\n \n /**\n  * Reset the game to its initial state.\n@@ -88,7 +89,9 @@ EAD.loop = function () {\n         energy_red = EAD.util.padLeft(EAD.player.energy_red, 3),\n         energy_green = EAD.util.padLeft(EAD.player.energy_green, 3),\n         lives = EAD.util.padLeft(EAD.player.lives, 2),\n-        area_index = 0;\n+        area_index = 0,\n+        area_progress = 0,\n+        next_area = null;\n \n     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);\n \n@@ -192,6 +195,13 @@ EAD.loop = function () {\n             EAD.game.area_index = area_index;\n             EAD.telemetry.crumb(\"area_enter:\" + EAD.area_order[area_index]);\n         }\n+        area_progress = (EAD.enemy_id % EAD.AREA_LEN) / EAD.AREA_LEN;\n+        next_area = EAD.area_info[EAD.area_order[EAD.game.area_index + 1]];\n+        if (area_progress > 0.9) {\n+            EAD.game.banner = \"NEXT AREA: \" + next_area.name;\n+        } else {\n+            EAD.game.banner = \"\";\n+        }\n         while (i < EAD.enemy_manager.MAX_ENEMIES) {\n             if (\n                 EAD.enemies[i].state === EAD.enemies[i].STATE.ACTIVE ||\n@@ -366,6 +376,13 @@ EAD.loop = function () {\n                 : EAD.Player.MAX_LIVES;\n             EAD.player.bonus_count += 1;\n         }\n+        if (EAD.game.banner) {\n+            EAD.ctx.front.fillText(\n+                EAD.game.banner,\n+                EAD.WIDTH / 2 - 64,\n+                EAD.HEIGHT / 2\n+            );\n+        }\n         if (EAD.player.state === EAD.player.STATE.GARBAGE) {\n             EAD.game.state = EAD.game.STATE.SAVING;\n         }\n"
+    },
+    {
+      "sha": "9fd033ffdbbef0430ce3c24ba9ea52e4297a6dcf",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-28T16:35:44+05:30",
+      "message": "fix(hud): keep LIVES counter clear of the fire button",
+      "files": [
+        "docs/js/game.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex 9ac7c77..bff4487 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -399,7 +399,7 @@ EAD.loop = function () {\n         EAD.ctx.front.fillText(\n             \"LIVES \" + lives,\n             2,\n-            EAD.HEIGHT - EAD.BASE_PX - 3\n+            EAD.HEIGHT - EAD.BASE_PX - 5\n         );\n         break;\n \n"
+    }
+  ]
+}

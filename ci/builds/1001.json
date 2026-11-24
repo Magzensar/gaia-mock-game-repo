@@ -1,0 +1,43 @@
+{
+  "build_id": "1001",
+  "tag": "build-1001",
+  "commit_range": "build-1000..build-1001",
+  "previous_build_id": "1000",
+  "commits": [
+    {
+      "sha": "610325b656ed34454719661ce639980999364b4d",
+      "author": "Meera Iyer",
+      "email": "meera.iyer@gaia-mock.dev",
+      "date": "2026-09-03T10:44:33+05:30",
+      "message": "feat(tools): autoplay benchmark mode (?autoplay=1&frames=N)",
+      "files": [
+        "docs/index.html",
+        "docs/js/bench.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/docs/index.html b/docs/index.html\nindex df5880a..f4f4038 100644\n--- a/docs/index.html\n+++ b/docs/index.html\n@@ -40,6 +40,7 @@\n     <script src=\"./js/player_item_manager.js\"></script>\n     <script src=\"./js/player_shot_manager.js\"></script>\n     <script src=\"./js/game.js\"></script>\n+    <script src=\"./js/bench.js\"></script>\n     <script>\n     // Continue to use JSLint edition 2017-07-01\n     /*jslint bitwise, browser, multivar, this*/\ndiff --git a/docs/js/bench.js b/docs/js/bench.js\nnew file mode 100644\nindex 0000000..48f0fbd\n--- /dev/null\n+++ b/docs/js/bench.js\n@@ -0,0 +1,92 @@\n+/*!\n+ * Name    : bench.js\n+ * Purpose : Scripted autoplay and frame timing for repro and benchmark runs\n+ *\n+ * Usage   : index.html?seed=42&autoplay=1&frames=3000\n+ *           Prints one line \"EAD_BENCH {json}\" to the console when done and\n+ *           stores the same object in window.EAD_BENCH_RESULT.\n+ *\n+ * License : MIT License\n+ */\n+\n+/*jslint browser, multivar, this*/\n+/*global EAD, console, performance, window*/\n+\n+EAD.bench = (function () {\n+    \"use strict\";\n+\n+    var params = new window.URLSearchParams(window.location.search),\n+        enabled = params.get(\"autoplay\") === \"1\",\n+        max_frames = parseInt(params.get(\"frames\") || \"3000\", 10),\n+        frame = 0,\n+        samples = [],\n+        started_at = performance.now(),\n+        first_frame_at = 0,\n+        original_loop = null;\n+\n+    function percentile(list, p) {\n+        var sorted = list.slice().sort(function (a, b) {\n+            return a - b;\n+        });\n+\n+        if (!sorted.length) {\n+            return 0;\n+        }\n+        return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * p))];\n+    }\n+\n+    function report() {\n+        var result = {\n+            version: EAD.VERSION,\n+            seed: EAD.seed,\n+            frames: frame,\n+            load_ms: Math.round(first_frame_at - started_at),\n+            frame_time_ms_p50: percentile(samples, 0.5),\n+            frame_time_ms_p95: percentile(samples, 0.95),\n+            frame_time_ms_p99: percentile(samples, 0.99),\n+            memory_mb: performance.memory\n+                ? Math.round(performance.memory.usedJSHeapSize / 1048576)\n+                : null,\n+            score: EAD.score\n+        };\n+\n+        window.EAD_BENCH_RESULT = result;\n+        console.log(\"EAD_BENCH \" + JSON.stringify(result));\n+    }\n+\n+    function drive() {\n+        // Tap to start, then sweep left and right, firing in bursts.\n+        if (EAD.game.state === EAD.game.STATE.GAMEOVER) {\n+            EAD.game.dialog.style.display = \"none\";\n+            EAD.game.state = EAD.game.STATE.TITLE;\n+        }\n+        EAD.tapped = EAD.game.state === EAD.game.STATE.TITLE;\n+        EAD.touched = true;\n+        EAD.prev_x = EAD.curr_x;\n+        EAD.prev_y = EAD.curr_y;\n+        EAD.curr_x = EAD.WIDTH / 2 + Math.sin(frame / 25) * (EAD.WIDTH / 3);\n+        EAD.curr_y = (Math.floor(frame / 10) % 2 === 0)\n+            ? EAD.HEIGHT - EAD.BASE_PX / 2\n+            : EAD.HEIGHT - EAD.BASE_PX * 4;\n+    }\n+\n+    if (enabled) {\n+        original_loop = EAD.loop;\n+        EAD.loop = function () {\n+            var t0 = performance.now();\n+\n+            if (!first_frame_at) {\n+                first_frame_at = t0;\n+            }\n+            drive();\n+            original_loop();\n+            samples.push(performance.now() - t0);\n+            frame += 1;\n+            if (frame === max_frames) {\n+                report();\n+            }\n+        };\n+    }\n+\n+    return {enabled: enabled, report: report};\n+}());\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex 981bacb..ca3e513 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -18,6 +18,7 @@ var CACHE_NAME = \"EAD-cache-v3.0.1\",\n         \"./img/sprites.png\",\n         \"./img/tileset.png\",\n         \"./index.html\",\n+        \"./js/bench.js\",\n         \"./js/boss_manager.js\",\n         \"./js/constr-background.js\",\n         \"./js/constr-boss.js\",\n"
+    },
+    {
+      "sha": "217991506b15ffa01500ffe20c4a168099977f44",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-09-03T10:47:16+05:30",
+      "message": "ci: add tools/lint.sh syntax check",
+      "files": [
+        "tools/lint.sh"
+      ],
+      "diff": "diff --git a/tools/lint.sh b/tools/lint.sh\nnew file mode 100755\nindex 0000000..f5c6c91\n--- /dev/null\n+++ b/tools/lint.sh\n@@ -0,0 +1,8 @@\n+#!/bin/sh\n+# Syntax-check every game script. CI runs this before packaging a build.\n+set -e\n+cd \"$(dirname \"$0\")/..\"\n+for f in docs/js/*.js docs/service_worker.js; do\n+    node --check \"$f\"\n+done\n+echo \"lint: ok\"\n"
+    },
+    {
+      "sha": "888d2f0ef2f17ac40b4dfb85ff769efac62304e9",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-03T13:46:53+05:30",
+      "message": "level(area-5): shift missile placement (row 16)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex a08ccd3..b31d641 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -338,7 +338,7 @@ EAD.enemies_maps[5] = [\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     31, 31, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 60, 10, 10, 60, 80,\n-    10, 10, 72, 60, 72, 10, 10, 10, 10, 10,\n+    10, 10, 10, 60, 72, 10, 72, 10, 10, 10,\n     10, 71, 60, 71, 10, 10, 71, 60, 71, 10,\n     10, 60, 25, 10, 60, 10, 60, 25, 10, 10,\n     10, 71, 60, 71, 10, 10, 71, 60, 71, 10,\n"
+    }
+  ]
+}

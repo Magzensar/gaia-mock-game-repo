@@ -1,0 +1,43 @@
+{
+  "build_id": "1022",
+  "tag": "build-1022",
+  "commit_range": "build-1021..build-1022",
+  "previous_build_id": "1021",
+  "commits": [
+    {
+      "sha": "fc7679d63cca0b140d74dac96ed3e0617e2f6e12",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-10-06T12:21:32+05:30",
+      "message": "release: v3.4.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex cc1ca02..fd8ee2a 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,26 @@\n # Changelog\n \n+## v3.4.0\n+\n+- level(area-0): move fighter in row 60\n+- tune(player): INITIAL_ENERGY_GREEN 200 -> 180\n+- tune(boss): INITIAL_LIVES 128 -> 136\n+- art(area-3): retile background row 53\n+- docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.setup\n+- feat(fx): soft drop shadows under enemy ships\n+- docs(enemy_manager): explain enemy_id wrap-around\n+- level(area-1): shift meteor placement (row 16)\n+- tune(balance): MAX_DIFFICULTY 336000 -> 344000\n+- docs(constr-physical_point): add JSDoc for PhysicalPoint.prototype.update\n+- art(area-1): fix tile seam in row 45\n+- docs(player_item_manager): add JSDoc for player_item_manager.draw\n+- perf(fx): remove live shadowBlur from the enemy layer\n+- tune(items): ENERGY_RED 520 -> 600\n+- style(ui): darker neutral button for contrast\n+- tune(enemy): RANDOM_RANGE 272 -> 288\n+- level(area-3): add a missile wave in row 9\n+- docs(enemy_manager): explain spawn_counts\n+\n ## v3.3.0\n \n - feat(level): track the current area\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex 1b1d115..cf91497 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -41,7 +41,7 @@ EAD.rng = (function (state) {\n \n EAD.debug = /[?&]debug=1/.test(window.location.search);\n \n-EAD.VERSION = \"v3.3.0\";\n+EAD.VERSION = \"v3.4.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex 0b293ea..ae8dced 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.3.0\",\n+var CACHE_NAME = \"EAD-cache-v3.4.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "2af877e86e969257fa031902f3d31aab7e37c74f",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-06T14:28:51+05:30",
+      "message": "style(ui): rounder dialog buttons",
+      "files": [
+        "docs/css/styles.css"
+      ],
+      "diff": "diff --git a/docs/css/styles.css b/docs/css/styles.css\nindex 7139732..b50f75a 100644\n--- a/docs/css/styles.css\n+++ b/docs/css/styles.css\n@@ -45,8 +45,8 @@ input.btn {\n \n .btn {\n     background-color: #8c8c8c;\n-    -webkit-border-radius: 2px;\n-    border-radius: 2px;\n+    -webkit-border-radius: 4px;\n+    border-radius: 4px;\n     border: 0;\n     color: #fff;\n     cursor: pointer;\n"
+    },
+    {
+      "sha": "d75edc987a37e069a133b2e9a758083caba3f20d",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-06T17:26:34+05:30",
+      "message": "tune(player): INITIAL_ENERGY_GREEN 180 -> 200",
+      "files": [
+        "docs/js/constr-player.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player.js b/docs/js/constr-player.js\nindex 728d7d7..73b0e96 100644\n--- a/docs/js/constr-player.js\n+++ b/docs/js/constr-player.js\n@@ -33,7 +33,7 @@ EAD.Player = function () {\n     this.state = this.STATE.INACTIVE;\n };\n \n-EAD.Player.INITIAL_ENERGY_GREEN = 180;\n+EAD.Player.INITIAL_ENERGY_GREEN = 200;\n EAD.Player.INITIAL_LIVES = 3;\n EAD.Player.MAX_LIVES = 99;\n EAD.Player.BONUS_EVERY = 130000;\n"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Crash",
+  "description": "One crash report. telemetry/crashes/<build_id>.json is a JSON array of these. Stack file/line point at real lines in the repo at that build's tag.",
+  "type": "object",
+  "required": [
+    "crash_id",
+    "build_id",
+    "app_version",
+    "platform",
+    "device_family",
+    "os_version",
+    "exception",
+    "message",
+    "stack",
+    "level",
+    "breadcrumbs",
+    "session_id",
+    "ts",
+    "source"
+  ],
+  "properties": {
+    "crash_id": {
+      "type": "string",
+      "pattern": "^c-[0-9]{4}-[0-9]{5}$"
+    },
+    "build_id": {
+      "type": "string",
+      "pattern": "^[0-9]{4}$",
+      "description": "e.g. 1038"
+    },
+    "app_version": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "android",
+        "web"
+      ],
+      "description": "android in Round 1; web is added in Round 2"
+    },
+    "device_family": {
+      "type": "string",
+      "description": "GPU family, e.g. mali-g52, adreno-610, powervr-ge8320"
+    },
+    "os_version": {
+      "type": "string",
+      "description": "e.g. Android 13"
+    },
+    "exception": {
+      "type": "string",
+      "description": "e.g. TypeError, InvalidStateError"
+    },
+    "message": {
+      "type": "string"
+    },
+    "stack": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "file",
+          "function",
+          "line"
+        ],
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "Repo path, e.g. docs/js/game.js"
+          },
+          "function": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "column": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "level": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^area-[0-7]$",
+      "description": "null for builds before area tracking"
+    },
+    "breadcrumbs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 8,
+      "description": "Last player actions, oldest first: game_start, area_enter:<id>, item:<id>. Empty before breadcrumbs existed."
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "const": "mock",
+      "description": "Records without source=mock did not come from the mock repo; reject them"
+    }
+  },
+  "additionalProperties": false
+}

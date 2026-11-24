@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BuildCommits",
+  "description": "The commits that went into one build, with diffs. ci/builds/<build_id>.json. Authors are context only and must never be used for ranking.",
+  "type": "object",
+  "required": [
+    "build_id",
+    "tag",
+    "commit_range",
+    "previous_build_id",
+    "commits"
+  ],
+  "properties": {
+    "build_id": {
+      "type": "string",
+      "pattern": "^[0-9]{4}$",
+      "description": "e.g. 1038"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "commit_range": {
+      "type": "string",
+      "description": "git range, e.g. build-1037..build-1038"
+    },
+    "previous_build_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "commits": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "sha",
+          "author",
+          "email",
+          "date",
+          "message",
+          "files",
+          "diff"
+        ],
+        "properties": {
+          "sha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "author": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "message": {
+            "type": "string"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "diff": {
+            "type": "string",
+            "description": "Unified diff, 3 lines of context"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

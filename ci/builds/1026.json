@@ -1,0 +1,52 @@
+{
+  "build_id": "1026",
+  "tag": "build-1026",
+  "commit_range": "build-1025..build-1026",
+  "previous_build_id": "1025",
+  "commits": [
+    {
+      "sha": "a05b290c12680fda3e787f9cc07e518de0e5e53d",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-12T10:20:01+05:30",
+      "message": "docs(constr-boss): add JSDoc for Boss.prototype.draw",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex a21d509..2954ddf 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -209,6 +209,9 @@ EAD.Boss.prototype.update = function (player_x, player_y) {\n     }\n };\n \n+/**\n+ * Draw this boss on its canvas layer.\n+ */\n EAD.Boss.prototype.draw = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "f1ea69f762bf6da1e331edf28d8b2d91888d683d",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-12T15:31:05+05:30",
+      "message": "style(ui): use the system font stack",
+      "files": [
+        "docs/css/styles.css"
+      ],
+      "diff": "diff --git a/docs/css/styles.css b/docs/css/styles.css\nindex 7689a51..f8792ec 100644\n--- a/docs/css/styles.css\n+++ b/docs/css/styles.css\n@@ -17,7 +17,7 @@\n body {\n     background-color: #000;\n     color: #fff;\n-    font: 16px/1.5 sans-serif;\n+    font: 16px/1.5 system-ui, sans-serif;\n     margin: 0;\n     padding: 0;\n }\n"
+    },
+    {
+      "sha": "2992b6d39c7ce94fe4e92b9fdd44db8ca63c2e6e",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-12T17:14:13+05:30",
+      "message": "tune(enemy): RANDOM_RANGE 288 -> 304\n\nMatches the values from the last internal playtest build.",
+      "files": [
+        "docs/js/constr-enemy.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy.js b/docs/js/constr-enemy.js\nindex 3fb1610..f326485 100644\n--- a/docs/js/constr-enemy.js\n+++ b/docs/js/constr-enemy.js\n@@ -34,7 +34,7 @@ EAD.Enemy = function () {\n     this.virtual_top = 0;\n };\n \n-EAD.Enemy.RANDOM_RANGE = 288;\n+EAD.Enemy.RANDOM_RANGE = 304;\n EAD.Enemy.SCROLL_GND_VY = 0.5;\n \n EAD.Enemy.prototype.COLLISION_RADIUS = 10;\n"
+    },
+    {
+      "sha": "376c63b061b0d54945972063c6f5e48ad0b3c222",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-12T18:09:24+05:30",
+      "message": "tune(items): ENERGY_RED 600 -> 680\n\nPlasma cannon ran out too quickly in the boss fight.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex c6208dc..c0e29ef 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -23,7 +23,7 @@ EAD.PlayerItem = function () {\n     this.state = this.STATE.GARBAGE;\n };\n \n-EAD.PlayerItem.ENERGY_RED = 600;\n+EAD.PlayerItem.ENERGY_RED = 680;\n EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "build_id": "1050",
+  "tag": "build-1050",
+  "commit_range": "build-1049..build-1050",
+  "previous_build_id": "1049",
+  "commits": [
+    {
+      "sha": "f4b0165760096bb8997f4fd1350c99de11962a28",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-19T14:23:59+05:30",
+      "message": "tune(items): ENERGY_BLUE 336 -> 304\n\nBalance pass after reviewing session-length telemetry.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 784f3dd..d37cda4 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -25,7 +25,7 @@ EAD.PlayerItem = function () {\n \n EAD.PlayerItem.ENERGY_RED = 520;\n EAD.PlayerItem.ENERGY_GREEN = 400;\n-EAD.PlayerItem.ENERGY_BLUE = 336;\n+EAD.PlayerItem.ENERGY_BLUE = 304;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n EAD.PlayerItem.prototype.NAME = {\n"
+    },
+    {
+      "sha": "2f6eeff8da3c0cefc618521e5f1250e4f1540500",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-19T14:25:32+05:30",
+      "message": "art(area-0): retile background row 36",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex c88fed5..78d4255 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -48,7 +48,7 @@ EAD.bg02_maps[0] = [\n     24, 15, 15, 15, 15, 26, 24, 15, 17, 19,\n     24, 15, 17, 16, 15, 26, 24, 15, 15, 15,\n     24, 15, 15, 15, 15, 26, 11, 20, 20, 20,\n-    25, 15, 19, 19, 15, 27, 29, 29, 29, 29,\n+    25, 27, 19, 19, 15, 15, 29, 29, 29, 29,\n     24, 15, 15, 15, 15, 26, 10, 10, 10, 10,\n     11, 20, 21, 20, 20, 12, 10, 10, 10, 10,\n     22, 22, 23, 22, 22, 22, 22, 22, 22, 22,\n"
+    },
+    {
+      "sha": "7e94153bf02aa230e4883e71695832ad5c0fb23b",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-19T14:32:40+05:30",
+      "message": "art(area-6): fix tile seam in row 48",
+      "files": [
+        "docs/js/map-bg02.js"
+      ],
+      "diff": "diff --git a/docs/js/map-bg02.js b/docs/js/map-bg02.js\nindex 78d4255..ff5bc2c 100644\n--- a/docs/js/map-bg02.js\n+++ b/docs/js/map-bg02.js\n@@ -432,7 +432,7 @@ EAD.bg02_maps[6] = [\n     24, 15, 18, 16, 15, 15, 16, 18, 15, 26,\n     24, 15, 18, 17, 15, 15, 17, 18, 15, 26,\n     24, 15, 15, 15, 15, 15, 15, 15, 15, 26,\n-    11, 21, 21, 20, 21, 21, 20, 21, 21, 12,\n+    11, 21, 21, 20, 21, 21, 21, 20, 21, 12,\n     22, 23, 23, 22, 23, 23, 22, 23, 23, 22,\n     15, 18, 18, 15, 18, 18, 15, 18, 18, 15,\n     15, 15, 15, 15, 15, 15, 15, 15, 15, 15,\n"
+    },
+    {
+      "sha": "7d562350f727ee042635cedacb13bf6bb0f0a7ac",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-19T17:02:56+05:30",
+      "message": "docs(constr-player_shot): add JSDoc for PlayerShot.prototype.fire",
+      "files": [
+        "docs/js/constr-player_shot.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_shot.js b/docs/js/constr-player_shot.js\nindex 9e8e93b..27df95b 100644\n--- a/docs/js/constr-player_shot.js\n+++ b/docs/js/constr-player_shot.js\n@@ -41,6 +41,11 @@ EAD.PlayerShot.prototype.STATE = {\n     GARBAGE: 10\n };\n \n+/**\n+ * Try to fire; returns true when a shot was spawned.\n+ *\n+ * @param {number} energy_red\n+ */\n EAD.PlayerShot.prototype.fire = function (energy_red) {\n     \"use strict\";\n \n"
+    }
+  ]
+}

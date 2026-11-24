@@ -1,0 +1,30 @@
+{
+  "build_id": "1024",
+  "tag": "build-1024",
+  "commit_range": "build-1023..build-1024",
+  "previous_build_id": "1023",
+  "commits": [
+    {
+      "sha": "8de92eafa9de8c2e4649b73bcd75b965dace7ba3",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-10-08T12:53:29+05:30",
+      "message": "tune(items): ENERGY_GREEN 375 -> 425\n\nBalance pass after reviewing session-length telemetry.",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex f250552..c6208dc 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -24,7 +24,7 @@ EAD.PlayerItem = function () {\n };\n \n EAD.PlayerItem.ENERGY_RED = 600;\n-EAD.PlayerItem.ENERGY_GREEN = 375;\n+EAD.PlayerItem.ENERGY_GREEN = 425;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n"
+    },
+    {
+      "sha": "1a662793e0ad1747667ad20c8c5e056760f34146",
+      "author": "Lucas Ferreira",
+      "email": "lucas.ferreira@gaia-mock.dev",
+      "date": "2026-10-08T13:56:13+05:30",
+      "message": "docs(init): add JSDoc for init",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex b705744..998de01 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -177,6 +177,9 @@ window.onload = function () {\n     window.setTimeout(step, 500);\n };\n \n+/**\n+ * Wire up touch and mouse input on the front canvas.\n+ */\n EAD.init = function () {\n     \"use strict\";\n \n"
+    }
+  ]
+}

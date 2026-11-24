@@ -1,0 +1,55 @@
+{
+  "build_id": "1010",
+  "tag": "build-1010",
+  "commit_range": "build-1009..build-1010",
+  "previous_build_id": "1009",
+  "commits": [
+    {
+      "sha": "3d9b07897f642ca1d7ceea63b087f7dc7864fa05",
+      "author": "Sana Qureshi",
+      "email": "sana.qureshi@gaia-mock.dev",
+      "date": "2026-09-18T09:37:19+05:30",
+      "message": "release: v3.2.0",
+      "files": [
+        "CHANGELOG.md",
+        "docs/js/init.js",
+        "docs/service_worker.js"
+      ],
+      "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex 6097b2d..591b3a7 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,5 +1,31 @@\n # Changelog\n \n+## v3.2.0\n+\n+- tune(physics): FRICTION 0.8 -> 0.78\n+- tune(items): ENERGY_GREEN 400 -> 375\n+- tune(boss): MAX_HIT 150 -> 155\n+- level(area-6): move boss marker in row 36\n+- docs(constr-enemy_shot): add JSDoc for EnemyShot.prototype.update\n+- docs(constr-player): add JSDoc for Player\n+- docs(constr-player): add JSDoc for Player.prototype.update\n+- refactor(game): clamp difficulty and score with util.clamp\n+- docs(constr-tile): add JSDoc for Tile\n+- art(area-3): fix tile seam in row 18\n+- level(area-4): rebalance row 14\n+- docs(player_shot_manager): add JSDoc for player_shot_manager.update\n+- art(area-4): fix tile seam in row 51\n+- docs(enemy_shot_manager): add JSDoc for enemy_shot_manager.draw\n+- feat(telemetry): breadcrumbs and crash reporter hook\n+- tune(player): BONUS_EVERY 100000 -> 110000\n+- level(area-7): rebalance row 48\n+- tune(player): BONUS_EVERY 110000 -> 130000\n+- docs(util): add JSDoc for util.abs\n+- feat(telemetry): record game start/over and item pickups\n+- docs(constr-player_shot): add JSDoc for PlayerShot\n+- tune(items): ENERGY_RED 600 -> 520\n+- style(ui): smaller button labels on narrow screens\n+\n ## v3.1.0\n \n - docs(constr-enemy_shot): add JSDoc for EnemyShot.prototype.draw\ndiff --git a/docs/js/init.js b/docs/js/init.js\nindex dd6a5cf..3a607ae 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -39,7 +39,7 @@ EAD.rng = (function (state) {\n     };\n }(EAD.seed));\n \n-EAD.VERSION = \"v3.1.0\";\n+EAD.VERSION = \"v3.2.0\";\n EAD.FPS = 30;\n EAD.WIDTH = 320;\n EAD.HEIGHT = 480;\ndiff --git a/docs/service_worker.js b/docs/service_worker.js\nindex 5f038a9..70c91d9 100644\n--- a/docs/service_worker.js\n+++ b/docs/service_worker.js\n@@ -10,7 +10,7 @@\n /*jslint bitwise, browser, multivar, this*/\n /*global EAD, Image, Promise, caches, fetch, self, window*/\n \n-var CACHE_NAME = \"EAD-cache-v3.1.0\",\n+var CACHE_NAME = \"EAD-cache-v3.2.0\",\n     CACHED_URLS = [\n         \"./\",\n         \"./css/styles.css\",\n"
+    },
+    {
+      "sha": "80ab8387952ec84a5bae05d57cd09b66d80ec4f9",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-18T14:05:11+05:30",
+      "message": "feat(level): track the current area\n\nAdds EAD.AREA_LEN and area names, and records an area_enter\nbreadcrumb on every transition.",
+      "files": [
+        "docs/js/game.js",
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex fc23ffb..43ba5ce 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -23,6 +23,7 @@ EAD.game.STATE = {\n \n EAD.game.state = EAD.game.STATE.LOADING;\n EAD.game.storage_error = \"\";\n+EAD.game.area_index = 0;\n \n EAD.setup = function () {\n     \"use strict\";\n@@ -80,7 +81,8 @@ EAD.loop = function () {\n         score = EAD.util.padLeft(EAD.score, 9),\n         energy_red = EAD.util.padLeft(EAD.player.energy_red, 3),\n         energy_green = EAD.util.padLeft(EAD.player.energy_green, 3),\n-        lives = EAD.util.padLeft(EAD.player.lives, 2);\n+        lives = EAD.util.padLeft(EAD.player.lives, 2),\n+        area_index = 0;\n \n     EAD.ctx.front.clearRect(0, 0, EAD.WIDTH, EAD.HEIGHT - EAD.BASE_PX);\n \n@@ -155,6 +157,7 @@ EAD.loop = function () {\n         EAD.bg02.tile_id = 0;\n         EAD.bg02.setup();\n         EAD.enemy_id = 0;\n+        EAD.game.area_index = -1;\n         EAD.enemy_manager.setup();\n         EAD.boss_manager.setup();\n         EAD.player.state = EAD.player.STATE.STANDBY;\n@@ -178,6 +181,11 @@ EAD.loop = function () {\n             EAD.enemy_manager.hideEnemyShips();\n         }\n         EAD.enemy_manager.update(EAD.player.x, EAD.player.y);\n+        area_index = Math.floor(EAD.enemy_id / EAD.AREA_LEN) % EAD.area_order.length;\n+        if (area_index !== EAD.game.area_index) {\n+            EAD.game.area_index = area_index;\n+            EAD.telemetry.crumb(\"area_enter:\" + EAD.area_order[area_index]);\n+        }\n         while (i < EAD.enemy_manager.MAX_ENEMIES) {\n             if (\n                 EAD.enemies[i].state === EAD.enemies[i].STATE.ACTIVE ||\ndiff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 5f5724d..19438b8 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -519,4 +519,17 @@ EAD.enemies_map = EAD.enemies_maps[EAD.area_order[0]].concat(\n     EAD.enemies_maps[EAD.area_order[7]]\n );\n \n+EAD.AREA_LEN = EAD.enemies_maps[0].length;\n+\n+EAD.area_info = [\n+    {name: \"OUTER RIM\"},\n+    {name: \"ASTEROID BELT\"},\n+    {name: \"ICE FIELDS\"},\n+    {name: \"NEBULA\"},\n+    {name: \"SCRAPYARD\"},\n+    {name: \"RELAY STATION\"},\n+    {name: \"BLOCKADE\"},\n+    {name: \"MOTHERSHIP\"}\n+];\n+\n EAD.enemies_maps.length = 0;\n"
+    },
+    {
+      "sha": "391763905d6210131da2a643e699ef3fbd5a921c",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-09-18T14:20:34+05:30",
+      "message": "docs(game): add JSDoc for loop",
+      "files": [
+        "docs/js/game.js"
+      ],
+      "diff": "diff --git a/docs/js/game.js b/docs/js/game.js\nindex 43ba5ce..adc62d3 100644\n--- a/docs/js/game.js\n+++ b/docs/js/game.js\n@@ -71,6 +71,9 @@ EAD.setup = function () {\n     EAD.player_shot_manager.setup();\n };\n \n+/**\n+ * Run one frame of the game state machine.\n+ */\n EAD.loop = function () {\n     \"use strict\";\n \n"
+    },
+    {
+      "sha": "51b4f10f90fc8744e8d912551b0ef927ea3d22bb",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-18T15:55:36+05:30",
+      "message": "tune(balance): MAX_DIFFICULTY 336000 -> 328000\n\nRetention dashboard shows players dropping in the first two areas.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 3a607ae..b82279b 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -49,7 +49,7 @@ EAD.BASE_PX = 32;\n EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n-EAD.MAX_DIFFICULTY = 336000;\n+EAD.MAX_DIFFICULTY = 328000;\n EAD.MAX_HIT = 155;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n"
+    }
+  ]
+}

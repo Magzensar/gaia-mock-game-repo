@@ -1,0 +1,52 @@
+{
+  "build_id": "1044",
+  "tag": "build-1044",
+  "commit_range": "build-1043..build-1044",
+  "previous_build_id": "1043",
+  "commits": [
+    {
+      "sha": "70f0b693b3cc1c9e461580b90de0635a0ba39de1",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-11-06T10:01:27+05:30",
+      "message": "level(area-0): move boss marker in row 17",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 26e0597..f0fd177 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -29,7 +29,7 @@ EAD.enemies_maps[0] = [\n     10, 10, 90, 10, 10, 90, 10, 10, 90, 10,\n     10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 80, 10, 10, 90, 10, 10, 90, 10, 10,\n-    10, 10, 90, 10, 10, 90, 10, 10, 80, 10,\n+    90, 10, 90, 10, 10, 10, 10, 10, 80, 10,\n     10, 10, 10, 50, 10, 10, 10, 10, 10, 10,\n     10, 10, 21, 10, 10, 10, 50, 21, 10, 10,\n     10, 90, 10, 10, 90, 10, 10, 10, 10, 90,\n"
+    },
+    {
+      "sha": "82b8c435fec563c8b3bae3d67420303aae73eb1b",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-11-06T11:36:21+05:30",
+      "message": "tune(enemy): MAX_ENEMY_SHOTS 16 -> 20\n\nRequested in design review.",
+      "files": [
+        "docs/js/enemy_shot_manager.js"
+      ],
+      "diff": "diff --git a/docs/js/enemy_shot_manager.js b/docs/js/enemy_shot_manager.js\nindex c0924f8..f9721df 100644\n--- a/docs/js/enemy_shot_manager.js\n+++ b/docs/js/enemy_shot_manager.js\n@@ -12,7 +12,7 @@\n \n EAD.enemy_shot_manager = {};\n \n-EAD.enemy_shot_manager.MAX_ENEMY_SHOTS = 16;\n+EAD.enemy_shot_manager.MAX_ENEMY_SHOTS = 20;\n \n EAD.enemy_shots = [];\n \n"
+    },
+    {
+      "sha": "d3b7f50ec66120815f8e8481ed4007bff3a085cc",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-11-06T13:37:07+05:30",
+      "message": "tune(balance): MAX_DIFFICULTY 344000 -> 352000",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex 2a7c4d1..3b2038d 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -51,7 +51,7 @@ EAD.BASE_PX = 32;\n EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n-EAD.MAX_DIFFICULTY = 344000;\n+EAD.MAX_DIFFICULTY = 352000;\n EAD.MAX_HIT = 165;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n"
+    },
+    {
+      "sha": "36673abdc585a8274311334923cbfc9625d00b75",
+      "author": "Priya Raghavan",
+      "email": "priya.raghavan@gaia-mock.dev",
+      "date": "2026-11-06T15:35:15+05:30",
+      "message": "tune(items): ENERGY_GREEN 425 -> 400",
+      "files": [
+        "docs/js/constr-player_item.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-player_item.js b/docs/js/constr-player_item.js\nindex 47fca65..7732f9d 100644\n--- a/docs/js/constr-player_item.js\n+++ b/docs/js/constr-player_item.js\n@@ -24,7 +24,7 @@ EAD.PlayerItem = function () {\n };\n \n EAD.PlayerItem.ENERGY_RED = 560;\n-EAD.PlayerItem.ENERGY_GREEN = 425;\n+EAD.PlayerItem.ENERGY_GREEN = 400;\n EAD.PlayerItem.ENERGY_BLUE = 288;\n \n EAD.PlayerItem.prototype.COLLISION_RADIUS = 20;\n"
+    }
+  ]
+}

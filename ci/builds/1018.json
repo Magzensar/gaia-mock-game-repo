@@ -1,0 +1,30 @@
+{
+  "build_id": "1018",
+  "tag": "build-1018",
+  "commit_range": "build-1017..build-1018",
+  "previous_build_id": "1017",
+  "commits": [
+    {
+      "sha": "c079643d7e56b50a2f85a6464721bfcfa96a8715",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-09-30T10:14:18+05:30",
+      "message": "level(area-1): shift meteor placement (row 16)",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 3c90845..2e76c9c 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -90,7 +90,7 @@ EAD.enemies_maps[1] = [\n     10, 10, 10, 50, 10, 10, 50, 10, 10, 10,\n     31, 10, 10, 10, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 80, 10, 10,\n-    10, 10, 80, 10, 10, 10, 10, 10, 10, 10,\n+    10, 10, 10, 80, 10, 10, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 10, 35, 34,\n     10, 10, 10, 10, 10, 10, 50, 10, 50, 10,\n     10, 50, 10, 50, 10, 10, 10, 10, 10, 10,\n"
+    },
+    {
+      "sha": "38c83c42fb0792bb780a96bd922ff613bb60ed0d",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-09-30T12:57:15+05:30",
+      "message": "tune(balance): MAX_DIFFICULTY 336000 -> 344000\n\nRetention dashboard shows players dropping in the first two areas.",
+      "files": [
+        "docs/js/init.js"
+      ],
+      "diff": "diff --git a/docs/js/init.js b/docs/js/init.js\nindex fd8ba10..1b1d115 100644\n--- a/docs/js/init.js\n+++ b/docs/js/init.js\n@@ -51,7 +51,7 @@ EAD.BASE_PX = 32;\n EAD.BG_COLOR = \"rgb(0, 0, 0)\";\n EAD.FONT_COLOR = \"rgb(255, 255, 255)\";\n EAD.FONT_FACE = \"bold 12px monospace\";\n-EAD.MAX_DIFFICULTY = 336000;\n+EAD.MAX_DIFFICULTY = 344000;\n EAD.MAX_HIT = 155;\n EAD.MAX_SCORE = 100000000;\n EAD.DIFFICULTY_MEDIUM = Math.floor(EAD.MAX_DIFFICULTY * 0.3);\n"
+    }
+  ]
+}

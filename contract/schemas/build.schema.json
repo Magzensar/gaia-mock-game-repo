@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Build",
+  "description": "One CI build of the mock game. One entry per build in ci/builds.json (a JSON array).",
+  "type": "object",
+  "required": [
+    "build_id",
+    "tag",
+    "commit_sha",
+    "parent_build_id",
+    "branch",
+    "platform",
+    "ci_status",
+    "app_version",
+    "created_at",
+    "commit_count"
+  ],
+  "properties": {
+    "build_id": {
+      "type": "string",
+      "pattern": "^[0-9]{4}$",
+      "description": "e.g. 1038"
+    },
+    "tag": {
+      "type": "string",
+      "pattern": "^build-[0-9]{4}$",
+      "description": "git tag of the build, e.g. build-1038"
+    },
+    "commit_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "Head commit of the build"
+    },
+    "parent_build_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]{4}$",
+      "description": "Previous build; null for the first"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "android",
+        "web"
+      ],
+      "description": "android in Round 1; web is added in Round 2"
+    },
+    "ci_status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failed"
+      ]
+    },
+    "app_version": {
+      "type": "string",
+      "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "commit_count": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "additionalProperties": false
+}

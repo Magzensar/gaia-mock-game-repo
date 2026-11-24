@@ -1,0 +1,52 @@
+{
+  "build_id": "1029",
+  "tag": "build-1029",
+  "commit_range": "build-1028..build-1029",
+  "previous_build_id": "1028",
+  "commits": [
+    {
+      "sha": "3cf9189e5933360a79969c37ab3be6db41126942",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-15T15:46:59+05:30",
+      "message": "tune(boss): INITIAL_LIVES 136 -> 120",
+      "files": [
+        "docs/js/constr-boss.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-boss.js b/docs/js/constr-boss.js\nindex 2954ddf..3b6e5f1 100644\n--- a/docs/js/constr-boss.js\n+++ b/docs/js/constr-boss.js\n@@ -31,7 +31,7 @@ EAD.Boss = function () {\n };\n \n EAD.Boss.BASE_PX = EAD.BASE_PX * 2;\n-EAD.Boss.INITIAL_LIVES = 136;\n+EAD.Boss.INITIAL_LIVES = 120;\n EAD.Boss.LIVES_LOW = Math.floor(EAD.Boss.INITIAL_LIVES / 3);\n EAD.Boss.TIME_LIMIT = 1800;\n EAD.Boss.MAX_FRAME_COUNT = 2;\n"
+    },
+    {
+      "sha": "4cc5e1c85d6cff2cf981d520bda4ff455b4c654f",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-15T16:21:30+05:30",
+      "message": "tune(enemy): RANDOM_RANGE 304 -> 272\n\nRequested in design review.",
+      "files": [
+        "docs/js/constr-enemy.js"
+      ],
+      "diff": "diff --git a/docs/js/constr-enemy.js b/docs/js/constr-enemy.js\nindex f326485..ec476e4 100644\n--- a/docs/js/constr-enemy.js\n+++ b/docs/js/constr-enemy.js\n@@ -34,7 +34,7 @@ EAD.Enemy = function () {\n     this.virtual_top = 0;\n };\n \n-EAD.Enemy.RANDOM_RANGE = 304;\n+EAD.Enemy.RANDOM_RANGE = 272;\n EAD.Enemy.SCROLL_GND_VY = 0.5;\n \n EAD.Enemy.prototype.COLLISION_RADIUS = 10;\n"
+    },
+    {
+      "sha": "9077d05977e4ab2082cc7eb5f15dc15e63591889",
+      "author": "Aarav Menon",
+      "email": "aarav.menon@gaia-mock.dev",
+      "date": "2026-10-15T16:22:48+05:30",
+      "message": "level(area-0): rebalance row 28",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex b510725..1c4aecf 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -40,7 +40,7 @@ EAD.enemies_maps[0] = [\n     10, 50, 10, 10, 10, 10, 10, 10, 10, 10,\n     50, 10, 10, 10, 25, 25, 10, 10, 10, 10,\n     10, 10, 10, 10, 10, 10, 10, 10, 50, 10,\n-    10, 10, 10, 50, 10, 10, 50, 10, 10, 10,\n+    10, 50, 10, 10, 10, 10, 50, 10, 10, 10,\n     10, 10, 80, 10, 90, 10, 10, 10, 10, 90,\n     10, 90, 10, 90, 10, 10, 10, 80, 10, 10,\n     80, 10, 10, 10, 10, 90, 10, 10, 90, 10,\n"
+    },
+    {
+      "sha": "310ee57741a49a4ed350af6d7e664d085eeca716",
+      "author": "Daniel Okafor",
+      "email": "daniel.okafor@gaia-mock.dev",
+      "date": "2026-10-15T18:03:48+05:30",
+      "message": "level(area-1): move meteor in row 37",
+      "files": [
+        "docs/js/map-enemies.js"
+      ],
+      "diff": "diff --git a/docs/js/map-enemies.js b/docs/js/map-enemies.js\nindex 1c4aecf..101c9e2 100644\n--- a/docs/js/map-enemies.js\n+++ b/docs/js/map-enemies.js\n@@ -111,7 +111,7 @@ EAD.enemies_maps[1] = [\n     10, 10, 40, 10, 10, 10, 10, 10, 40, 10,\n     10, 10, 10, 40, 10, 10, 10, 40, 10, 10,\n     10, 10, 10, 10, 40, 10, 40, 80, 10, 10,\n-    25, 10, 80, 10, 10, 10, 80, 10, 10, 25,\n+    25, 10, 25, 10, 10, 10, 80, 10, 10, 80,\n     80, 10, 10, 60, 10, 60, 10, 10, 10, 10,\n     10, 10, 10, 80, 10, 10, 10, 10, 80, 10,\n     31, 10, 31, 10, 10, 10, 10, 10, 10, 10,\n"
+    }
+  ]
+}
